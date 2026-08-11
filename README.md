@@ -2,6 +2,8 @@
 
 > A fully playable narrative prototype about grief, choice, and rebuilding after the victory that ended the world.
 
+**[Open After the Final Battle - Complete World Experiment](https://htmlpreview.github.io/?https://github.com/mewzicians/After-the-final-battle-test-build/blob/main/After%20the%20Final%20Battle%20-%20Complete%20World%20Experiment.html)**
+
 The Demon King is dead. The Hero won. Thousands of years later, his younger brother leaves a failing shelter and discovers that the final battle never truly ended—it became the shape of everything that survived.
 
 This public test build expands the original Northern Region prototype into one connected journey across the continent. It is an **experimental branch**, not a replacement for the project's approved v18 build or a declaration that every new story answer is permanent canon.
