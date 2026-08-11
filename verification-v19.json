@@ -1,10 +1,10 @@
 {
   "summary": {
-    "passed": 102,
+    "passed": 114,
     "failed": 0,
-    "total": 102,
-    "sourceSha256": "5ec773df54d112697c171cb748fbe547977831ca2b6c94505beb0c9b45d7cebd",
-    "htmlSha256": "a5ca4bfcae4b114aaef4f93e588fdc81668db3c4d1a18b64eb1a07d1bd57aa16",
+    "total": 114,
+    "sourceSha256": "dc95bde895e096b1093fedac0200c8c9fbedc7afae77fac06a98cca8d364d6c0",
+    "htmlSha256": "7d5024b8273b7541edcca923080a4cbfbef61d65765201b806aeb49cf744046a",
     "failures": []
   },
   "checks": [
@@ -379,6 +379,21 @@
       "detail": ""
     },
     {
+      "label": "integrated Stalwart room data evaluates",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "Stalwart is one reachable ten-room graph",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "Stalwart retains all integrated exploration rooms",
+      "passed": true,
+      "detail": ""
+    },
+    {
       "label": "Mera begins as an unnamed visible courier",
       "passed": true,
       "detail": ""
@@ -394,7 +409,52 @@
       "detail": ""
     },
     {
+      "label": "legacy Stalwart discoveries live inside the connected rooms",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "the Academy is entered from Stalwart's connected road",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "the Academy returns to its Stalwart road room",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "Stalwart keeps the world map undisclosed until the route book is read",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "the journal follows the bespoke Stalwart room order",
+      "passed": true,
+      "detail": ""
+    },
+    {
       "label": "town services appear inside the ordinary town room",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "the shelter door enters the connected Stalwart build",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "obsolete Northern passage names are redirect-only save aliases",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "no legacy/new opening overlay remains",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "old player-facing Stalwart prose is absent from the active source",
       "passed": true,
       "detail": ""
     },

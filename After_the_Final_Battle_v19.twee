@@ -7868,6 +7868,82 @@ var WORLD_VERSION = 1;
     if (pre) wrap.insertBefore(badge, pre);
   };
 
+  var worldStalwartNodes = [
+    {
+      id: "arrival",
+      name: "The outer gate",
+      text: "The outer gate hangs from one hinge. Fresh boot prints pass through it in both directions.",
+      next: ["ordinary", "academyRoad"]
+    },
+    {
+      id: "academyRoad",
+      name: "The Academy road",
+      text: "The road climbs behind the old wall. Cart ruts and boot prints continue toward an arch whose carved name has lost several letters.",
+      next: ["arrival"]
+    },
+    {
+      id: "ordinary",
+      name: "The main square",
+      text: "The square is still shaped around a crater. Smoke leaks from patched roofs. Two neighbors argue over an oven door while someone measures the dry corner with a length of string. A faceless Moon statue keeps one stone hand above them.",
+      next: ["arrival", "evidence", "slum", "richHousing", "danger"]
+    },
+    {
+      id: "evidence",
+      name: "The notice wall",
+      text: "A body lies beside the notice wall. Mud has dried to the courier's boots and coat. A cord beneath the coat holds a small route book closed.",
+      next: ["ordinary", "broken"]
+    },
+    {
+      id: "slum",
+      name: "The lower streets",
+      text: "Small houses lean beneath the old wall. Wall-menders, cooks, and leather stitchers lived close enough to share heat. Most roofs lost that argument years ago.",
+      next: ["ordinary", "river"]
+    },
+    {
+      id: "river",
+      name: "The river",
+      text: "Black water moves beneath white ice. Stalwart was built around the river because walls need water. So do people. The river has outlasted both kinds of planning.",
+      next: ["slum", "broken"]
+    },
+    {
+      id: "richHousing",
+      name: "The stone houses",
+      text: "The larger houses kept their walls longer. Some families opened these doors during the retreat. Some did not. Empty rooms preserve both decisions without labeling either one.",
+      next: ["ordinary", "broken"]
+    },
+    {
+      id: "danger",
+      name: "The cellar steps",
+      text: "A cellar door shivers against its latch. The scratching beneath it stops when your hand touches the wood.",
+      next: ["ordinary", "broken"]
+    },
+    {
+      id: "broken",
+      name: "The ruined gardens",
+      text: "Dead vines cover a ruined trellis behind the old command house. A narrow animal trail passes beneath it. Frozen roots press through the abandoned beds.",
+      next: ["evidence", "danger", "river", "richHousing", "overlook"]
+    },
+    {
+      id: "overlook",
+      name: "The north wall",
+      text: "From the north wall, the road disappears beneath snow and broken roofs. Several old route markers still face outward.",
+      next: ["broken"]
+    }
+  ];
+
+  var worldStalwartById = Object.fromEntries(worldStalwartNodes.map(function (node) { return [node.id, node]; }));
+
+  function stalwartNodeAvailable(state, node) {
+    if (!worldStalwartById[node]) return false;
+    if (node === "arrival") return true;
+    if (node === "overlook") {
+      return Boolean(state.nodes.broken && state.danger && ensureWorldState().routeBook);
+    }
+    return worldStalwartNodes.some(function (candidate) {
+      return Boolean(state.nodes[candidate.id] && candidate.next.indexOf(node) !== -1);
+    });
+  }
+
   function genericNodeAvailability(state) {
     return {
       arrival: true,
@@ -7879,16 +7955,20 @@ var WORLD_VERSION = 1;
     };
   }
 
+  function worldNodeAvailability(site, state) {
+    if (site && site.code === "A") {
+      var availability = {};
+      worldStalwartNodes.forEach(function (node) {
+        availability[node.id] = stalwartNodeAvailable(state, node.id);
+      });
+      return availability;
+    }
+    return genericNodeAvailability(state);
+  }
+
   function genericNodeText(site, node) {
     if (site.code === "A") {
-      return {
-        arrival: "The outer gate hangs from one hinge. Fresh boot prints pass through it in both directions.",
-        ordinary: site.ordinary,
-        evidence: "A body lies beside the notice wall. Mud has dried to the courier's boots and coat. A cord beneath the coat holds a small route book closed.",
-        danger: "Something scratches beneath the cellar steps. The sound stops when your hand touches the door.",
-        broken: "Dead vines cover a ruined trellis. A narrow animal trail passes beneath it.",
-        overlook: "From the north wall, the road disappears beneath snow and broken roofs. Several old route markers still face outward."
-      }[node];
+      return worldStalwartById[node] ? worldStalwartById[node].text : "The paths through Stalwart meet beneath broken stone.";
     }
     if (node === "arrival") {
       return site.kind === "town"
@@ -7916,14 +7996,7 @@ var WORLD_VERSION = 1;
 
   function genericRoomName(node, site) {
     if (site && site.code === "A") {
-      return {
-        arrival: "The outer gate",
-        ordinary: "The main square",
-        evidence: "The notice wall",
-        danger: "The cellar steps",
-        broken: "The ruined gardens",
-        overlook: "The north wall"
-      }[node];
+      return worldStalwartById[node] ? worldStalwartById[node].name : "Stalwart";
     }
     return {
       arrival: "The threshold",
@@ -7935,7 +8008,13 @@ var WORLD_VERSION = 1;
     }[node] || "The ruin";
   }
 
-  function genericRoomPaths(state, node) {
+  function genericRoomPaths(state, node, site) {
+    if (site && site.code === "A") {
+      var stalwart = worldStalwartById[node] || worldStalwartById.arrival;
+      return stalwart.next.filter(function (next) {
+        return next !== "overlook" || stalwartNodeAvailable(state, next);
+      });
+    }
     var paths = {
       arrival: ["ordinary"],
       ordinary: ["arrival", "evidence", "danger"],
@@ -7955,9 +8034,13 @@ var WORLD_VERSION = 1;
         arrival: "Go back to the outer gate",
         ordinary: "Walk into the main square",
         evidence: "Go to the body by the notice wall",
+        slum: "Take the lane beneath the old wall",
+        river: "Follow the lower street to the river",
+        richHousing: "Climb toward the larger stone houses",
         danger: "Open the cellar door",
         broken: "Follow the path to the ruined gardens",
-        overlook: "Climb the north wall"
+        overlook: "Climb the north wall",
+        academyRoad: "Take the road behind the old wall"
       }[node] || "Continue";
     }
     return {
@@ -7983,6 +8066,14 @@ var WORLD_VERSION = 1;
     if (!root) return;
     var shell = worldShell(root, site);
 
+    if (State.variables.pendingTownWakeMessage) {
+      var waking = document.createElement("div");
+      waking.className = "world-card";
+      waking.innerHTML = '<p>' + escapeHtml(State.variables.pendingTownWakeMessage) + '</p>';
+      State.variables.pendingTownWakeMessage = "";
+      shell.appendChild(waking);
+    }
+
     var card = document.createElement("div");
     card.className = "world-card";
     card.innerHTML = '<p>' + escapeHtml(genericNodeText(site, "arrival")) + '</p>';
@@ -7996,12 +8087,6 @@ var WORLD_VERSION = 1;
         setup.openWorldNode("arrival");
       }));
     }
-    if (site.code === "A") {
-      actions.appendChild(worldButton(e.academy.resolved ? "Return to the Academy" : "Take the road to the Academy", function () {
-        e.activeMode = "academy";
-        setup.openAcademyNode("gate");
-      }));
-    }
     if (site.region === "holy" && e.commonGround.revealed) {
       actions.appendChild(worldButton("Follow the roots to the Common Ground", function () {
         e.activeMode = "commonGround";
@@ -8011,7 +8096,9 @@ var WORLD_VERSION = 1;
     if (site.code === "AZ") {
       actions.appendChild(worldButton("Walk toward the noise that never stops", function () { setup.openWorldEnding(); }));
     }
-    actions.appendChild(worldButton("Return to the world map", function () { setup.enterMap(site.code); }));
+    if (site.code !== "A" || e.routeBook) {
+      actions.appendChild(worldButton("Return to the world map", function () { setup.enterMap(site.code); }));
+    }
     shell.appendChild(actions);
   };
 
@@ -8019,13 +8106,13 @@ var WORLD_VERSION = 1;
     var e = ensureWorldState();
     var site = worldSitesByCode[e.activeSite];
     var state = siteState(site.code);
-    var available = genericNodeAvailability(state);
+    var available = worldNodeAvailability(site, state);
     if (!available[node]) return false;
     e.activeNode = node;
     state.nodes[node] = true;
-    if (node === "evidence") {
+    if (node === "evidence" && site.code !== "A") {
+      state.evidence = true;
       addWorldEvidence(site);
-      if (site.code === "A") readMeraRouteBook();
     }
     if (node === "broken") state.broken = true;
     if (node === "danger" && !state.danger) {
@@ -8114,7 +8201,7 @@ var WORLD_VERSION = 1;
 
     var actions = document.createElement("div");
     actions.className = "world-actions";
-    genericRoomPaths(state, node).forEach(function (next) {
+    genericRoomPaths(state, node, site).forEach(function (next) {
       actions.appendChild(worldButton(genericPathLabel(state, next, site), function () { setup.openWorldNode(next); }));
     });
     if (node === "arrival" || node === "overlook") {
@@ -8241,7 +8328,13 @@ var WORLD_VERSION = 1;
         actions.appendChild(worldButton(academyPathLabel(e.academy, node, index), function () { setup.openAcademyNode(node.id); }));
       });
     }
-    if (active.id === "gate") actions.appendChild(worldButton("Return to Stalwart", function () { play("World Place"); }));
+    if (active.id === "gate") actions.appendChild(worldButton("Return to Stalwart", function () {
+      e.activeMode = "site";
+      e.activeSite = "A";
+      e.activeNode = "academyRoad";
+      siteState("A").nodes.academyRoad = true;
+      play("World Room");
+    }));
     shell.appendChild(actions);
   };
 
@@ -8299,56 +8392,95 @@ var WORLD_VERSION = 1;
     if (typeof afterRead === "function") afterRead();
   }
 
-  function appendOpeningWorldHooks() {
+  setup.readStalwartRouteBook = function () {
     var e = ensureWorldState();
-    var passage = passageEl();
-    if (!passage || passage.querySelector(".world-opening-hook")) return;
-    if (State.passage === "Stalwart - Main Square") {
-      var hook = document.createElement("div");
-      hook.className = "world-card world-opening-hook";
-      hook.innerHTML = '<div class="world-kicker">Beside the notice wall</div><h3>' +
-        (e.routeBook ? "The route book" : "A dead courier") + '</h3><p>' +
-        (e.routeBook
-          ? "The inside cover is signed Mera Quill. Lord's Rest, Outpost Three, Foederati, and Journeyman's Rest are circled. Beneath them she wrote: POSSIBLY ALIVE IS NOT THE SAME AS REACHED."
-          : "Mud has dried to the courier's boots and coat. A cord beneath the coat holds a small route book closed. Four circles show through the rain-stained page.") + '</p>';
-      if (!e.routeBook) {
-        hook.appendChild(worldButton("Read the route book", function () {
-          readMeraRouteBook(appendOpeningWorldHooksRefresh);
-        }));
-      }
-      passage.appendChild(hook);
-    }
-    if (State.passage === "Stalwart - Ruined Gardens") {
-      var catHook = document.createElement("div");
-      catHook.className = "world-card world-opening-hook world-cat";
-      e.cat.met = true;
-      catHook.innerHTML = '<h3>' + (e.cat.adopted ? "The cat" : "A starving cat") + '</h3><p>' +
-        (e.cat.adopted
-          ? "The cat waits among the dead vines. When you move, it falls in beside you."
-          : "A thin cat crouches beneath the ruined trellis. Its ribs show through its coat. It watches the food at your belt.") + '</p>';
-      if (!e.cat.adopted) {
-        catHook.appendChild(worldButton(State.variables.inventory.food > 0 ? "Feed the cat - 1 food" : "You have no food to spare", function () {
-          if (State.variables.inventory.food <= 0) return;
-          State.variables.inventory.food -= 1;
-          e.cat.adopted = true;
-          addConnection("cat", "A starving cat follows after being fed once.");
-          setup.updateInventory();
-          notify("The cat follows you. It has not supplied a name.");
-          appendOpeningWorldHooksRefresh();
-        }, State.variables.inventory.food <= 0));
-      }
-      passage.appendChild(catHook);
-    }
+    var site = worldSitesByCode.A;
+    var state = siteState("A");
+    if (e.routeBook) return false;
+    state.evidence = true;
+    addWorldEvidence(site);
+    readMeraRouteBook(function () { play("World Room"); });
+    return true;
+  };
+
+  function appendStalwartSearchCard(shell, node, flag, title, actionLabel, flavor, loot) {
+    if (State.variables.taken[flag]) return;
+    var search = document.createElement("div");
+    search.className = "world-card";
+    search.innerHTML = '<h3>' + escapeHtml(title) + '</h3>';
+    search.appendChild(worldButton(actionLabel, function () {
+      setup.searchLoot(flag, loot, flavor, "World Room");
+    }));
+    shell.appendChild(search);
   }
 
-  function appendOpeningWorldHooksRefresh() {
-    var old = passageEl() && passageEl().querySelector(".world-opening-hook");
-    if (old) old.remove();
-    appendOpeningWorldHooks();
-  }
+  setup.routeLegacyWorldPassage = function (code, node) {
+    var e = ensureWorldState();
+    var site = worldSitesByCode[code] || worldSitesByCode.A;
+    State.variables.currentPlaceKey = site.code;
+    e.activeSite = site.code;
+    e.activeMode = "site";
+    var state = siteState(site.code);
+    state.visited = true;
+    if (WORLD_TOWNS.indexOf(site.code) !== -1) {
+      State.variables.lastTownKey = site.code;
+      setup.commitTownProgress();
+    }
+    e.activeNode = node || "arrival";
+    state.nodes[e.activeNode] = true;
+    play("World Room");
+    return true;
+  };
+
+  setup.routeLegacyAcademyPassage = function () {
+    var e = ensureWorldState();
+    State.variables.currentPlaceKey = "A";
+    e.activeSite = "A";
+    e.activeMode = "academy";
+    setup.openAcademyNode("gate");
+    return true;
+  };
 
   function appendSpecialRoomCard(shell, site, node) {
     var e = ensureWorldState();
+    if (site.code === "A" && node === "ordinary" && !State.variables.taken.stalwartSquareCharm) {
+      var moonCharm = document.createElement("div");
+      moonCharm.className = "world-card";
+      moonCharm.innerHTML = '<h3>Beneath the statue</h3><p>A cracked Moon charm lies in the stone dust below the statue\'s raised hand.</p>';
+      moonCharm.appendChild(worldButton("Take the cracked charm", function () {
+        setup.takeItem("crackedMoonCharm", { flag: "stalwartSquareCharm", returnPassage: "World Room" });
+      }));
+      shell.appendChild(moonCharm);
+    }
+    if (site.code === "A" && node === "evidence" && !e.routeBook) {
+      var routeBook = document.createElement("div");
+      routeBook.className = "world-card";
+      routeBook.innerHTML = '<h3>The route book</h3><p>The cord is stiff with dried mud. No name is visible on the cover.</p>';
+      routeBook.appendChild(worldButton("Read the route book", setup.readStalwartRouteBook));
+      shell.appendChild(routeBook);
+    }
+    if (site.code === "A" && node === "slum") {
+      appendStalwartSearchCard(shell, node, "stalwartSlumSearched", "A cupboard under fallen plaster", "Search the lower houses", "The floor gives way before the cupboard does. You find something useful in both.", { staleBread: 1, scrapIronPieces: 1 });
+    }
+    if (site.code === "A" && node === "richHousing") {
+      appendStalwartSearchCard(shell, node, "stalwartRichSearched", "A panel that does not sit flush", "Search the stone houses", "Someone hid these behind the good wall paneling. Money had its uses after all.", { sealedFoodTin: 1, northernFieldWrap: 1 });
+    }
+    if (site.code === "A" && node === "river") {
+      appendStalwartSearchCard(shell, node, "stalwartRiverWater", "A jar caught between stones", "Reach for the jar", "Slightly wet. Could still be useful.", { riverJar: 1 });
+    }
+    if (site.code === "A" && node === "broken") {
+      appendStalwartSearchCard(shell, node, "stalwartGardenSearched", "Roots beneath the ruined beds", "Search the gardens", "The roots have outlived the beds. Something else in the garden watches what you do with the food.", { winterRoot: 1 });
+    }
+    if (site.code === "A" && node === "academyRoad") {
+      var academyRoad = document.createElement("div");
+      academyRoad.className = "world-card";
+      academyRoad.innerHTML = '<h3>The arch above the road</h3><p>The surviving letters read: ACADEMY OF HEROES.</p>';
+      academyRoad.appendChild(worldButton(e.academy.resolved ? "Return to the Academy" : "Follow the road to the Academy", function () {
+        e.activeMode = "academy";
+        setup.openAcademyNode("gate");
+      }));
+      shell.appendChild(academyRoad);
+    }
     if (site.code === "A" && node === "broken") {
       var gardenCat = document.createElement("div");
       gardenCat.className = "world-card world-cat";
@@ -8447,11 +8579,13 @@ var WORLD_VERSION = 1;
     shell.appendChild(tabActions);
 
     function knownPlaceEntries() {
-      var roomOrder = ["arrival", "ordinary", "evidence", "danger", "broken", "overlook"];
       var places = worldSiteList.filter(function (entry) {
         return e.places[entry.code] && e.places[entry.code].visited;
       }).map(function (entry) {
         var state = e.places[entry.code];
+        var roomOrder = entry.code === "A"
+          ? worldStalwartNodes.map(function (node) { return node.id; })
+          : ["arrival", "ordinary", "evidence", "danger", "broken", "overlook"];
         var rooms = roomOrder.filter(function (node) {
           return node === "arrival" || (state.nodes && state.nodes[node]);
         }).map(function (node) {
@@ -8810,6 +8944,7 @@ var WORLD_VERSION = 1;
       "saveGame", "continueGame", "newGame", "beginDungeonCheckpoint", "requestDefeat", "resolveDefeat",
       "renderWorldPlace", "renderWorldSite", "renderWorldAcademy", "renderWorldJournal",
       "renderWorldEnding", "openWorldNode", "openAcademyNode", "openWorldShrine",
+      "readStalwartRouteBook", "routeLegacyWorldPassage", "routeLegacyAcademyPassage",
       "cycleTextSpeed", "toggleInstantText", "showEquipmentPage", "wireModalPages",
       "fitCurrentPage", "scheduleViewportLayout", "installViewportLayout", "auditInterfaceLayout"
     ];
@@ -8899,7 +9034,6 @@ var WORLD_VERSION = 1;
       if (State.passage === "World Room") setup.renderWorldSite();
       if (State.passage === "Journal") setup.renderWorldJournal();
       if (State.passage === "The Fear") setup.renderWorldEnding();
-      appendOpeningWorldHooks();
     }, 0);
   });
 
@@ -9011,505 +9145,123 @@ Just Stalwart now.
 
 Snow, stone, and the kind of quiet that checks your pockets.
 
-[[Main Square|Stalwart - Main Square]]
+<<link "Step into Stalwart">>
+  <<run setup.enterPlace("A")>>
+<</link>>
 
 :: Stalwart - Main Square
-<<if $pendingTownWakeMessage>>
-<<print $pendingTownWakeMessage>>
-<<set $pendingTownWakeMessage = "">>
-
-<</if>>
-
-Stalwart's main square is mostly a crater now.
-
-Markets once crowded the city center. Soldiers drilled beside them. Orders were posted, prayers were said, and everyone tried not to notice when the walls moved. Now snow handles most of the public business.
-
-The Moon statue still stands in the middle. Her face is gone, but one stone hand remains.
-
-<<if !$taken.stalwartSquareCharm>>
-A cracked Moon charm hangs from her fingers.
-
-<<link "Take the charm" "Stalwart - Main Square">>
-  <<run setup.takeItem("crackedMoonCharm", { flag: "stalwartSquareCharm" })>>
-<</link>>
-<</if>>
-
-<<if $taken.stalwartSquareCharm>>
-[[Slum|Stalwart - Slum]]
-
-[[Rich Housing|Stalwart - Rich Housing]]
-
-[[Academy of Heroes|Stalwart - Academy of Heroes]]
-<</if>>
-
-[[Exit|Stalwart - Exit]]
+<<run setup.routeLegacyWorldPassage("A", "ordinary")>>
 
 :: Stalwart - Slum
-The slum sits beneath the old wall.
-
-Wall-menders, cooks, and leather stitchers lived here. Their children learned early that cold could come indoors without using the door.
-
-The houses are small and close together. Most fell inward when the wall went. No grand collapse, just bad roofs losing an argument.
-
-<<if !$taken.stalwartSlumSearched>>
-<<link "Search the tenements">>
-  <<run setup.searchLoot("stalwartSlumSearched", { staleBread: 1, scrapIronPieces: 1 }, "The floor gives way before the cupboard does. You find something useful in both.", "Stalwart - Slum")>>
-<</link>>
-<</if>>
-
-[[River|Stalwart - River]]
-
-[[Main Square|Stalwart - Main Square]]
-
-[[Exit|Stalwart - Exit]]
+<<run setup.routeLegacyWorldPassage("A", "slum")>>
 
 :: Stalwart - Rich Housing
-The rich houses kept their walls longer than the rest of Stalwart.
-
-Good stone, wide rooms, private wells, and enough fireplaces to make winter sound like a problem everyone shared equally.
-
-Some families opened those doors during the retreat. Some did not. The empty houses remember both.
-
-<<if !$taken.stalwartRichSearched>>
-<<link "Search the houses">>
-  <<run setup.searchLoot("stalwartRichSearched", { sealedFoodTin: 1, northernFieldWrap: 1 }, "Someone hid these behind the good wall paneling. Money had its uses after all.", "Stalwart - Rich Housing")>>
-<</link>>
-<</if>>
-
-[[Ruined Gardens|Stalwart - Ruined Gardens]]
-
-[[Main Square|Stalwart - Main Square]]
-
-[[Exit|Stalwart - Exit]]
+<<run setup.routeLegacyWorldPassage("A", "richHousing")>>
 
 :: Stalwart - River
-The river cuts through the lower city.
-
-It has not frozen all the way through. Black water moves beneath the white ice, slow and stubborn and alive at an inconvenient depth.
-
-Stalwart was built around the river because walls need water. So do people. The river has outlasted both kinds of planning.
-
-<<if !$taken.stalwartRiverWater>>
-<<link "Fill the jar">>
-  <<run setup.searchLoot("stalwartRiverWater", { riverJar: 1 }, "Slightly wet. Could still be useful.", "Stalwart - River")>>
-<</link>>
-<</if>>
-
-[[Slum|Stalwart - Slum]]
-
-[[Ruined Gardens|Stalwart - Ruined Gardens]]
-
-[[Exit|Stalwart - Exit]]
+<<run setup.routeLegacyWorldPassage("A", "river")>>
 
 :: Stalwart - Ruined Gardens
-The gardens lie behind the old command house.
-
-Commanders walked here when they needed more time before making a decision. The flowers never offered advice, which may have made them the most sensible people in the building.
-
-Now there are only dead stems, snow, and one small life watching from beneath the ruined trellis.
-
-<<if !$taken.stalwartGardenSearched>>
-<<link "Search the gardens">>
-  <<run setup.searchLoot("stalwartGardenSearched", { winterRoot: 1 }, "The roots have outlived the beds. Something else in the garden watches what you do with the food.", "Stalwart - Ruined Gardens")>>
-<</link>>
-<</if>>
-
-[[Rich Housing|Stalwart - Rich Housing]]
-
-[[River|Stalwart - River]]
-
-[[Exit|Stalwart - Exit]]
+<<run setup.routeLegacyWorldPassage("A", "broken")>>
 
 :: Stalwart - Exit
-The western wall has been split open.
-
-It is not a gate. Gates are for cities that still get a say in who enters.
-
-This is a wound in the stone, wide enough to leave through.
-
-<<link "Leave Stalwart">>
-  <<run setup.enterMap("A")>>
-<</link>>
-
-[[Main Square|Stalwart - Main Square]]
+<<run setup.enterMap("A")>>
 
 :: Place - Byron's Estate
-<<set $currentPlaceKey = "B">>
-<div id="place-root"></div>
-<<done>><<run setup.renderPlace("B")>><</done>>
+<<run setup.routeLegacyWorldPassage("B", "arrival")>>
 
 :: Place - Forest of Silence
-<<set $currentPlaceKey = "C">>
-<div id="place-root"></div>
-<<done>><<run setup.renderPlace("C")>><</done>>
+<<run setup.routeLegacyWorldPassage("C", "arrival")>>
 
 :: Place - Respite
-<<set $currentPlaceKey = "D">>
-<div id="place-root"></div>
-<<done>><<run setup.renderPlace("D")>><</done>>
+<<run setup.routeLegacyWorldPassage("D", "arrival")>>
 
 :: Place - Frontier
-<<set $currentPlaceKey = "E">>
-<div id="place-root"></div>
-<<done>><<run setup.renderPlace("E")>><</done>>
+<<run setup.routeLegacyWorldPassage("E", "arrival")>>
 
 :: Place - Forest of Whispers
-<<set $currentPlaceKey = "F">>
-<div id="place-root"></div>
-<<done>><<run setup.renderPlace("F")>><</done>>
+<<run setup.routeLegacyWorldPassage("F", "arrival")>>
 
 :: Lord's Rest - Main Road
-<<if $pendingTownWakeMessage>>
-<<print $pendingTownWakeMessage>>
-<<set $pendingTownWakeMessage = "">>
-
-<</if>>
-
-Snow-covered roads narrow into a dirt path someone still takes the time to clear.
-
-A lit mansion waits at the end, behind a steel gate tall enough to make its point without help.
-
-The world ended years ago. Someone swept the road this morning.
-
-[[Gate|Lord's Rest - Gate]]
-
-<<link "Leave">>
-  <<run setup.enterMap("G")>>
-<</link>>
+<<run setup.routeLegacyWorldPassage("G", "arrival")>>
 
 :: Lord's Rest - Gate
-<<if $lordsRest.daughterRescued and !$lordsRest.accessGranted>>
-A young woman stands beside you, bruised and hungry but alive.
-
-The guards have not seen her yet.
-
-<</if>>
-
-A steel gate cuts across the road. Two guards stand beneath it.
-
-The bars are bent and bruised in places, but they still stand.
-
-They have seen their share of monsters. The guards look much the same.
-
-[[Guard|Lord's Rest - Guard]]
-
-<<if $lordsRest.accessGranted>>
-[[Main House|Lord's Rest - Main House]]
-<</if>>
-
-<<if $lordsRest.pleaded and !$clearedDungeons.lordsRestGoblinCamp and $lordsRest.accessMethod isnot "bribe">>
-<<link "Goblin Camp">>
-  <<run setup.openDungeonWarning("lordsRestGoblinCamp", "Lord's Rest - Gate")>>
-<</link>>
-<</if>>
-
-[[Main Road|Lord's Rest - Main Road]]
+<<run setup.routeLegacyWorldPassage("G", "arrival")>>
 
 :: Lord's Rest - Guard
-<<if $lordsRest.daughterRescued and !$lordsRest.accessGranted>>
-The guard sees the spear first. Then he sees his daughter.
-
-"Oh, thank God."
-
-He reaches for her, thinks better of it for half a second, then holds her anyway.
-
-"Those goblins took my only daughter. Thank you. I mean it."
-
-He looks at the gate.
-
-"The gate is open to you."
-
-<<run setup.completeLordsRestCampQuest()>>
-
-[[Main House|Lord's Rest - Main House]]
-
-[[Leave|Lord's Rest - Gate]]
-
-<<elseif $lordsRest.accessGranted and $lordsRest.accessMethod is "camp">>
-"Thank you again. Let me know if there is anything you need."
-
-[[Main House|Lord's Rest - Main House]]
-
-[[Leave|Lord's Rest - Gate]]
-
-<<elseif $lordsRest.accessGranted and $lordsRest.accessMethod is "bribe">>
-The guard glances at his coat.
-
-"Go on, then."
-
-[[Main House|Lord's Rest - Main House]]
-
-[[Leave|Lord's Rest - Gate]]
-
-<<else>>
-"Halt! Who goes there?"
-
-[...]
-
-"A traveler?"
-
-[...]
-
-"Unfortunately, we cannot take guests right now, sir."
-
-<<link "Bribe — 20 gold">>
-  <<run setup.bribeLordsRestGuard()>>
-<</link>>
-
-<<link "Plead">>
-  <<run setup.pleadWithLordsRestGuard()>>
-<</link>>
-
-[[Leave|Lord's Rest - Gate]]
-<</if>>
+<<run setup.routeLegacyWorldPassage("G", "ordinary")>>
 
 :: Lord's Rest - Guard Plea
-"I cannot let anyone in right now. There may be a way to change that."
-
-"A goblin camp has been growing east of here. We can hear them at night now."
-
-"I do not know if this gate will hold without casualties."
-
-"Kill their chief and bring me his spear. Do that, and I will let you through."
-
-<<link "Goblin Camp">>
-  <<run setup.openDungeonWarning("lordsRestGoblinCamp", "Lord's Rest - Gate")>>
-<</link>>
-
-[[Leave|Lord's Rest - Gate]]
+<<run setup.routeLegacyWorldPassage("G", "ordinary")>>
 
 :: Lord's Rest - Main House
-Warm air meets you at the door. You had almost forgotten it could do that.
-
-Fires burn beneath clean mantels. Someone has scrubbed the mud from the floor recently.
-
-The end of the world has been asked to wipe its feet before coming in.
-
-[[Steward|Lord's Rest - Steward]]
-
-[[Gardens|Lord's Rest - Gardens]]
-
-[[Fields|Lord's Rest - Fields]]
-
-[[Gate|Lord's Rest - Gate]]
+<<run setup.routeLegacyWorldPassage("G", "ordinary")>>
 
 :: Lord's Rest - Steward
-<<if $lordsRest.accessMethod is "camp">>
-"The guard told us what you did."
-
-The steward studies you for a moment.
-
-"He told us several times. I expect he will keep doing so."
-<<else>>
-"The guard said you made an arrangement."
-
-The steward glances toward the gate.
-
-"He used a more respectable word for it."
-<</if>>
-
-[[Main House|Lord's Rest - Main House]]
+<<run setup.routeLegacyWorldPassage("G", "ordinary")>>
 
 :: Lord's Rest - Gardens
-Winter roses grow between dark hedges. Someone has cleared every path through the snow.
-
-Maintaining a garden after the end of the world feels unreasonable. That may be why they keep doing it.
-
-[[Groundskeeper|Lord's Rest - Groundskeeper]]
-
-[[Main House|Lord's Rest - Main House]]
-
-[[Fields|Lord's Rest - Fields]]
+<<run setup.routeLegacyWorldPassage("G", "ordinary")>>
 
 :: Lord's Rest - Groundskeeper
-The groundskeeper cuts a dead branch from a rosebush.
-
-"People think the cold kills them."
-
-Another branch falls. "Mostly, people do."
-
-[[Gardens|Lord's Rest - Gardens]]
+<<run setup.routeLegacyWorldPassage("G", "ordinary")>>
 
 :: Lord's Rest - Fields
-Black soil breaks through the snow in long, narrow rows.
-
-Canvas shelters bend over the winter crops. Workers move between them with numb hands and practiced steps.
-
-The mansion eats because these people do not stop.
-
-[[Farmhand|Lord's Rest - Farmhand]]
-
-[[Main House|Lord's Rest - Main House]]
-
-[[Gardens|Lord's Rest - Gardens]]
+<<run setup.routeLegacyWorldPassage("G", "ordinary")>>
 
 :: Lord's Rest - Farmhand
-The farmhand tucks both hands beneath their arms.
-
-"The ground is frozen."
-
-They look across the rows. "It has not noticed that we need it."
-
-[[Fields|Lord's Rest - Fields]]
+<<run setup.routeLegacyWorldPassage("G", "ordinary")>>
 
 :: Place - Safety
-<<set $currentPlaceKey = "H">>
-<div id="place-root"></div>
-<<done>><<run setup.renderPlace("H")>><</done>>
+<<run setup.routeLegacyWorldPassage("H", "arrival")>>
 
 :: Place - Crossroads
-<<set $currentPlaceKey = "I">>
-<div id="place-root"></div>
-<<done>><<run setup.renderPlace("I")>><</done>>
+<<run setup.routeLegacyWorldPassage("I", "arrival")>>
 
 :: Place - Forest of Screams
-<<set $currentPlaceKey = "J">>
-<div id="place-root"></div>
-<<done>><<run setup.renderPlace("J")>><</done>>
+<<run setup.routeLegacyWorldPassage("J", "arrival")>>
 
 :: Place - Outpost 1
-<<set $currentPlaceKey = "K">>
-<div id="place-root"></div>
-<<done>><<run setup.renderPlace("K")>><</done>>
+<<run setup.routeLegacyWorldPassage("K", "arrival")>>
 
 :: Place - Outpost 2
-<<set $currentPlaceKey = "L">>
-<div id="place-root"></div>
-<<done>><<run setup.renderPlace("L")>><</done>>
+<<run setup.routeLegacyWorldPassage("L", "arrival")>>
 
 :: Place - The Confederation (North)
-<<set $currentPlaceKey = "M">>
-<div id="place-root"></div>
-<<done>><<run setup.renderPlace("M")>><</done>>
+<<run setup.routeLegacyWorldPassage("M", "arrival")>>
 
 :: Outpost 3 - Gate
-The third outpost still has walls, guards, and people willing to argue over who gets through the gate.
-
-Civilization survives, if only because someone remains willing to hold up the line.
-
-[[Guard|Outpost 3 - Gate Guard]]
-
-[[Square|Outpost 3 - Square]]
-
-<<link "Leave">>
-  <<run setup.enterMap("O")>>
-<</link>>
+<<run setup.routeLegacyWorldPassage("O", "arrival")>>
 
 :: Outpost 3 - Gate Guard
-The guard looks at the sword, then at you.
-
-"Keep it sheathed inside."
-
-He looks toward the square. "Unless someone deserves it. Then use judgment."
-
-The outpost has a flexible legal system.
-
-[[Gate|Outpost 3 - Gate]]
+<<run setup.routeLegacyWorldPassage("O", "ordinary")>>
 
 :: Outpost 3 - Square
-<<if $pendingTownWakeMessage>>
-<<print $pendingTownWakeMessage>>
-<<set $pendingTownWakeMessage = "">>
-
-<</if>>
-
-Boots have worn the snow down to gray slush.
-
-Traders shout. Children run between carts. Someone repairs a roof badly but with enough enthusiasm to concern the people below.
-
-The outpost is alive, and nobody here is quiet about it.
-
-[[Trading Hall|Outpost 3 - Trading Hall]]
-
-[[Adventurers Post|Outpost 3 - Adventurers Post]]
-
-[[Lake|Outpost 3 - Lake]]
-
-[[Gate|Outpost 3 - Gate]]
+<<run setup.routeLegacyWorldPassage("O", "ordinary")>>
 
 :: Outpost 3 - Trading Hall
-The hall smells of wet wool, lamp oil, and coins that have passed through too many wet gloves.
-
-[[Merchant|Outpost 3 - Merchant]]
-
-[[Square|Outpost 3 - Square]]
+<<run setup.routeLegacyWorldPassage("O", "ordinary")>>
 
 :: Outpost 3 - Merchant
-The merchant counts a stack of coins twice, then keeps one finger on the pile.
-
-"Buying?"
-
-[...]
-
-"Then you are looking. That is still free."
-
-[[Trading Hall|Outpost 3 - Trading Hall]]
+<<run setup.routeLegacyWorldPassage("O", "ordinary")>>
 
 :: Outpost 3 - Adventurers Post
-Contracts cover one wall from floor to ceiling.
-
-Missing people, missing supplies, and monsters everyone had hoped would stay missing.
-
-There is plenty of work. Nobody here considers that good news.
-
-[[Post Clerk|Outpost 3 - Post Clerk]]
-
-[[Contract Board|Outpost 3 - Contract Board]]
-
-[[Square|Outpost 3 - Square]]
+<<run setup.routeLegacyWorldPassage("O", "ordinary")>>
 
 :: Outpost 3 - Post Clerk
-The clerk does not look up from the ledger.
-
-"If you die on contract, we keep the deposit."
-
-[...]
-
-"You did not leave one. Good. That saves paperwork."
-
-[[Adventurers Post|Outpost 3 - Adventurers Post]]
+<<run setup.routeLegacyWorldPassage("O", "ordinary")>>
 
 :: Outpost 3 - Contract Board
-One contract remains pinned beneath a rusted knife.
-
-Something has occupied the old storehouse beyond the lake.
-
-The handwriting gets worse near the word "something." Whoever wrote it had stopped worrying about neatness by then.
-
-<<if !$clearedDungeons.outpost3>>
-<<link "Take the contract">>
-  <<run setup.openDungeonWarning("outpost3", "Outpost 3 - Adventurers Post")>>
-<</link>>
-<<else>>
-The contract has been crossed out. Someone tried to write your name beneath it and got close enough for government work.
-<</if>>
-
-[[Adventurers Post|Outpost 3 - Adventurers Post]]
+<<run setup.routeLegacyWorldPassage("O", "ordinary")>>
 
 :: Outpost 3 - Lake
-The lake is frozen from shore to shore.
-
-Fishing holes mark the ice in a line away from the docks.
-
-A fisherman sits beside one of them, waiting for something beneath the surface to make the first mistake.
-
-[[Fisher|Outpost 3 - Fisher]]
-
-[[Square|Outpost 3 - Square]]
+<<run setup.routeLegacyWorldPassage("O", "ordinary")>>
 
 :: Outpost 3 - Fisher
-The fisherman watches the black water.
-
-"Anything biting?"
-
-He lifts an empty line. "No. Smart fish."
-
-[[Lake|Outpost 3 - Lake]]
+<<run setup.routeLegacyWorldPassage("O", "ordinary")>>
 
 :: Place - Serenity
-<<set $currentPlaceKey = "P">>
-<div id="place-root"></div>
-<<done>><<run setup.renderPlace("P")>><</done>>
+<<run setup.routeLegacyWorldPassage("P", "arrival")>>
 
 :: Northern Map
 <div id="north-map-root"></div>
@@ -9525,21 +9277,7 @@ He lifts an empty line. "No. Smart fish."
 [[Back|Northern Map]]
 
 :: Stalwart - Academy of Heroes
-The Northern Academy of Heroes sits behind the old wall.
-
-It was never the largest academy. The Central Kingdom had the famous one, along with most things people bothered to write songs about. This was the last one still standing.
-
-The Hero trained here. So did his brother, and many people who never lived long enough to become anything else.
-
-The doors are open. After this many years, that usually means someone went in or something came out.
-
-<<link "Enter the academy">>
-  <<run setup.openDungeonWarning("stalwartAcademy", "Stalwart - Academy of Heroes")>>
-<</link>>
-
-[[Main Square|Stalwart - Main Square]]
-
-[[Exit|Stalwart - Exit]]
+<<run setup.routeLegacyAcademyPassage()>>
 
 :: World Place
 <div id="world-place-root"></div>

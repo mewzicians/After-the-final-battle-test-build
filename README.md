@@ -49,7 +49,9 @@ The bottom-right speed control cycles through **1×**, **2×**, and **4×**. **I
 
 This repository contains the discovery-first **v19** build. It removes the earlier experimental framing and avoids presenting hidden conclusions, writer notes, undiscovered names, or ending requirements to the player.
 
-The maintained verifier currently passes **102/102 checks**, including source/build synchronization, world data, discovery boundaries, journal behavior, text controls, responsive viewport rules, and preservation of the earlier approved build.
+The opening is now one continuous game flow: the Shelter leads into a ten-room Stalwart, its discoveries live inside the places where they are found, the Academy is reached through the road behind the old wall, and the route book opens the journey beyond the city. Older passage names remain only as invisible redirects so existing saves can recover without exposing the retired presentation.
+
+The maintained verifier currently passes **114/114 checks**, including source/build synchronization, both connected opening graphs, redirect-only save aliases, world data, discovery boundaries, journal behavior, text controls, responsive viewport rules, and preservation of the earlier approved build.
 
 ## Repository contents
 
