@@ -1,0 +1,522 @@
+{
+  "summary": {
+    "passed": 102,
+    "failed": 0,
+    "total": 102,
+    "sourceSha256": "5ec773df54d112697c171cb748fbe547977831ca2b6c94505beb0c9b45d7cebd",
+    "htmlSha256": "a5ca4bfcae4b114aaef4f93e588fdc81668db3c4d1a18b64eb1a07d1bd57aa16",
+    "failures": []
+  },
+  "checks": [
+    {
+      "label": "source contains story JavaScript and stylesheet",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "player title has no test framing",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "passage names are unique",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "passage count",
+      "passed": true,
+      "detail": "found 53, expected 53"
+    },
+    {
+      "label": "room, journal, and ending passages exist",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "compiled story title",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "browser title",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "compiled room and journal passages",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "Story JavaScript syntax",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "connected-world data evaluates",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "all named locations remain present",
+      "passed": true,
+      "detail": "found 69"
+    },
+    {
+      "label": "location codes are unique",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "location coordinates are unique",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "north location count",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "central location count",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "holy location count",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "desert location count",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "demon location count",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "outer location count",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "inner location count",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "final location count",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "The Hunt remains at (1,9)",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "Mera's name is learned from the route book",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "Stalwart does not duplicate the route book as generic loot",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "purge proof remains in Sizzling records",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "scarcity lie remains in Boiling ledger",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "Academy retains 18 rooms",
+      "passed": true,
+      "detail": "found 18"
+    },
+    {
+      "label": "all Academy rooms remain reachable",
+      "passed": true,
+      "detail": "reached 18"
+    },
+    {
+      "label": "Academy retains two combat rooms",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "Academy retains four Roll Call fragments",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "ten unique Moonmaiden shrines remain",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "wider pantheon fragments remain",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "Unbroken clue trail remains",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "journal sits directly beside Save",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "journal bottom-bar label",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "journal cannot interrupt combat",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "journal has discovery-only tabs",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "journal omits writer notes, counters, and hidden conclusions",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "journal pagination state has save-compatible defaults",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "journal renders one paginated entry surface",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "journal has previous and next page arrows",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "journal entries are directly selectable",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "place pages include only reached places and entered rooms",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "journal region selectors include only discovered regions",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "old shrine saves do not invent an offering the player left behind",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "text speed supports 1x, 2x, and 4x from one base rate",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "legacy Fast preference migrates to 2x",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "bottom-right speed and Instant controls are created",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "text controls are bottom-right and Instant has a highlighted state",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "speed cycles on one button and Instant reveals current text",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "Instant bypasses passage and dynamic typewriters",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "selected text speed scales sentence pauses",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "settings and bottom controls share the same speed actions",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "text controls stay out of Welcome and combat",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "combat start and end refresh text-control visibility",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "story pages are bounded to the visible viewport",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "viewport fitting preserves a 13px minimum readable text size",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "long passages use contained arrow-navigated pages",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "viewport paginator creates Previous and Next controls",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "layout compacts before splitting a passage into pages",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "viewport layout is resolved before passage typing begins",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "typewriter skips page controls and follows text across generated pages",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "viewport changes safely refit the current page",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "runtime layout audit detects and repairs fixed-control collisions",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "map information stays in page flow without old oversized spacing",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "short-screen map controls collapse into one readable row",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "notifications receive a reserved top zone instead of covering story text",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "combat fits short screens while retaining a contained battle history",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "after-battle progress, summary, and loot use three modal pages",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "inventory covers the HUD and keeps mobile item actions and equipment pages available",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "location pages do not render author purposes",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "location pages do not render author-written choice conclusions",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "generic locations render one current room",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "room movement uses passage transitions",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "Mera begins as an unnamed visible courier",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "Mera reveal follows reading",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "Stalwart discoveries are separated into rooms",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "town services appear inside the ordinary town room",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "weapon refusal describes only the observable event",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "ending scene shows events without explaining hidden divine mechanics",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "sword recovery is shown as an observable change",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "test banner and checklist styles removed",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "removed player-facing answer-key phrase: Complete World World",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "removed player-facing answer-key phrase: proposals remain separate",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "removed player-facing answer-key phrase: Test Build",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "removed player-facing answer-key phrase: Sword stage ",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "removed player-facing answer-key phrase: Knowledge boundary: ",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "removed player-facing answer-key phrase: Voice: ",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "removed player-facing answer-key phrase: You now carry ",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "removed player-facing answer-key phrase: The Unbroken is a demon",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "removed player-facing answer-key phrase: Unbroken pattern:",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "removed player-facing answer-key phrase: The protagonist leaves",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "removed player-facing answer-key phrase: The world map is now an unfinished promise",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "removed player-facing answer-key phrase: Six answers that are not arguments",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "removed player-facing answer-key phrase: She is gone but her will remains",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "removed player-facing answer-key phrase: Sacrifice brought it here",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "source/build stylesheet synchronization",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "source/build JavaScript synchronization",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "source/build passage synchronization",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "preserved v18 artifact: After_the_Final_Battle_v18.twee",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "preserved v18 artifact: After the final battle - Northern Region Build v18.html",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "source and playable build have no mojibake",
+      "passed": true,
+      "detail": ""
+    }
+  ]
+}

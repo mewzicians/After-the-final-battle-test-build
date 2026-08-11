@@ -1,84 +1,71 @@
-# After the Final Battle — Complete World Experiment
+# After the Final Battle
 
-> A fully playable narrative prototype about grief, choice, and rebuilding after the victory that ended the world.
+> A discovery-first narrative RPG set in the quiet ruins left after the world was saved.
 
-**[Open After the Final Battle - Complete World Experiment](https://htmlpreview.github.io/?https://github.com/mewzicians/After-the-final-battle-test-build/blob/main/After%20the%20Final%20Battle%20-%20Complete%20World%20Experiment.html)**
+[![Play in browser](https://img.shields.io/badge/PLAY_IN_BROWSER-d8c38d?style=for-the-badge&labelColor=292a25)](https://mewzicians.github.io/After-the-final-battle-test-build/)
 
-The Demon King is dead. The Hero won. Thousands of years later, his younger brother leaves a failing shelter and discovers that the final battle never truly ended—it became the shape of everything that survived.
-
-This public test build expands the original Northern Region prototype into one connected journey across the continent. It is an **experimental branch**, not a replacement for the project's approved v18 build or a declaration that every new story answer is permanent canon.
-
-![World map with the corrected location of The Hunt](docs/world-map.png)
+You leave the shelter with an old sword, limited supplies, and no reliable account of what happened outside. Places are explored one room at a time. Names, histories, and connections appear only after you actually encounter them.
 
 ## Play
 
-Download or clone the repository, then open:
+### Play online
 
-**`After the Final Battle - Complete World Experiment.html`**
+**[Launch the current build](https://mewzicians.github.io/After-the-final-battle-test-build/)**
 
-It runs locally in a modern desktop browser. No installation or internet connection is required.
+The playable site is published directly from the repository through GitHub Pages. GitHub's normal repository preview cannot execute an attached HTML game, which is why the old README link did not work as a browser version.
 
-### Combat controls
+### Play offline
 
-| Incoming attack | Response | Result when timed correctly |
+Download [`After the Final Battle v19.html`](https://github.com/mewzicians/After-the-final-battle-test-build/raw/main/After%20the%20Final%20Battle%20v19.html), then open the downloaded file in a modern browser. The game is self-contained and does not need installation.
+
+Progress and settings are stored by that browser. The hosted version and a downloaded copy may therefore have separate saves.
+
+## What to expect
+
+- Room-by-room exploration across a ruined high-fantasy world.
+- A journal that records only places, notes, and objects you have discovered.
+- Story choices that shape Strength, Agility, Defense, and Resistance.
+- Survival travel, settlements, dungeons, inventory, equipment, and persistent saves.
+- Real-time combat built around Dodge, Clash, and Parry timing.
+- A first-fight combat tutorial and a scrollable live battle history.
+- Optional discoveries and companions that can remain with you throughout the journey.
+- A viewport-aware interface designed to keep current information and actions visible without whole-page scrolling.
+
+## Combat
+
+| Incoming attack | Response | Timed result |
 | --- | --- | --- |
-| Light | Dodge | Avoid all damage |
-| Medium | Attack | Clash, cancel damage, gain +1 damage for the fight |
-| Heavy | Parry | Deflect all damage |
+| Light | Dodge | Avoid the attack |
+| Medium | Attack | Clash, cancel damage, and gain +1 damage for the fight |
+| Heavy | Parry | Deflect the attack |
 
-You may attack outside a clash window. Dodge and Attack share a cooldown length; Dodge is 75% of Parry's cooldown. Each cooldown scales independently with its associated story-trained stat. The first fight includes a spotlight tutorial, and the battle log remains scrollable in real time.
+Attack can also be used normally outside a Clash window. Each action's cooldown scales independently with its associated story-trained stat.
 
-## What this experiment contains
+## Reading controls
 
-- 69 named locations across all eight world regions, each with ordinary-life detail, danger, evidence, an item, and a story-linked stat decision.
-- A settlement-shaped 18-room Academy of Heroes dungeon with branching routes, two combat encounters, four Roll Call fragments, and a persistent conclusion.
-- Five living service settlements, survival travel, inventory, trading, checkpoints, defeat recovery, and compatible saves.
-- Ten one-time regional Moonmaiden shrines and eight fragments from the wider pantheon.
-- The Asker/Demander magic system, the dying world's single Tulip, and multiple choices for what recovery should mean.
-- Six experiences—Care, Duty, Limitation, Trust, Truth, and Future—that change the protagonist and restore the Moon Sword through his human choices, not through the return of a dead goddess.
-- Early, partial, full, Tulip, and moonless endings centered on helping the Hero understand that love can survive the end of battle.
-- An optional starving cat in Stalwart who, if fed, follows the player through the world and its dungeons.
+The bottom-right speed control cycles through **1×**, **2×**, and **4×**. **Instant** reveals current and later text immediately while highlighted. The journal sits beside Save in the main bottom bar.
 
-## The regions
+## Current build
 
-| Region | Central question |
+This repository contains the discovery-first **v19** build. It removes the earlier experimental framing and avoids presenting hidden conclusions, writer notes, undiscovered names, or ending requirements to the player.
+
+The maintained verifier currently passes **102/102 checks**, including source/build synchronization, world data, discovery boundaries, journal behavior, text controls, responsive viewport rules, and preservation of the earlier approved build.
+
+## Repository contents
+
+| File | Purpose |
 | --- | --- |
-| North | If care cannot guarantee rescue, is choosing it still worthwhile? |
-| Central | When does order protect people, and when does it protect itself? |
-| Holy | What remains of faith after the gods are dead? |
-| Desert | Who may finish a life or work inherited from the dead? |
-| Demon | Can continuity deserve survival when it refuses moral change? |
-| Outer Battlefield | What did victory require people to become? |
-| Inner Battlefield | What can be carried without being repeated? |
-| The Final Battle | Can the brothers choose an ending that is not another fight? |
+| [`index.html`](index.html) | GitHub Pages entry point |
+| [`After the Final Battle v19.html`](After%20the%20Final%20Battle%20v19.html) | Downloadable offline build |
+| [`After_the_Final_Battle_v19.twee`](After_the_Final_Battle_v19.twee) | Authoritative Twine/Twee source |
+| [`verification-v19.json`](verification-v19.json) | Latest machine-readable verification report |
 
-## Build and verification
+The two HTML files are identical derived builds. Game changes should be made in the Twee source and rebuilt, never edited independently in HTML.
 
-The playable HTML is generated from the composed Twee source. Do not edit the HTML directly.
+## Feedback
 
-```text
-npm run build
-npm run verify
-npm test
-npm run serve
-```
+When reporting a problem, please include the room or screen, what you selected, what you expected, and whether you were playing the hosted or downloaded version. Avoid putting story discoveries in an issue title when possible.
 
-The project has no package dependencies; the scripts use Node.js built-ins. The verifier checks source/build identity, all 69 locations, the Academy graph, evidence boundaries, Moonmaiden uniqueness, memory and ending gates, preservation of the approved v18 artifacts, encoding, and narrative invariants. See [the verification matrix](docs/VERIFICATION_MATRIX.md) and the machine-readable [verification results](verification-results.json).
+## Ownership
 
-## Repository layout
-
-```text
-After the Final Battle - Complete World Experiment.html  playable build
-After_the_Final_Battle_complete_experiment.twee          generated source
-src/                                                     base inputs + experiment layer
-tools/                                                   build, verification, local server
-docs/                                                    audits, world map, handoff notes
-```
-
-`src/base-v18.twee` and `src/base-v18.html` are intentional, immutable inputs copied from the approved project build. The composition step applies the experiment without altering those approved artifacts.
-
-## Status and ownership
-
-This is a test build intended for story and systems evaluation. 
-
-No license is granted for reuse or redistribution of the project's code, writing, world, or assets beyond viewing this public test repository.
+No license is granted for reuse or redistribution of the project's code, writing, world, or assets beyond viewing and playing this public repository.
