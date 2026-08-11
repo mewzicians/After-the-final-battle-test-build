@@ -77,6 +77,6 @@ docs/                                                    audits, world map, hand
 
 ## Status and ownership
 
-This is a test build intended for story and systems evaluation. New material is marked experimental so it can be revised or discarded without silently changing the project's canon.
+This is a test build intended for story and systems evaluation. 
 
 No license is granted for reuse or redistribution of the project's code, writing, world, or assets beyond viewing this public test repository.
