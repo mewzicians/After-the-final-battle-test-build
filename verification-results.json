@@ -1,0 +1,1667 @@
+{
+  "summary": {
+    "passed": 331,
+    "failed": 0,
+    "total": 331,
+    "sourceSha256": "73918662ea4d36225f071e0d1a2a2eff1f6831430abaef35d2b0abf0f88fa5a2",
+    "htmlSha256": "835469f494910c4d45d64153621040b21c593a4fe2a014362ee8e7a1d06c7972",
+    "failures": []
+  },
+  "checks": [
+    {
+      "label": "experimental story title",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "passage names unique",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "passage count",
+      "passed": true,
+      "detail": "found 53, expected 53"
+    },
+    {
+      "label": "experiment passages present",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "compiled HTML story title",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "browser document title",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "embedded SugarCube story identity updated",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "compiled HTML includes new passages",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "legacy Stalwart tulip removed",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "legacy Serenity tulip reward removed",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "unfinished settings placeholder removed",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "unfinished sound control removed",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "composed Story JavaScript syntax",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "experiment layer syntax",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "experiment data evaluates",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "all named map markers authored",
+      "passed": true,
+      "detail": "found 69, expected 69"
+    },
+    {
+      "label": "location codes unique",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "location coordinates unique",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "all locations use a defined region",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "all location coordinates fit the 51 by 51 map",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "north location count",
+      "passed": true,
+      "detail": "found 15, expected 15"
+    },
+    {
+      "label": "central location count",
+      "passed": true,
+      "detail": "found 18, expected 18"
+    },
+    {
+      "label": "holy location count",
+      "passed": true,
+      "detail": "found 3, expected 3"
+    },
+    {
+      "label": "desert location count",
+      "passed": true,
+      "detail": "found 9, expected 9"
+    },
+    {
+      "label": "demon location count",
+      "passed": true,
+      "detail": "found 14, expected 14"
+    },
+    {
+      "label": "outer location count",
+      "passed": true,
+      "detail": "found 5, expected 5"
+    },
+    {
+      "label": "inner location count",
+      "passed": true,
+      "detail": "found 4, expected 4"
+    },
+    {
+      "label": "final location count",
+      "passed": true,
+      "detail": "found 1, expected 1"
+    },
+    {
+      "label": "The Hunt canonical coordinate (1,9)",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "purge proof restricted to Sizzling evidence",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "scarcity lie proven by Boiling ledger",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "no duplicate conclusive purge proof",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "complete authored fields A",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "story-stat choices A",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "assigned personality voice A",
+      "passed": true,
+      "detail": "Curious Seeker — clipped courier shorthand, hopeful only in the margins"
+    },
+    {
+      "label": "knowledge boundary A",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "complete authored fields B",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "story-stat choices B",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "assigned personality voice B",
+      "passed": true,
+      "detail": "Practical Caretaker — exact household ledger, tenderness hidden in corrections"
+    },
+    {
+      "label": "knowledge boundary B",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "complete authored fields C",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "story-stat choices C",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "assigned personality voice C",
+      "passed": true,
+      "detail": "Guarded Watcher — short observations, no claim beyond sight and sound"
+    },
+    {
+      "label": "knowledge boundary C",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "complete authored fields D",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "story-stat choices D",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "assigned personality voice D",
+      "passed": true,
+      "detail": "Opportunistic Broker — charming annotations, prices adjusted to the listener"
+    },
+    {
+      "label": "knowledge boundary D",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "complete authored fields E",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "story-stat choices E",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "assigned personality voice E",
+      "passed": true,
+      "detail": "Exacting Keeper — official language, precision used to hide a human cost"
+    },
+    {
+      "label": "knowledge boundary E",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "complete authored fields F",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "story-stat choices F",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "assigned personality voice F",
+      "passed": true,
+      "detail": "Guarded Watcher — spare survival rule, grief kept outside the sentence"
+    },
+    {
+      "label": "knowledge boundary F",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "complete authored fields G",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "story-stat choices G",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "assigned personality voice G",
+      "passed": true,
+      "detail": "Patient Mediator — objections preserved beside every decision"
+    },
+    {
+      "label": "knowledge boundary G",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "complete authored fields H",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "story-stat choices H",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "assigned personality voice H",
+      "passed": true,
+      "detail": "Enduring Realist — unsentimental instructions with stubborn regard for people"
+    },
+    {
+      "label": "knowledge boundary H",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "complete authored fields I",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "story-stat choices I",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "assigned personality voice I",
+      "passed": true,
+      "detail": "Curious Seeker — field shorthand, practical humor, no knowledge beyond traveled roads"
+    },
+    {
+      "label": "knowledge boundary I",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "complete authored fields J",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "story-stat choices J",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "assigned personality voice J",
+      "passed": true,
+      "detail": "Protective Anchor — a choice stated plainly because no justification made it painless"
+    },
+    {
+      "label": "knowledge boundary J",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "complete authored fields K",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "story-stat choices K",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "assigned personality voice K",
+      "passed": true,
+      "detail": "Exacting Keeper — numerical confession, responsibility without self-dramatizing"
+    },
+    {
+      "label": "knowledge boundary K",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "complete authored fields L",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "story-stat choices L",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "assigned personality voice L",
+      "passed": true,
+      "detail": "Patient Mediator — competing truths placed beside one another"
+    },
+    {
+      "label": "knowledge boundary L",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "complete authored fields M",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "story-stat choices M",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "assigned personality voice M",
+      "passed": true,
+      "detail": "Patient Mediator — procedural hope, disagreement treated as work"
+    },
+    {
+      "label": "knowledge boundary M",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "complete authored fields O",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "story-stat choices O",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "assigned personality voice O",
+      "passed": true,
+      "detail": "Restless Builder — quick notes, revisions layered over embarrassment"
+    },
+    {
+      "label": "knowledge boundary O",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "complete authored fields P",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "story-stat choices P",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "assigned personality voice P",
+      "passed": true,
+      "detail": "Devotional Interpreter — reverent about courage, irreverent about sainthood"
+    },
+    {
+      "label": "knowledge boundary P",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "complete authored fields R",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "story-stat choices R",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "assigned personality voice R",
+      "passed": true,
+      "detail": "Exacting Keeper — disciplined clerkly prose, moral fracture visible only in retained attachments"
+    },
+    {
+      "label": "knowledge boundary R",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "complete authored fields X",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "story-stat choices X",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "assigned personality voice X",
+      "passed": true,
+      "detail": "Practical Caretaker — stains, names, and repairs recorded more faithfully than strategy"
+    },
+    {
+      "label": "knowledge boundary X",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "complete authored fields Y",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "story-stat choices Y",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "assigned personality voice Y",
+      "passed": true,
+      "detail": "Fierce Idealist — angry marginalia constrained inside perfect legal citations"
+    },
+    {
+      "label": "knowledge boundary Y",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "complete authored fields Z",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "story-stat choices Z",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "assigned personality voice Z",
+      "passed": true,
+      "detail": "Restless Builder — technical annotations that turn into coordinated refusal"
+    },
+    {
+      "label": "knowledge boundary Z",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "complete authored fields AA",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "story-stat choices AA",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "assigned personality voice AA",
+      "passed": true,
+      "detail": "Patient Mediator — affectionate precision, rivalry treated as accountable intimacy"
+    },
+    {
+      "label": "knowledge boundary AA",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "complete authored fields AB",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "story-stat choices AB",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "assigned personality voice AB",
+      "passed": true,
+      "detail": "Practical Caretaker — clinical method interrupted by one unbearable metaphysical observation"
+    },
+    {
+      "label": "knowledge boundary AB",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "complete authored fields AC",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "story-stat choices AC",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "assigned personality voice AC",
+      "passed": true,
+      "detail": "Restless Builder — proud engineering notes, jokes embedded in tolerances"
+    },
+    {
+      "label": "knowledge boundary AC",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "complete authored fields AD",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "story-stat choices AD",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "assigned personality voice AD",
+      "passed": true,
+      "detail": "Exacting Keeper — flawless arithmetic, no permission to question definitions"
+    },
+    {
+      "label": "knowledge boundary AD",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "complete authored fields AE",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "story-stat choices AE",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "assigned personality voice AE",
+      "passed": true,
+      "detail": "Devotional Interpreter — reverent case commentary willing to record divine law's wound"
+    },
+    {
+      "label": "knowledge boundary AE",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "complete authored fields AF",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "story-stat choices AF",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "assigned personality voice AF",
+      "passed": true,
+      "detail": "Proud Traditionalist — official contempt contradicted by the maker's obvious dependence"
+    },
+    {
+      "label": "knowledge boundary AF",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "complete authored fields AG",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "story-stat choices AG",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "assigned personality voice AG",
+      "passed": true,
+      "detail": "Curious Seeker — layered travelers' voices, uncertainty retained rather than cleaned"
+    },
+    {
+      "label": "knowledge boundary AG",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "complete authored fields AH",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "story-stat choices AH",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "assigned personality voice AH",
+      "passed": true,
+      "detail": "Patient Mediator — dissent named beside beneficiaries and costs"
+    },
+    {
+      "label": "knowledge boundary AH",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "complete authored fields AI",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "story-stat choices AI",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "assigned personality voice AI",
+      "passed": true,
+      "detail": "Exacting Keeper — demonic precision preserved by a human jailer who did not understand its implication"
+    },
+    {
+      "label": "knowledge boundary AI",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "complete authored fields AJ",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "story-stat choices AJ",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "assigned personality voice AJ",
+      "passed": true,
+      "detail": "Curious Seeker — careful hypotheses, tenderness disciplined into observation"
+    },
+    {
+      "label": "knowledge boundary AJ",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "complete authored fields AK",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "story-stat choices AK",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "assigned personality voice AK",
+      "passed": true,
+      "detail": "Exacting Keeper — cross-dated evidence, unwilling to turn uncertainty into devotion"
+    },
+    {
+      "label": "knowledge boundary AK",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "complete authored fields AL",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "story-stat choices AL",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "assigned personality voice AL",
+      "passed": true,
+      "detail": "Protective Anchor — many concrete voices refusing a single clean hero"
+    },
+    {
+      "label": "knowledge boundary AL",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "complete authored fields AM",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "story-stat choices AM",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "assigned personality voice AM",
+      "passed": true,
+      "detail": "Fierce Idealist — grief preserved beside the machinery that exploited it"
+    },
+    {
+      "label": "knowledge boundary AM",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "complete authored fields AN",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "story-stat choices AN",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "assigned personality voice AN",
+      "passed": true,
+      "detail": "Devotional Interpreter — worship that refuses to relieve its hero of responsibility"
+    },
+    {
+      "label": "knowledge boundary AN",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "complete authored fields N",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "story-stat choices N",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "assigned personality voice N",
+      "passed": true,
+      "detail": "Restless Builder — measurements, deadline, no surviving explanation of who needed the chair"
+    },
+    {
+      "label": "knowledge boundary N",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "complete authored fields Q",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "story-stat choices Q",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "assigned personality voice Q",
+      "passed": true,
+      "detail": "Fierce Idealist — furious eyewitness language, facts limited to the witnessed murder and argument"
+    },
+    {
+      "label": "knowledge boundary Q",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "complete authored fields BQ",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "story-stat choices BQ",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "assigned personality voice BQ",
+      "passed": true,
+      "detail": "Devotional Interpreter — collective testimony, no grand eyewitness and no claim that survival was fair"
+    },
+    {
+      "label": "knowledge boundary BQ",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "complete authored fields BH",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "story-stat choices BH",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "assigned personality voice BH",
+      "passed": true,
+      "detail": "Proud Traditionalist — pilgrimage record, craft standards softened by witnessed sacrifice"
+    },
+    {
+      "label": "knowledge boundary BH",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "complete authored fields BI",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "story-stat choices BI",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "assigned personality voice BI",
+      "passed": true,
+      "detail": "Curious Seeker — layered travelers, each authoritative only about their own change"
+    },
+    {
+      "label": "knowledge boundary BI",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "complete authored fields BJ",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "story-stat choices BJ",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "assigned personality voice BJ",
+      "passed": true,
+      "detail": "Restless Builder — delighted technical pluralism, no loyalty to a single school's pride"
+    },
+    {
+      "label": "knowledge boundary BJ",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "complete authored fields BK",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "story-stat choices BK",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "assigned personality voice BK",
+      "passed": true,
+      "detail": "Practical Caretaker — request-board plainness, danger neither invented nor dismissed"
+    },
+    {
+      "label": "knowledge boundary BK",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "complete authored fields BL",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "story-stat choices BL",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "assigned personality voice BL",
+      "passed": true,
+      "detail": "Opportunistic Broker — shameless sales logic, real communal labor kept off the invoice"
+    },
+    {
+      "label": "knowledge boundary BL",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "complete authored fields BM",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "story-stat choices BM",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "assigned personality voice BM",
+      "passed": true,
+      "detail": "Curious Seeker — request notes that value attention over scale"
+    },
+    {
+      "label": "knowledge boundary BM",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "complete authored fields BN",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "story-stat choices BN",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "assigned personality voice BN",
+      "passed": true,
+      "detail": "Restless Builder — impatient craft language, grief redirected into teaching"
+    },
+    {
+      "label": "knowledge boundary BN",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "complete authored fields BO",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "story-stat choices BO",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "assigned personality voice BO",
+      "passed": true,
+      "detail": "Enduring Realist — dry civic register, respect expressed through unadorned continuation"
+    },
+    {
+      "label": "knowledge boundary BO",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "complete authored fields BP",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "story-stat choices BP",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "assigned personality voice BP",
+      "passed": true,
+      "detail": "Guarded Watcher — weather, probability, and responsibility without apology"
+    },
+    {
+      "label": "knowledge boundary BP",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "complete authored fields AO",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "story-stat choices AO",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "assigned personality voice AO",
+      "passed": true,
+      "detail": "Exacting Keeper — colonial precision exposing the definition that made removal legal"
+    },
+    {
+      "label": "knowledge boundary AO",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "complete authored fields AP",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "story-stat choices AP",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "assigned personality voice AP",
+      "passed": true,
+      "detail": "Exacting Keeper — demonic count, emotionally neutral, evidentially complete within stated confidence"
+    },
+    {
+      "label": "knowledge boundary AP",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "complete authored fields AQ",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "story-stat choices AQ",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "assigned personality voice AQ",
+      "passed": true,
+      "detail": "Practical Caretaker — domestic record with no authority over the colony's justice"
+    },
+    {
+      "label": "knowledge boundary AQ",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "complete authored fields AR",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "story-stat choices AR",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "assigned personality voice AR",
+      "passed": true,
+      "detail": "Restless Builder — demonic experimentation narrowing into inherited repetition"
+    },
+    {
+      "label": "knowledge boundary AR",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "complete authored fields AS",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "story-stat choices AS",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "assigned personality voice AS",
+      "passed": true,
+      "detail": "Patient Mediator — exact bargain, cultural translation without false warmth"
+    },
+    {
+      "label": "knowledge boundary AS",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "complete authored fields AT",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "story-stat choices AT",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "assigned personality voice AT",
+      "passed": true,
+      "detail": "Exacting Keeper — demonic terms, motives fully stated and trust tested through action"
+    },
+    {
+      "label": "knowledge boundary AT",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "complete authored fields AU",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "story-stat choices AU",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "assigned personality voice AU",
+      "passed": true,
+      "detail": "Protective Anchor — cross-species names, maker unidentified, motive inferable but not explained"
+    },
+    {
+      "label": "knowledge boundary AU",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "complete authored fields AV",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "story-stat choices AV",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "assigned personality voice AV",
+      "passed": true,
+      "detail": "Exacting Keeper — operational logic, no access to the human experience of the attack"
+    },
+    {
+      "label": "knowledge boundary AV",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "complete authored fields BB",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "story-stat choices BB",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "assigned personality voice BB",
+      "passed": true,
+      "detail": "Fierce Idealist — demonic logic sharpened into systemic dissent"
+    },
+    {
+      "label": "knowledge boundary BB",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "complete authored fields BC",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "story-stat choices BC",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "assigned personality voice BC",
+      "passed": true,
+      "detail": "Enduring Realist — demonic lab note precise enough to reject its own desired conclusion"
+    },
+    {
+      "label": "knowledge boundary BC",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "complete authored fields BD",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "story-stat choices BD",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "assigned personality voice BD",
+      "passed": true,
+      "detail": "Restless Builder — collaborative workshop record, credit retained across species"
+    },
+    {
+      "label": "knowledge boundary BD",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "complete authored fields BE",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "story-stat choices BE",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "assigned personality voice BE",
+      "passed": true,
+      "detail": "Opportunistic Broker — lively pitches and skeptical calculations sharing one archive"
+    },
+    {
+      "label": "knowledge boundary BE",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "complete authored fields BF",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "story-stat choices BF",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "assigned personality voice BF",
+      "passed": true,
+      "detail": "Exacting Keeper — primary council record, complete on authorization but silent about every victim's experience"
+    },
+    {
+      "label": "knowledge boundary BF",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "complete authored fields BG",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "story-stat choices BG",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "assigned personality voice BG",
+      "passed": true,
+      "detail": "Practical Caretaker — primary quantities, ordinary allocation notes, decisive within its narrow domain"
+    },
+    {
+      "label": "knowledge boundary BG",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "complete authored fields S",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "story-stat choices S",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "assigned personality voice S",
+      "passed": true,
+      "detail": "Protective Anchor — the Hero's direct order, certain about the objective and explicit about its limits"
+    },
+    {
+      "label": "knowledge boundary S",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "complete authored fields T",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "story-stat choices T",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "assigned personality voice T",
+      "passed": true,
+      "detail": "Exacting Keeper — synchronized unit logs, no single narrator with the whole view"
+    },
+    {
+      "label": "knowledge boundary T",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "complete authored fields U",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "story-stat choices U",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "assigned personality voice U",
+      "passed": true,
+      "detail": "Protective Anchor — command language designed to prevent one duty consuming another"
+    },
+    {
+      "label": "knowledge boundary U",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "complete authored fields V",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "story-stat choices V",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "assigned personality voice V",
+      "passed": true,
+      "detail": "Guarded Watcher — tactical report, emotion absent but choices clear"
+    },
+    {
+      "label": "knowledge boundary V",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "complete authored fields BA",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "story-stat choices BA",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "assigned personality voice BA",
+      "passed": true,
+      "detail": "Proud Traditionalist — military memorial language corrected by a survivor's hand"
+    },
+    {
+      "label": "knowledge boundary BA",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "complete authored fields W",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "story-stat choices W",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "assigned personality voice W",
+      "passed": true,
+      "detail": "Opportunistic Broker — exact self-interest producing real aid without sentimental translation"
+    },
+    {
+      "label": "knowledge boundary W",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "complete authored fields AW",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "story-stat choices AW",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "assigned personality voice AW",
+      "passed": true,
+      "detail": "Practical Caretaker — field test born from unbearable triage"
+    },
+    {
+      "label": "knowledge boundary AW",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "complete authored fields AX",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "story-stat choices AX",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "assigned personality voice AX",
+      "passed": true,
+      "detail": "Enduring Realist — clinical survivor testimony resisting both total blame and total absolution"
+    },
+    {
+      "label": "knowledge boundary AX",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "complete authored fields AY",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "story-stat choices AY",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "assigned personality voice AY",
+      "passed": true,
+      "detail": "Protective Anchor — the Hero privately contradicting the legend built from his public certainty"
+    },
+    {
+      "label": "knowledge boundary AY",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "complete authored fields AZ",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "story-stat choices AZ",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "assigned personality voice AZ",
+      "passed": true,
+      "detail": "Protective Anchor — the protagonist's own synthesis, authoritative only over the choice he makes now"
+    },
+    {
+      "label": "knowledge boundary AZ",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "Academy has 18 authored nodes",
+      "passed": true,
+      "detail": "found 18"
+    },
+    {
+      "label": "Academy graph references valid nodes",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "all Academy nodes reachable from the Broken Gate",
+      "passed": true,
+      "detail": "reached 18"
+    },
+    {
+      "label": "Academy contains two combat encounters",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "Academy graph has one final overlook",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "Academy Roll Call has four fragments",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "ten unique Moonmaiden shrines",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "Moonmaiden shrine content complete",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "wider pantheon fragments represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "Unbroken regional clue pattern represented",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "three experimental god-death methods discoverable",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "ancient political inequality stated",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "first recorded battle geography preserved",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "all six thematic memories have earn conditions",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "early, partial, and full ending outcomes authored",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "Moon Sword scales through four memory stages",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "Common Ground discovery has a two-clue gate",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "source/build stylesheet synchronization",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "source/build JavaScript synchronization",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "source/build passage synchronization",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "approved artifact unchanged: After_the_Final_Battle_v18.twee",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "approved artifact unchanged: After the final battle - Northern Region Build v18.html",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "experiment files have no mojibake",
+      "passed": true,
+      "detail": ""
+    }
+  ]
+}

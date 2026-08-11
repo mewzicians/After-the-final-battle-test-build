@@ -1,0 +1,15 @@
+{
+  "name": "after-the-final-battle-test-build",
+  "version": "1.0.0-experiment.1",
+  "private": true,
+  "description": "A complete-world narrative experiment for After the Final Battle.",
+  "scripts": {
+    "build": "node tools/build_all.js",
+    "verify": "node tools/verify_experiment.js",
+    "test": "npm run build && npm run verify",
+    "serve": "node tools/serve.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
