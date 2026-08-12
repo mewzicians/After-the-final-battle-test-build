@@ -29,6 +29,7 @@ Progress and settings are stored by that browser. The hosted version and a downl
 - Real-time combat built around Dodge, Clash, and Parry timing.
 - A first-fight combat tutorial and a scrollable live battle history.
 - Optional discoveries and companions that can remain with you throughout the journey.
+- A protagonist whose observations reflect his history, regional knowledge, and personal attachments.
 - A viewport-aware interface designed to keep current information and actions visible without whole-page scrolling.
 
 ## Combat
@@ -49,9 +50,9 @@ The bottom-right speed control cycles through **1×**, **2×**, and **4×**. **I
 
 This repository contains the discovery-first **v19** build. It removes the earlier experimental framing and avoids presenting hidden conclusions, writer notes, undiscovered names, or ending requirements to the player.
 
-The opening is now one continuous game flow: the Shelter leads into a ten-room Stalwart, its discoveries live inside the places where they are found, the Academy is reached through the road behind the old wall, and the route book opens the journey beyond the city. Older passage names remain only as invisible redirects so existing saves can recover without exposing the retired presentation.
+The opening is now one continuous game flow: the Shelter leads into a fourteen-room Stalwart, its discoveries live inside the places where they are found, the Academy is reached through the road behind the old wall, and the route book opens the journey beyond the city. Each room uses the Shelter's deliberate prose rhythm and a small set of locally relevant choices. Older passage names remain only as invisible redirects so existing saves can recover without exposing the retired presentation.
 
-The maintained verifier currently passes **114/114 checks**, including source/build synchronization, both connected opening graphs, redirect-only save aliases, world data, discovery boundaries, journal behavior, text controls, responsive viewport rules, and preservation of the earlier approved build.
+The maintained verifier currently passes **138/138 checks**, including source/build synchronization, connected exploration graphs, protagonist voice and regional knowledge, four-choice room limits, redirect-only save aliases, world data, discovery boundaries, journal behavior, text controls, responsive viewport rules, and preservation of the earlier approved build.
 
 ## Repository contents
 

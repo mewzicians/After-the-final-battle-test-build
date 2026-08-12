@@ -13,14 +13,14 @@ After the Final Battle
 :: Story Stylesheet [stylesheet]
 #ui-bar { display: none; }
 :root {
-  --page-top-space: clamp(18px, 4dvh, 42px);
+  --page-top-space: clamp(58px, calc(4dvh + 2.5em), 87px);
   --hud-bottom-space: 94px;
   --page-inline-space: 32px;
 }
 #story {
   height: 100vh;
   height: 100dvh;
-  margin-left: 0;
+  margin: 0;
   overflow: hidden;
 }
 html, body {
@@ -242,7 +242,7 @@ body.viewport-compact .choice-grid,
 body.viewport-compact .choice-grid.manual { gap: 10px 14px; margin-top: 24px; }
 body.viewport-compact .world-shell { margin-top: 0; }
 body.viewport-compact .world-card,
-body.viewport-compact .world-evidence { margin: 10px 0; padding: 13px; }
+body.viewport-compact .world-evidence { margin: 0 0 12px; padding: 0; }
 body.viewport-compact .world-actions { margin: 12px 0; gap: 8px; }
 body.viewport-compact .journal-chapters { margin-top: 12px; }
 body.viewport-compact .journal-page { min-height: 230px; padding-top: 18px; padding-bottom: 18px; }
@@ -257,14 +257,14 @@ body.viewport-tight .choice-grid,
 body.viewport-tight .choice-grid.manual { gap: 7px 10px; margin-top: 14px; }
 body.viewport-tight .choice-grid a.link-internal,
 body.viewport-tight .choice-grid button { min-height: 40px; padding: 5px 9px; font-size: 13px; }
-body.viewport-tight .world-title { margin: 3px 0 5px; font-size: clamp(21px, 5vw, 30px); }
+body.viewport-tight .world-title { margin: 0 0 12px; font-size: inherit; }
 body.viewport-tight .world-card,
-body.viewport-tight .world-evidence { margin: 7px 0; padding: 10px 12px; }
+body.viewport-tight .world-evidence { margin: 0 0 8px; padding: 0; }
 body.viewport-tight .world-card p,
-body.viewport-tight .world-evidence p { margin-bottom: 0; line-height: 1.34; }
+body.viewport-tight .world-evidence p { margin-bottom: 8px; line-height: 1.26; }
 body.viewport-tight .world-actions { margin: 8px 0; gap: 6px; }
 body.viewport-tight .world-actions button,
-body.viewport-tight .world-link-button { min-height: 38px; padding: 6px 10px; }
+body.viewport-tight .world-link-button { min-height: 0; padding: 0; }
 body.viewport-tight .journal-book { padding: 9px; }
 body.viewport-tight .journal-region-nav,
 body.viewport-tight .journal-picker { margin-bottom: 9px; }
@@ -667,7 +667,7 @@ body.viewport-tight .journal-page { min-height: 190px; padding: 14px 16px; }
 
 @media (max-width: 980px) {
   :root {
-    --page-top-space: 64px;
+    --page-top-space: calc(64px + 2.5em);
     --hud-bottom-space: 164px;
   }
   #text-speed-controls {
@@ -1007,7 +1007,7 @@ body.viewport-tight .journal-page { min-height: 190px; padding: 14px 16px; }
 
 @media (max-width: 430px), (max-height: 560px) {
   :root {
-    --page-top-space: 54px;
+    --page-top-space: calc(54px + 2.5em);
     --hud-bottom-space: 152px;
   }
   #combat-overlay { padding-top: 20px; }
@@ -1053,7 +1053,7 @@ body.viewport-tight .journal-page { min-height: 190px; padding: 14px 16px; }
 }
 
 @media (min-width: 981px) and (max-width: 1180px) {
-  :root { --page-top-space: 64px; }
+  :root { --page-top-space: calc(64px + 2.5em); }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1271,25 +1271,33 @@ body.viewport-tight .journal-page { min-height: 190px; padding: 14px 16px; }
 /* Room, journal, and world-location styles. */
 
 .world-shell {
-  width: min(100%, 980px);
+  width: 100%;
+  max-width: 820px;
   max-height: 100%;
-  margin: 0 auto;
+  margin: 0;
   overflow: hidden;
+  color: inherit;
+  font: inherit;
 }
 
 .world-kicker {
-  color: #b99f6b;
-  font-size: 0.76rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
+  margin: 0 0 18px;
+  color: inherit;
+  font-size: inherit;
+  letter-spacing: normal;
+  text-transform: none;
 }
 
 .world-title {
-  margin: 7px 0 9px;
-  color: #eee2c3;
-  font-family: Georgia, serif;
-  font-size: clamp(1.75rem, 5vw, 3rem);
-  font-weight: normal;
+  margin: 0 0 24px;
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: bold;
+}
+
+.world-shell:not(.world-journal-shell) > .world-kicker {
+  display: none;
 }
 
 .world-deck {
@@ -1301,53 +1309,164 @@ body.viewport-tight .journal-page { min-height: 190px; padding: 14px 16px; }
 
 .world-card,
 .world-evidence {
-  margin: 16px 0;
-  padding: 18px;
-  border: 1px solid rgba(174, 154, 111, 0.35);
-  background: linear-gradient(145deg, rgba(31, 29, 27, 0.96), rgba(16, 17, 18, 0.97));
-  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.2);
+  margin: 0 0 18px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
 }
 
+.world-card h2,
 .world-card h3,
 .world-evidence h3 {
-  margin: 0 0 8px;
-  color: #e0d0aa;
-  font-family: Georgia, serif;
-  font-weight: normal;
+  margin: 0 0 18px;
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: bold;
 }
 
 .world-card p,
 .world-evidence p {
-  color: #bbb3a6;
-  line-height: 1.58;
+  margin: 0 0 18px;
+  color: inherit;
+  line-height: inherit;
 }
 
 .world-actions {
   display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin: 19px 0;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  margin: 0 0 18px;
 }
 
 .world-actions button,
+.world-card > button,
 .world-link-button {
-  min-height: 42px;
-  padding: 9px 15px;
-  border: 1px solid rgba(207, 183, 125, 0.65);
-  background: rgba(43, 38, 31, 0.98);
-  color: #eee2c3;
+  min-height: 28px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
   cursor: pointer;
   font: inherit;
+  line-height: inherit;
+  text-align: left;
 }
 
 .world-actions button:hover,
+.world-card > button:hover,
 .world-link-button:hover {
-  background: #5a4931;
+  background: transparent;
+  text-decoration: underline;
+}
+
+.world-actions button:focus-visible,
+.world-card > button:focus-visible,
+.world-link-button:focus-visible {
+  outline: 1px solid #eeeeee;
+  outline-offset: 3px;
 }
 
 .world-actions button:disabled {
   cursor: not-allowed;
   opacity: 0.42;
+}
+
+.world-stalwart-shell > .world-title {
+  display: none;
+}
+
+.world-stalwart-shell .world-room > h2,
+.world-stalwart-shell > .world-card:first-of-type > h2 {
+  margin-bottom: 30px;
+}
+
+.world-stalwart-shell .world-room p,
+.world-stalwart-shell > .world-card:first-of-type p {
+  margin-bottom: 26px;
+}
+
+.world-stalwart-shell .world-actions {
+  display: grid;
+  width: 100%;
+  margin: 38px auto 0;
+  justify-content: center;
+  justify-items: stretch;
+  align-items: stretch;
+  gap: 22px 28px;
+}
+
+.world-stalwart-shell .world-actions.world-choice-count-1 {
+  grid-template-columns: minmax(160px, 220px);
+}
+
+.world-stalwart-shell .world-actions.world-choice-count-2 {
+  grid-template-columns: repeat(2, minmax(160px, 220px));
+}
+
+.world-stalwart-shell .world-actions.world-choice-count-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.world-stalwart-shell .world-actions.world-choice-count-4 {
+  grid-template-columns: repeat(2, minmax(180px, 220px));
+}
+
+.world-stalwart-shell .world-actions button,
+.world-stalwart-shell .world-card > button.world-standalone-action {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  min-height: 42px;
+  padding: 7px 12px;
+  border: 1px solid #eeeeee;
+  border-radius: 7px;
+  background: transparent;
+  color: #eeeeee;
+  font: 16px "Courier New", Courier, monospace;
+  line-height: 1.25;
+  text-align: center;
+}
+
+.world-stalwart-shell .world-card > button.world-standalone-action {
+  width: min(220px, 100%);
+  margin: 24px auto 0;
+}
+
+.world-stalwart-shell .world-actions button:hover,
+.world-stalwart-shell .world-card > button.world-standalone-action:hover {
+  background: transparent;
+  text-decoration: underline;
+}
+
+body.viewport-compact .world-stalwart-shell .world-actions {
+  margin-top: 24px;
+  gap: 10px 14px;
+}
+
+body.viewport-tight .world-stalwart-shell .world-room > h2,
+body.viewport-tight .world-stalwart-shell > .world-card:first-of-type > h2 {
+  margin-bottom: 12px;
+}
+
+body.viewport-tight .world-stalwart-shell .world-room p,
+body.viewport-tight .world-stalwart-shell > .world-card:first-of-type p {
+  margin-bottom: 8px;
+}
+
+body.viewport-tight .world-stalwart-shell .world-actions {
+  margin-top: 14px;
+  gap: 7px 10px;
+}
+
+body.viewport-tight .world-stalwart-shell .world-actions button,
+body.viewport-tight .world-stalwart-shell .world-card > button.world-standalone-action {
+  min-height: 40px;
+  padding: 5px 9px;
+  font-size: 13px;
 }
 
 .world-meta {
@@ -1357,9 +1476,9 @@ body.viewport-tight .journal-page { min-height: 190px; padding: 14px 16px; }
 }
 
 .world-cat {
-  border-left: 3px solid #92794e;
-  color: #c9c0b2;
-  font-style: italic;
+  border-left: 0;
+  color: inherit;
+  font-style: normal;
 }
 
 .world-map-region {
@@ -1481,7 +1600,7 @@ body.viewport-tight .journal-page { min-height: 190px; padding: 14px 16px; }
 .journal-page h2 {
   margin: 4px 0 18px;
   color: #e5d5ae;
-  font-family: Georgia, serif;
+  font-family: inherit;
   font-weight: normal;
 }
 
@@ -1503,7 +1622,7 @@ body.viewport-tight .journal-page { min-height: 190px; padding: 14px 16px; }
 .journal-page-section h3 {
   margin: 0 0 7px;
   color: #d8c79f;
-  font-family: Georgia, serif;
+  font-family: inherit;
   font-weight: normal;
 }
 
@@ -1517,7 +1636,16 @@ body.viewport-tight .journal-page { min-height: 190px; padding: 14px 16px; }
 }
 
 @media (max-width: 620px) {
-  .world-shell { width: min(94vw, 980px); }
+  .world-shell { width: min(100%, 94vw, 980px); }
+  .world-stalwart-shell .world-actions,
+  .world-stalwart-shell .world-actions.world-choice-count-1,
+  .world-stalwart-shell .world-actions.world-choice-count-2,
+  .world-stalwart-shell .world-actions.world-choice-count-3,
+  .world-stalwart-shell .world-actions.world-choice-count-4 {
+    grid-template-columns: minmax(0, 280px);
+    gap: 12px;
+    margin-top: 24px;
+  }
   .journal-chapters { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .journal-chapters button { padding: 8px 6px; }
   .journal-book { padding: 12px; }
@@ -1558,7 +1686,7 @@ body.viewport-tight .journal-page { min-height: 190px; padding: 14px 16px; }
   var COUNTER_WINDOW_RATIO = 0.8;
   var DEFAULT_NOTIFICATION_MS = 2000;
   var ITEM_NOTIFICATION_MS = 2500;
-  var DEFEAT_MESSAGE = "Won't be so lucky next time.";
+  var DEFEAT_MESSAGE = "The shelter's cold reaches you before memory does. You know this floor, this wall, and the distance back to the road.";
   var WEAPON_REJECTION = "The old sword does not leave your hand. The other weapon grows heavier until you put it back.";
 
   function play(passage) {
@@ -1611,10 +1739,10 @@ body.viewport-tight .journal-page { min-height: 190px; padding: 14px 16px; }
       tookStaleBread: false,
       shelterBeat: 0,
       shelterTexts: [
-        "A cold air marches in through the crack in the wall. You feel it crawl across your skin, underneath your shirt, down to your feet. A quiet companion. Unkind, but welcome. That's how you know that you're alive.",
-        "The city is quiet. The heart is loud.",
-        "The room feels smaller now. Once, it felt too large.",
-        "There is nothing left here but the door."
+        "Cold air comes through the crack and finds the seam beneath your shirt. Stalwart winters always find the seam you missed. You hold still until the shiver passes; your body is still answering.",
+        "The room has kept the shape of your habits: bedroll beside the least broken wall, supplies within reach, and the door always visible.",
+        "You have spent enough winters here to know every change in the draft. This morning, the air carries smoke from the square and the faint sound of boots on stone.",
+        "Only the door remains between the shelter and the city you have watched through the broken wall."
       ],
       inventory: {
         food: 10,
@@ -1673,7 +1801,7 @@ body.viewport-tight .journal-page { min-height: 190px; padding: 14px 16px; }
       activeMapEvent: null,
       generatedSettlementVisits: {},
       miniDungeonCounter: 0,
-      lastClearedDungeonLine: "Nothing is waiting for you in there anymore.",
+      lastClearedDungeonLine: "The rooms remain as you left them. No fresh tracks cross the entrance.",
       lastTownKey: "A",
       currentPlaceKey: "A",
       pendingTownWakeMessage: "",
@@ -1702,7 +1830,7 @@ body.viewport-tight .journal-page { min-height: 190px; padding: 14px 16px; }
         eventCooldown: 0,
         niceDemonFound: false,
         lastPromptTile: "A",
-        lastThought: "Stalwart sits behind you. The road has seen people leave before.",
+        lastThought: "Stalwart's smoke thins behind you. You follow the old Academy road markers until the city roofs disappear beneath the snow.",
         discovered: {}
       }
     };
@@ -1866,7 +1994,7 @@ body.viewport-tight .journal-page { min-height: 190px; padding: 14px 16px; }
         eventCooldown: 0,
         niceDemonFound: false,
         lastPromptTile: null,
-        lastThought: "Stalwart sits behind you. The road has seen people leave before.",
+        lastThought: "Stalwart's smoke thins behind you. You follow the old Academy road markers until the city roofs disappear beneath the snow.",
         discovered: {}
       };
     }
@@ -2289,19 +2417,19 @@ body.viewport-tight .journal-page { min-height: 190px; padding: 14px 16px; }
   setup.resourceCatalog = {
     gold: {
       name: "gold",
-      description: "Gold coins. The world ended, but prices did not."
+      description: "Coins from several old regions, accepted by weight where their stamped rulers are no longer remembered."
     },
     food: {
       name: "food",
-      description: "Enough food to keep walking. It does not need to do more."
+      description: "Food packed in portions you can count against the distance back to shelter."
     },
     water: {
       name: "water",
-      description: "It tastes pretty bad. At least it is not purple."
+      description: "Water checked for the purple film that gathers near corrupted ground. The taste comes from the container."
     },
     scrapIron: {
       name: "scrap iron",
-      description: "Rusted pieces of metal that might still be usable. Most things do not get a second chance."
+      description: "Rusted metal sorted by thickness, shape, and the sound each piece makes when struck against stone."
     },
     moonCharms: {
       name: "Moon charms",
@@ -2323,7 +2451,7 @@ body.viewport-tight .journal-page { min-height: 190px; padding: 14px 16px; }
       resource: "food",
       value: 2,
       action: "use",
-      description: "Hard enough to hurt someone with, though eating it is probably the better use. Provides 2 Food when eaten."
+      description: "A hard Northern loaf heel. Water and a few minutes near a flame will soften it. Provides 2 Food when eaten."
     },
     sealedFoodTin: {
       name: "sealed food tin",
@@ -2331,7 +2459,7 @@ body.viewport-tight .journal-page { min-height: 190px; padding: 14px 16px; }
       resource: "food",
       value: 4,
       action: "use",
-      description: "The label is gone, but the seal held. Whatever is inside has been waiting longer than you have. Provides 4 Food when eaten."
+      description: "The label is gone, but the seal does not hiss or flex beneath your thumb. Provides 4 Food when eaten."
     },
     winterRoot: {
       name: "winter root",
@@ -2347,7 +2475,7 @@ body.viewport-tight .journal-page { min-height: 190px; padding: 14px 16px; }
       resource: "food",
       value: 3,
       action: "use",
-      description: "Fresh by current standards. Nobody asks too many questions about those standards. Provides 3 Food when eaten."
+      description: "A dense loaf baked in a living settlement, with the maker's household cut across the crust. Provides 3 Food when eaten."
     },
     waterskin: {
       name: "old waterskin",
@@ -2355,7 +2483,7 @@ body.viewport-tight .journal-page { min-height: 190px; padding: 14px 16px; }
       resource: "water",
       value: 5,
       action: "use",
-      description: "The leather is cracked, and the water tastes like it. Water is water. Provides 5 Water when drunk."
+      description: "A cracked leather skin sealed twice along its oldest seam. The water carries the taste of the hide. Provides 5 Water when drunk."
     },
     snowmeltFlask: {
       name: "snowmelt flask",
@@ -2371,7 +2499,7 @@ body.viewport-tight .journal-page { min-height: 190px; padding: 14px 16px; }
       resource: "water",
       value: 4,
       action: "use",
-      description: "Cloudy river water in a chipped jar. Whatever is floating in it could be worse. Provides 4 Water when drunk."
+      description: "Cloudy river water in a chipped jar. The sediment settles brown rather than purple when the jar is left still. Provides 4 Water when drunk."
     },
     scrapIronPieces: {
       name: "scrap iron piece",
@@ -2402,18 +2530,18 @@ body.viewport-tight .journal-page { min-height: 190px; padding: 14px 16px; }
     whiteAntler: {
       name: "white antler",
       kind: "special",
-      description: "Cold bone from something that should have stayed deeper in the forest."
+      description: "Cold white bone scored by bark, ice, and the old sword's edge near its base."
     },
     frostBearClaw: {
       name: "frost bear claw",
       kind: "special",
-      description: "Heavy, pale, and sharp enough to remember what it was attached to."
+      description: "A heavy pale claw. Dark hair remains caught in the rough growth rings near its root."
     },
     goblinChiefSpear: {
       name: "Goblin Chief's Spear",
       kind: "weapon",
       action: "equip",
-      description: "A crude spear made from stolen steel and wood worn smooth by years of use. Proof that you reached the chief and left with something he wanted to keep.",
+      description: "A crude spear made from stolen steel and a shaft worn smooth by years of the same grip.",
       stats: "Weapon. Quest proof."
     },
     northernFieldWrap: {
@@ -2422,7 +2550,7 @@ body.viewport-tight .journal-page { min-height: 190px; padding: 14px 16px; }
       slot: "body",
       resistance: 1,
       action: "equip",
-      description: "Layers of wool and hide sewn by someone who understood the cold. It will not stop much, but it might stop enough.",
+      description: "Layers of wool and hide, with the overlap placed where a Northern traveler turns into the wind.",
       stats: "Body. Resistance 1."
     },
     watchmanCoat: {
@@ -2440,14 +2568,14 @@ body.viewport-tight .journal-page { min-height: 190px; padding: 14px 16px; }
       slot: "body",
       resistance: 3,
       action: "equip",
-      description: "Iron rings darkened by rust and old blood. It is heavy, loud, and harder to bite through than skin.",
+      description: "Iron rings darkened by rust and old blood. Two repairs beneath the left arm use the tight Academy field weave.",
       stats: "Body. Resistance 3."
     },
     hunterKnife: {
       name: "hunter's knife",
       kind: "weapon",
       action: "equip",
-      description: "A short, broad knife made for skinning animals. It works on monsters too, if you push hard enough.",
+      description: "A short, broad knife made for skinning animals, sharpened more heavily near the point where hide resists.",
       stats: "Weapon. Cannot replace the Old Sword."
     },
     gateSword: {
@@ -2461,7 +2589,7 @@ body.viewport-tight .journal-page { min-height: 190px; padding: 14px 16px; }
       name: "old sword",
       kind: "weapon",
       action: "equip",
-      description: "Rust crawls along the blade, and the leather around the handle is almost gone. It has survived longer than most people, which does not make it good.",
+      description: "Rust crawls along the blade, and the leather around the handle is almost gone. Beneath both, the balance remains where your hand remembers it.",
       stats: "Locked weapon. Base damage 3."
     }
   };
@@ -3014,7 +3142,7 @@ body.viewport-tight .journal-page { min-height: 190px; padding: 14px 16px; }
       }
       return item;
     }
-    return { name: key, description: "You do not know exactly what it is for yet. Useful will have to be enough." };
+    return { name: key, description: "You do not recognize its original purpose. Wear along one edge shows where it can still be held or fitted." };
   }
 
   function lootRowsHtml(loot) {
@@ -3049,7 +3177,7 @@ body.viewport-tight .journal-page { min-height: 190px; padding: 14px 16px; }
     State.variables.pendingReward = {
       kind: "loot",
       title: options.title || "Found",
-      flavor: options.flavor || "It is still useful, which is enough reason to carry it.",
+      flavor: options.flavor || "Wear and weather have not taken the part that can still be used.",
       loot: clone(loot),
       action: options.action || null
     };
@@ -3727,6 +3855,10 @@ body.viewport-tight .journal-page { min-height: 190px; padding: 14px 16px; }
       State.variables.lastTownKey = place.code;
       setup.commitTownProgress();
     }
+    if (key === "A" && typeof setup.routeLegacyWorldPassage === "function") {
+      setup.routeLegacyWorldPassage("A", "arrival");
+      return;
+    }
     play(place.passage);
   };
 
@@ -3942,90 +4074,90 @@ body.viewport-tight .journal-page { min-height: 190px; padding: 14px 16px; }
   setup.generatedSettlementScenes = {
     ruined: {
       townSquare: [
-        "A roof collapses while you watch. The crack rolls through the empty streets. For a moment, you wait for the swearing to start.",
-        "The square is buried to the knees in snow. A dry fountain points at nothing.",
-        "Market stalls lean together like they are sharing the last bad news. There is plenty to go around.",
-        "A war memorial stands in the center. Every name has been scratched away. Somebody wanted the stone, but apparently not badly enough."
+        "A roof collapses while you watch. The crack rolls through the empty streets, and you catch yourself listening for shouts and repair orders that do not come.",
+        "The square is buried to the knees in snow. A dry fountain rises above it, with bucket grooves still worn into the rim.",
+        "Market stalls lean into one another. Their awning ropes were tied with the same storm knots used around Stalwart, but the posts beneath them have split.",
+        "A war memorial stands in the center. Every name has been chiseled away, and pale chips from the lettering remain around its base."
       ],
       residential: [
         "Ash stains the snow around the outer homes despite all the years that have passed.",
-        "New boards once covered the old holes. Now both have rotted through, and the weather has the house to itself.",
-        "Doors hang open along the street. You still knock before entering one. No reason to become rude now.",
-        "A child's wooden horse is frozen beneath a window. One wheel is missing. So is everyone else."
+        "New boards once covered the old holes. Now both layers have rotted through, leaving rain marks from roof beam to floor.",
+        "Doors hang open along the street. You knock before entering; in the North, an open door has never meant an empty home.",
+        "A child's wooden horse is frozen beneath a window. One wheel is missing, and the remaining axle has been polished by a small hand."
       ],
       schoolyard: [
-        "Small desks have been dragged into the yard for firewood. Most of them never made it into the fire.",
-        "A lesson is still written on a slate beneath the snow. The answer was spring.",
-        "The school bell lies cracked beside the gate. Class ended years ago, though nobody bothered to take it inside.",
+        "Small desks have been dragged into the yard for firewood. Axe cuts mark two of them; the others remain in a row beneath the snow.",
+        "A seasonal lesson remains on a slate beneath the snow. Someone underlined the word spring twice.",
+        "The school bell lies cracked beside the gate. Its rope has been wound around the frame to keep it from striking in the wind.",
         "Children once wore a path across this yard. Snow has spent years erasing it."
       ],
       marketplace: [
-        "Wet canvas sags over empty stalls. Nobody complains about prices. It is worse this way.",
-        "Coins lie fused together beneath a burned counter. Riches, assuming you can find a merchant who accepts one large coin-shaped lump.",
-        "A scale waits on one stall with nothing on either side. It may be the last honest measure in town.",
-        "Old signs promise fresh bread, warm clothes, and honest weights. The paint has held up better than the promises."
+        "Wet canvas sags over empty stalls. Price boards remain turned toward an aisle no one walks.",
+        "Coins lie fused together beneath a burned counter. Their faces are gone, but the different rims show where several regions once traded here.",
+        "A scale waits on one stall with nothing on either side. The small Northern testing weight is still tied beneath it.",
+        "Old signs promise fresh bread, warm clothes, and honest weights. Beneath them lie a baker's peel, two needles, and a split measure cup."
       ],
       lordsMansion: [
-        "No lord lives here now, and neither does anyone else. The rooms finally belong to the dust.",
-        "The front doors were taken for firewood. The gold handles were taken first. Priorities survived.",
-        "A dining table fills the hall. The chairs are gone, but the place settings remain. Dinner is late.",
-        "Portraits have been cut from their frames. Whatever the family looked like, the wall has moved on."
+        "Cold dust has gathered across the mansion floors without footprints or swept paths.",
+        "The front doors were cut into firewood. Deep pry marks around the empty fittings show that the gold handles were removed first.",
+        "A dining table fills the hall. The chairs are gone, but place settings remain beneath several winters of fallen plaster.",
+        "Portraits have been cut from their frames. Family names survive on small brass plates beneath the empty cloth edges."
       ],
       graveyard: [
-        "Half the markers are gone. The graves remain better organized than the town.",
-        "Snow fills the names faster than you can brush it away. You stop trying after the third.",
-        "The gate squeals whenever the wind moves it. The dead have heard worse.",
-        "Someone left a wooden cup beside a grave. It has caught years of snow and not much else."
+        "Half the markers are gone. Rectangular sockets in the frozen ground preserve the rows where they stood.",
+        "Snow fills the names as you uncover them. You use the edge of your glove until the oldest letters can be read again.",
+        "The gate moves in the wind with a long iron scrape. A strip of cloth has been tied around the latch to soften it, though the cloth is nearly gone.",
+        "Someone left a wooden cup beside a grave. Its handle points toward the marker, as cups are placed during Northern remembrance meals."
       ],
       park: [
-        "Trees have split the old paths apart. Nature came back with a grudge and plenty of time.",
-        "A bench faces a frozen pond. The view is terrible. You sit for a moment anyway.",
-        "A statue has fallen face-first into the snow. The plaque still calls him unconquered.",
-        "Dead vines cover the play frame. The wind gives it a turn."
+        "Tree roots have lifted the old paths into ridges. Between them, the original paving still curves toward the pond.",
+        "A bench faces the frozen water. You clear one end and sit long enough to listen for movement beneath the ice.",
+        "A statue has fallen face-first into the snow. The plaque beneath it gives a name and the title Unconquered.",
+        "Dead vines cover the wooden play frame. One suspended ring turns whenever the wind reaches the clearing."
       ],
       church: [
-        "A bell tower rises above the snow. The bell is gone. The rope still moves when the wind catches it. Close enough.",
-        "Moonlight falls through the missing roof. The pews have nowhere else to be.",
-        "Every charm has been stripped from the altar except one carved into the stone. Harder to loot faith when it is part of the wall.",
-        "The doors stand open. Whoever left last did not expect to come back."
+        "A bell tower rises above the snow. The bell is gone, but the rope still moves in the wind without the answering weight you expect.",
+        "Moonlight falls through the missing roof and crosses the same center aisle worshippers once kept clear.",
+        "Every loose charm has been stripped from the altar. One crescent remains where a mason carved it into the foundation stone.",
+        "The doors stand open. Snow has crossed the threshold in unbroken layers, with no returning footprints beneath it."
       ],
       gardens: [
-        "The beds are all weeds and frozen stalks. Nature's come to take back what is hers. You just got to it first.",
-        "Glass from the greenhouse shines beneath the snow. It looks almost pretty until you get close enough to bleed.",
-        "A rusted spade is still planted in the soil. The gardener must have planned to return after lunch.",
-        "Something green pushes through beneath a broken wall. You leave it alone. It has enough problems."
+        "Weeds and frozen stalks fill the beds, but their rows still separate kitchen herbs from the deeper root plots.",
+        "Greenhouse glass shines beneath the snow. You mark the largest pieces with sticks before stepping between them.",
+        "A rusted spade remains planted in the soil. The earth around its blade was packed by repeated boots, then left undisturbed.",
+        "A green shoot presses through the shelter of a broken wall. You clear the loose stone above it and leave the root in place."
       ],
       lake: [
-        "The lake froze around a rowboat still tied to the dock. Nobody stole it because nobody wanted to row through ice.",
+        "The lake froze around a rowboat still tied to the dock. Its oars were stored beneath the seat and split along the grain.",
         "Reeds scratch at the shore. Beneath them, the water is dark and patient.",
         "A fishing line disappears into a hole that froze shut years ago. Whoever left it expected to come back before dark.",
-        "The dock ends three steps early. The water below is deep enough to make that everyone else's problem."
+        "The dock ends three steps early. You test the ice from shore and find open water moving beneath the broken end."
       ],
       tradingPost: [
         "The counter has been pried apart board by board. Someone left the sign. It says OPEN.",
-        "Ledgers rot inside a locked cabinet. The lock protected them from everyone except the damp.",
+        "Ledgers rot inside a locked cabinet. Damp entered through the back panel and spread across every dated page.",
         "Empty hooks cover the walls. Whatever hung here was useful enough to take.",
-        "A coin is nailed above the door for luck. It did not work, but it is still a coin."
+        "A coin is nailed above the door in the old road custom, worn smooth where departing traders touched it."
       ],
       adventurersGuild: [
-        "Quest notices have melted into the board. All of them are overdue.",
-        "The trophy wall is empty except for labels. Someone took the valuable parts and left the heroic names.",
+        "Request notices have melted into the board. Dates and offered rewards remain legible along a few dry edges.",
+        "The trophy wall is empty except for labels. Academy guilds used the names for instruction; the horns, teeth, and metal have all been taken.",
         "A map covers one table. Half the roads lead to places that no longer exist.",
-        "Someone carved NOT WORTH IT into the guild counter. The warning came too late for them and just in time for you."
+        "Someone carved NOT WORTH IT into the guild counter. Later hands traced the letters deeply enough to polish their edges."
       ]
     },
     budding: {
       townSquare: [
-        "A roof collapses while you watch. Three people swear. Five more start fixing it. Now eight people are swearing.",
-        "A cookpot steams beside the well. It is mostly turnip. Nobody pretends otherwise.",
-        "Children drag a broken shield through the square as a sled. The old owner probably used it less effectively.",
-        "A notice board lists missing tools, offered work, and one stolen chicken. The chicken has the longest description."
+        "A roof collapses while you watch. Three people shout from the dust; five more arrive with poles and rope before it settles.",
+        "A cookpot steams beside the well. Turnip and onion thicken the water, the same winter broth served in Academy kitchens when stores ran low.",
+        "Children drag a broken shield through the square as a sled. Its old grip has been wrapped in cloth to make a pulling handle.",
+        "A notice board lists missing tools, offered work, and one stolen chicken. A child has added a careful drawing of the chicken beneath the description."
       ],
       residential: [
-        "Children have worn a path through the snow. Adults built the houses. The children decided where the roads go.",
-        "New boards cover old holes. Laundry freezes stiff between the homes. Not sure if that counts as dry.",
-        "Smoke crawls from chimneys patched with clay. Every house leans a little, but they lean together.",
-        "Two families argue over a fence while repairing it together. It is a normal problem, and that sounds almost luxurious."
+        "Children have worn a path through the snow between the warmest doors, crossing the older street at an angle.",
+        "New boards cover old holes. Laundry freezes stiff between the homes, hung far enough from the chimneys to thaw without taking soot.",
+        "Smoke moves from chimneys patched with clay. Shared braces join the houses where each wall could no longer stand alone.",
+        "Two families argue over the position of a fence while holding the same rail level between them."
       ],
       schoolyard: [
         "A teacher writes letters on scavenged roof tiles. The children correct his spelling without mercy.",
@@ -4034,13 +4166,13 @@ body.viewport-tight .journal-page { min-height: 190px; padding: 14px 16px; }
         "Children have built a snow demon in the yard. Someone gave it the mayor's hat."
       ],
       marketplace: [
-        "Wet boots crowd the entrance. Coins change hands. Someone complains about prices. Glad to know that despite everything, some things remain.",
+        "Wet boots crowd the entrance. Coins change hands, and complaints about prices pass between the stalls in a cadence you remember from Stalwart market days.",
         "Three stalls sell roots. All three merchants insist theirs are less bitter.",
-        "A tailor measures cloth beside a forge. Sparks keep landing on the sleeves. Business is tense.",
-        "A woman trades two nails for an egg and looks pleased with herself. The chicken was not consulted."
+        "A tailor measures cloth beside a forge. A damp hide has been hung between them to keep sparks from the finished sleeves.",
+        "A woman trades two nails for an egg, wraps it in wool, and carries it home with both hands."
       ],
       lordsMansion: [
-        "No lord lives here now. Several families do. It's a better use of the space.",
+        "Several families live in the old mansion now. Each doorway carries a different household mark beneath the faded noble crest.",
         "The ballroom has become a sleeping hall. Someone drew room numbers over the old family crest.",
         "Soup cooks in the grand fireplace beneath a portrait turned toward the wall.",
         "The estate office now stores blankets and seed. The old tax ledgers help start the fire."
@@ -4049,59 +4181,59 @@ body.viewport-tight .journal-page { min-height: 190px; padding: 14px 16px; }
         "Fresh markers stand beside old stones. Someone brushes the snow from every name.",
         "A groundskeeper repairs the wall one stone at a time. He says the dead deserve one thing kept properly.",
         "Winter flowers made from cloth sit on the newest graves. Real flowers can wait for spring.",
-        "Two children leave a biscuit beside a marker. A crow waits with professional patience."
+        "Two children leave a biscuit beside a marker. A crow watches from the wall until they have gone."
       ],
       park: [
         "A bench has been rebuilt from three different benches. Four people sit on it and disagree about the fourth kind of wood.",
-        "Children race around trees blackened by the war. None of them care what the trees remember.",
+        "Children race around trees blackened by the war. Their tracks cross the burn scars and circle back toward the pond.",
         "Someone cleared a skating circle on the pond. Children fall, get up, and call it an afternoon well spent.",
-        "A musician plays beneath a patched awning. The instrument has five strings. The song only needs four."
+        "A musician plays beneath a patched awning. One of the instrument's five strings is broken and tied back from the others; the player adjusts the old song around it."
       ],
       church: [
-        "The bell is gone, so a boy strikes a cooking pot at dusk. Everyone complains and comes inside.",
-        "Moon charms share the altar with bread, bandages, and a jar of nails. Faith has become practical.",
+        "The bell is gone, so a boy strikes a cooking pot in the old dusk pattern. People call back from the street and begin closing shutters.",
+        "Moon charms share the altar with bread, bandages, and a jar of nails. Household marks beneath each item show who left it and who may take it.",
         "The roof leaks over the front pew. Worshippers sit in the back and call it tradition.",
-        "A priest mends coats between services. Souls can wait until the sleeves are attached."
+        "A priest mends coats between services, matching each repaired sleeve to the household mark inside its collar."
       ],
       gardens: [
-        "Canvas shelters bend over rows of winter crops. Nothing grows well. Food is food.",
-        "The gardener speaks to each seedling. None answer, but most are still alive, which is answer enough.",
-        "Warm stones line the beds beneath patched glass. Every leaf has earned its place.",
-        "Three cabbages survived the frost. They are guarded better than the gate."
+        "Canvas shelters bend over rows of winter crops. Leaves grow close to the warm stones, small but unblackened by frost.",
+        "The gardener speaks to each seedling while checking its soil. Most have names written on narrow pieces of roof tile.",
+        "Warm stones line the beds beneath patched glass. The surviving leaves cluster close to the heat and turn toward gaps in the roof.",
+        "Three cabbages survived the frost. A watch schedule beside the bed assigns each one to the families sharing its seed."
       ],
       lake: [
-        "A family cuts clean ice from the lake and stacks it beside the smokehouse. Winter finally pays rent.",
+        "A family cuts clean ice from the lake and stacks each block beside the smokehouse, packed in sawdust for the warmer months.",
         "Fishing lines vanish through holes in the ice. Nobody catches much. They still argue over bait.",
-        "Children slide along the shore while adults shout useful advice far too late.",
-        "A repaired pump draws lake water through sand and charcoal. It still tastes bad. At least it is not purple."
+        "Children slide along the shore while adults call warnings from the work area. A rope line keeps the games away from the cut ice.",
+        "A repaired pump draws lake water through sand and charcoal. You taste the metal in it, but find no purple stain along the cup."
       ],
       tradingPost: [
-        "A trader sleeps behind the counter with one hand on the coin box. The walls were repaired before trust was.",
-        "Crates fill every wall. Half are empty. The labels make the place look successful.",
+        "A trader sleeps behind the counter with one hand on the coin box. A cord from the door bell is looped around the other wrist.",
+        "Crates fill every wall. Half are empty, with their labels left in place for the next expected delivery.",
         "A chalkboard lists arrivals from towns you thought were gone. A few names have been crossed out. Not all.",
-        "Someone rings a cracked handbell for each sale. The sound is awful. Business is good."
+        "Someone rings a cracked handbell for each sale. Its uneven note carries into the road, where another customer is already approaching."
       ],
       adventurersGuild: [
-        "The guild has six members, four chairs, and enough work for twenty. Nobody argues over the chairs.",
+        "The guild has six members, four chairs, and a standing table built from an old door. Requests cover most of the wall.",
         "A map is pinned beneath mugs and knife points. The safe roads change every morning.",
         "New notices cover the old heroic portraits. Most ask for escorts, medicine, or somebody who can fix a roof.",
-        "A young adventurer practices introductions near the door. She sounds confident enough that nobody interrupts."
+        "A young adventurer practices her introduction near the door. The older members continue their work and leave her room to finish each attempt."
       ]
     }
   };
 
   setup.generatedSettlementEntries = {
     ruined: [
-      "Rooflines break through the snow ahead. Nothing moves between them. You check anyway.",
-      "A road leads into a settlement the war forgot to finish burying.",
-      "Smoke once blackened these walls. Snow has been trying to clean them ever since.",
-      "The gate is open. That stopped being welcoming a long time ago."
+      "Rooflines break through the snow ahead. Nothing moves between them, but you stop long enough to look for smoke and fresh tracks.",
+      "A road leads into a settlement buried in the uneven layers left by war and winter.",
+      "Old smoke has blackened the walls above every missing roof. New snow lies clean across the thresholds.",
+      "The gate stands open. Drifted snow beneath it shows that nobody has moved it this season."
     ],
     budding: [
-      "Smoke rises from patched chimneys. For once, that means dinner.",
-      "Hammering carries over the snow. Someone is building instead of breaking.",
-      "Lanterns burn behind repaired walls. The road has not managed to take this place yet.",
-      "A child waves from the gate before an adult pulls them back. The adult is sensible. You wave anyway."
+      "Smoke rises from patched chimneys with the darker scent of a cookfire beneath the wet wood.",
+      "Hammering carries over the snow in the measured rhythm carpenters use when another person is holding the brace.",
+      "Lanterns burn behind repaired walls. Fresh sled tracks run from the gate toward the nearest stand of timber.",
+      "A child waves from the gate before an adult draws them behind the wall. You show both empty hands, then return the wave."
     ]
   };
 
@@ -4125,9 +4257,9 @@ body.viewport-tight .journal-page { min-height: 190px; padding: 14px 16px; }
   };
 
   function generatedSearchFlavor(area) {
-    if (area === "gardens") return "Nature's come to take back what is hers. You just got to it first.";
-    if (area === "lake") return "Slightly wet. Could still be useful.";
-    return "Dust and snow covered it. Patience did the rest.";
+    if (area === "gardens") return "The item was caught beneath roots near the old tool bed. You work it loose without cutting the living growth.";
+    if (area === "lake") return "Water has reached the outer wrapping, but the part beneath it remains usable.";
+    return "Dust and snow covered the item. You clear both before lifting it from the floor.";
   }
 
   function createGeneratedSettlement() {
@@ -4264,20 +4396,20 @@ body.viewport-tight .journal-page { min-height: 190px; padding: 14px 16px; }
     var v = State.variables;
     if (key === "winterRoot") {
       setup.receiveLoot({ winterRoot: 1 }, { message: "winter root taken" });
-      setThought("You find winter root beneath the snow. Bitter food is still food.");
+      setThought("The narrow leaves belong to winter root. You loosen the frozen soil with the old sword's guard, taking the tuber without cutting away next year's growth.");
     } else if (key === "snowmelt") {
       setup.receiveLoot({ snowmeltFlask: 1 }, { message: "snowmelt flask taken" });
-      setThought("Clean ice gathers in a broken basin. You melt what you can.");
+      setThought("Clear water has gathered in a broken stone basin. You check for purple along the rim, then fill the flask through a fold of cloth.");
     } else if (key === "scrap") {
       setup.receiveLoot({ scrapIronPieces: 1 }, { message: "scrap iron piece taken" });
-      setThought("A bent hinge comes loose from an old sign. It no longer holds a door, but the metal can still earn its keep.");
+      setThought("A bent hinge comes loose from an old sign. Northern repair crews used to sort pieces like this by the sound they made on stone. This one still rings cleanly enough to use.");
     } else if (key === "strayDog") {
       if (v.inventory.food > 0) v.inventory.food -= 1;
       v.hiddenStats.kindness += 1;
       setup.updateInventory();
-      setThought("A stray dog follows at a distance. You leave food, and it waits until you walk away before eating. Trust takes longer than hunger.");
+      setThought("A stray dog follows outside arm's reach. You leave food beside the road and keep walking until the sound of eating begins behind you.");
     } else {
-      setThought("A wanderer asks if Stalwart still stands. You say yes. The word is doing more work than the walls.");
+      setThought("A wanderer asks whether Stalwart still stands. You tell them the gate is open and smoke rises near the square. They repeat the directions before continuing north.");
     }
   }
 
@@ -4401,7 +4533,9 @@ body.viewport-tight .journal-page { min-height: 190px; padding: 14px 16px; }
 
     if (place) {
       map.discovered[place.code] = true;
-      setThought("You reach " + place.name + ". The entrance is still there, which saves time and raises questions.");
+      setThought(typeof setup.worldArrivalThought === "function"
+        ? setup.worldArrivalThought(place.code)
+        : "You reach " + place.name + ". The road ends at a visible entrance.");
       setup.renderMap();
 
       if (map.lastPromptTile !== place.code) {
@@ -4526,27 +4660,27 @@ body.viewport-tight .journal-page { min-height: 190px; padding: 14px 16px; }
   };
 
   setup.dungeons = {
-    stalwartAcademy: { name: "Northern Academy of Heroes", difficulty: 3, rooms: 10, enemies: ["wraith", "goblinScout", "academyEcho"], boss: "academyEcho", enemyHp: { wraith: 16, goblinScout: 18, academyEcho: 18 }, bossHp: 30, items: ["bentArrowheads", "medicinePouch", "crackedMoonCharm"], chest: ["gateSword", "oldMail"], clearLine: "The academy is quiet again. You cannot repair what happened here, but you can let it rest." },
-    byronsEstate: { name: "Byron's Estate Cellars", difficulty: 1, rooms: 7, enemies: ["starvingWolf", "goblinScout"], boss: "orcRaider", items: ["sealedFoodTin", "scrapIron"], chest: ["watchmanCoat", "settlementBread"], clearLine: "The estate finally gives up what its owners left behind. The dead have always been poor at sharing." },
-    forestSilence: { name: "Forest of Silence", difficulty: 3, rooms: 12, enemies: ["starvingWolf", "goblinScout", "demonHound"], boss: "frostStag", items: ["winterRoot", "medicinePouch", "silentBell"], chest: ["silentBell", "northernFieldWrap"], clearLine: "The Forest of Silence keeps its name. For once, a sign on the map tells the truth." },
-    respite: { name: "Respite Shelters", difficulty: 1, rooms: 6, enemies: ["starvingWolf", "wraith"], boss: "orcRaider", items: ["staleBread", "snowmeltFlask"], chest: ["medicinePouch", "settlementBread"], clearLine: "The shelters at Respite are safer than they were this morning. Small victories still have to count." },
-    frontier: { name: "Frontier Barracks", difficulty: 2, rooms: 8, enemies: ["goblinScout", "orcRaider"], boss: "orcRaider", items: ["scrapIron", "bentArrowheads"], chest: ["hunterKnife", "watchmanCoat"], clearLine: "The barracks are empty now. It took years, but the watch is finally over." },
-    forestWhispers: { name: "Forest of Whispers", difficulty: 4, rooms: 13, enemies: ["goblinScout", "demonHound", "wraith"], boss: "frostStag", items: ["winterRoot", "whiteAntler"], chest: ["whiteAntler", "oldMail"], clearLine: "The whispers thin until the wind can be heard between them. You decide that is close enough." },
+    stalwartAcademy: { name: "Northern Academy of Heroes", difficulty: 3, rooms: 10, enemies: ["wraith", "goblinScout", "academyEcho"], boss: "academyEcho", enemyHp: { wraith: 16, goblinScout: 18, academyEcho: 18 }, bossHp: 30, items: ["bentArrowheads", "medicinePouch", "crackedMoonCharm"], chest: ["gateSword", "oldMail"], clearLine: "The Academy grows quiet. Without the echoes crossing them, the old training rooms sound as you remember them before first bell." },
+    byronsEstate: { name: "Byron's Estate Cellars", difficulty: 1, rooms: 7, enemies: ["starvingWolf", "goblinScout"], boss: "orcRaider", items: ["sealedFoodTin", "scrapIron"], chest: ["watchmanCoat", "settlementBread"], clearLine: "The estate cellars are still. Store marks on the walls show which shelves can be opened without bringing down the damp beams." },
+    forestSilence: { name: "Forest of Silence", difficulty: 3, rooms: 12, enemies: ["starvingWolf", "goblinScout", "demonHound"], boss: "frostStag", items: ["winterRoot", "medicinePouch", "silentBell"], chest: ["silentBell", "northernFieldWrap"], clearLine: "The Forest of Silence settles around you. For the first time since entering, the quiet contains only wind and distant branches." },
+    respite: { name: "Respite Shelters", difficulty: 1, rooms: 6, enemies: ["starvingWolf", "wraith"], boss: "orcRaider", items: ["staleBread", "snowmeltFlask"], chest: ["medicinePouch", "settlementBread"], clearLine: "The shelters at Respite are clear. Their stove vents and bed frames can be reached safely from the road again." },
+    frontier: { name: "Frontier Barracks", difficulty: 2, rooms: 8, enemies: ["goblinScout", "orcRaider"], boss: "orcRaider", items: ["scrapIron", "bentArrowheads"], chest: ["hunterKnife", "watchmanCoat"], clearLine: "The barracks are empty. You lower the watch lever and leave the old signal shutter open toward the road." },
+    forestWhispers: { name: "Forest of Whispers", difficulty: 4, rooms: 13, enemies: ["goblinScout", "demonHound", "wraith"], boss: "frostStag", items: ["winterRoot", "whiteAntler"], chest: ["whiteAntler", "oldMail"], clearLine: "The repeated voices thin until you can separate the pine wind from everything borrowing its sound." },
     lordsRestGoblinCamp: { name: "Goblin Camp", difficulty: 3, rooms: 10, enemies: ["goblinArcher", "goblinFighter", "goblinSwordsman"], boss: "goblinChief", items: ["staleBread", "scrapIron", "medicinePouch"], chest: ["watchmanCoat", "sealedFoodTin"], clearLine: "The camp is finished. By tonight, the people behind the gate may hear only the wind." },
-    safety: { name: "Safety Watchhouse", difficulty: 2, rooms: 9, enemies: ["starvingWolf", "goblinScout", "orcRaider"], boss: "orcRaider", items: ["scrapIron", "snowmeltFlask"], chest: ["oldMail", "sealedFoodTin"], clearLine: "The watchhouse at Safety is clear. The name is only slightly less ambitious now." },
-    crossroads: { name: "Crossroads Tollhouse", difficulty: 2, rooms: 8, enemies: ["goblinScout", "wraith"], boss: "orcRaider", items: ["bentArrowheads", "staleBread"], chest: ["hunterKnife", "snowmeltFlask"], clearLine: "The tollhouse is empty and the roads are open. Nobody remains to charge you for choosing badly." },
+    safety: { name: "Safety Watchhouse", difficulty: 2, rooms: 9, enemies: ["starvingWolf", "goblinScout", "orcRaider"], boss: "orcRaider", items: ["scrapIron", "snowmeltFlask"], chest: ["oldMail", "sealedFoodTin"], clearLine: "The watchhouse at Safety is clear. Its intake room and nearest store can be opened from the old evacuation road." },
+    crossroads: { name: "Crossroads Tollhouse", difficulty: 2, rooms: 8, enemies: ["goblinScout", "wraith"], boss: "orcRaider", items: ["bentArrowheads", "staleBread"], chest: ["hunterKnife", "snowmeltFlask"], clearLine: "The tollhouse is empty. Through its open gate, all three roads are visible beyond the snow." },
     forestScreams: { name: "Forest of Screams", difficulty: 5, rooms: 15, enemies: ["demonHound", "orcRaider", "wraith"], boss: "frostBear", items: ["medicinePouch", "winterRoot", "frostBearClaw"], chest: ["frostBearClaw", "oldMail"], clearLine: "The Forest of Screams is not quiet, but there are fewer voices in it now." },
-    outpost1: { name: "Outpost 1", difficulty: 1, rooms: 7, enemies: ["goblinScout", "starvingWolf"], boss: "orcRaider", items: ["scrapIron", "snowmeltFlask"], chest: ["watchmanCoat", "bentArrowheads"], clearLine: "The first outpost is clear. Its watchtower has nobody left to report the news." },
-    outpost2: { name: "Outpost 2", difficulty: 2, rooms: 8, enemies: ["goblinScout", "orcRaider"], boss: "orcRaider", items: ["scrapIron", "sealedFoodTin"], chest: ["oldMail", "medicinePouch"], clearLine: "The second outpost is clear. Snow has already started covering the marks you left." },
-    confederationNorth: { name: "The Confederation Halls", difficulty: 4, rooms: 11, enemies: ["wraith", "orcRaider", "academyEcho"], boss: "academyEcho", items: ["crackedMoonCharm", "medicinePouch", "scrapIron"], chest: ["gateSword", "oldMail"], clearLine: "The old Confederation halls fall silent. The arguments lasted longer than the country." },
-    outpost3: { name: "Outpost 3", difficulty: 2, rooms: 9, enemies: ["goblinScout", "orcRaider"], boss: "orcRaider", items: ["settlementBread", "snowmeltFlask"], chest: ["watchmanCoat", "medicinePouch"], clearLine: "The storehouse is clear. Outpost 3 gets to keep standing for another day." },
-    serenity: { name: "Serenity Chapel", difficulty: 3, rooms: 10, enemies: ["wraith", "demonHound"], boss: "frostStag", items: ["crackedMoonCharm", "medicinePouch"], chest: ["northernFieldWrap", "medicinePouch"], clearLine: "The chapel feels less wrong than it did before. Some days, that is enough." }
+    outpost1: { name: "Outpost 1", difficulty: 1, rooms: 7, enemies: ["goblinScout", "starvingWolf"], boss: "orcRaider", items: ["scrapIron", "snowmeltFlask"], chest: ["watchmanCoat", "bentArrowheads"], clearLine: "The first outpost is clear. You raise its empty-watch marker where the next signal post can see it." },
+    outpost2: { name: "Outpost 2", difficulty: 2, rooms: 8, enemies: ["goblinScout", "orcRaider"], boss: "orcRaider", items: ["scrapIron", "sealedFoodTin"], chest: ["oldMail", "medicinePouch"], clearLine: "The second outpost is clear. You cut a fresh route mark above the snow line before leaving." },
+    confederationNorth: { name: "The Confederation Halls", difficulty: 4, rooms: 11, enemies: ["wraith", "orcRaider", "academyEcho"], boss: "academyEcho", items: ["crackedMoonCharm", "medicinePouch", "scrapIron"], chest: ["gateSword", "oldMail"], clearLine: "The old Confederation halls fall silent. Empty delegate seats remain arranged around the chamber where disagreement was once kept in the room." },
+    outpost3: { name: "Outpost 3", difficulty: 2, rooms: 9, enemies: ["goblinScout", "orcRaider"], boss: "orcRaider", items: ["settlementBread", "snowmeltFlask"], chest: ["watchmanCoat", "medicinePouch"], clearLine: "The storehouse is clear. Voices return to the outer yard while you check the last door." },
+    serenity: { name: "Serenity Chapel", difficulty: 3, rooms: 10, enemies: ["wraith", "demonHound"], boss: "frostStag", items: ["crackedMoonCharm", "medicinePouch"], chest: ["northernFieldWrap", "medicinePouch"], clearLine: "The chapel settles into an ordinary quiet. Water still moves beneath the prayer basin when you listen closely." }
   };
 
   setup.miniDungeonTemplates = {
-    banditCamp: { name: "Bandit Camp", difficulty: 2, rooms: 3, enemies: ["banditRaider"], boss: "banditCaptain", items: [], chest: [], bossOnlyLoot: true, clearLine: "The campfire keeps burning after the camp falls quiet. Someone should put it out. Apparently, that someone is you." },
-    goblinCave: { name: "Goblin Cave", difficulty: 3, rooms: 5, enemies: ["goblinScout", "goblinFighter", "goblinArcher"], boss: "goblinSwordsman", items: [], chest: [], bossOnlyLoot: true, clearLine: "The cave belongs to you now, by the old rules. You leave it to the damp." },
-    demonHorde: { name: "Wandering Demon Horde", difficulty: 5, rooms: 7, enemies: ["demonHound", "wanderingDemon"], boss: "demonHerald", items: [], chest: [], bossOnlyLoot: true, clearLine: "After seven fights, an empty stretch of road looks almost welcoming." },
+    banditCamp: { name: "Bandit Camp", difficulty: 2, rooms: 3, enemies: ["banditRaider"], boss: "banditCaptain", items: [], chest: [], bossOnlyLoot: true, clearLine: "The camp falls quiet. You cover the fire with snow until no heat reaches your palm above it." },
+    goblinCave: { name: "Goblin Cave", difficulty: 3, rooms: 5, enemies: ["goblinScout", "goblinFighter", "goblinArcher"], boss: "goblinSwordsman", items: [], chest: [], bossOnlyLoot: true, clearLine: "Water resumes dripping through the cave. You mark the entrance and leave the deeper chambers to the damp." },
+    demonHorde: { name: "Wandering Demon Horde", difficulty: 5, rooms: 7, enemies: ["demonHound", "wanderingDemon"], boss: "demonHerald", items: [], chest: [], bossOnlyLoot: true, clearLine: "The last movement stops. You check the road in both directions before lowering the old sword." },
     corruptedSite: { name: "Corrupted Site", difficulty: 4, rooms: 4, enemies: ["corruptedWolf", "demonHound"], boss: "corruptedGuardian", items: [], chest: [], bossOnlyLoot: true, clearLine: "The purple light fades from the ground. The land will need longer to recover." }
   };
 
@@ -4640,7 +4774,7 @@ body.viewport-tight .journal-page { min-height: 190px; padding: 14px 16px; }
     }
 
     if (State.variables.clearedDungeons[dungeonKey]) {
-      notify("Nothing left in there. Just old air.");
+      notify("No fresh tracks cross the cleared entrance.");
       return;
     }
 
@@ -4672,7 +4806,7 @@ body.viewport-tight .journal-page { min-height: 190px; padding: 14px 16px; }
     backdrop.innerHTML = `
       <div class="modal-box">
         <div class="modal-title">${escapeHtml(def.name)}</div>
-        <div class="modal-text">Every way through is occupied. You can clear it out, or decide the road has asked enough of you today.</div>
+        <div class="modal-text">Tracks cross every way through. You can enter and clear the route, or mark the danger and turn back with your supplies intact.</div>
         <div class="modal-actions">
           <button class="modal-button" id="mini-enter">Enter</button>
           <button class="modal-button" id="mini-leave">Leave</button>
@@ -4744,7 +4878,7 @@ body.viewport-tight .journal-page { min-height: 190px; padding: 14px 16px; }
     if (isBossRoom) text.textContent = "This is the last room. Whatever claimed this place is waiting inside.";
     else if (room.monster && !room.monsterDefeated) text.textContent = "Something is moving beyond the next patch of dark.";
     else if (room.item && !room.itemTaken) text.textContent = "You find " + setup.items[room.item].name + ".";
-    else text.textContent = "Nothing moves when you enter. You take the good news while it lasts.";
+    else text.textContent = "Nothing moves when you enter. You check the corners, the ceiling, and the floor before crossing the room.";
     panel.appendChild(text);
 
     var actions = document.createElement("div");
@@ -4831,7 +4965,7 @@ body.viewport-tight .journal-page { min-height: 190px; padding: 14px 16px; }
 
     setup.openLootPopup({
       title: "Found",
-      flavor: "Dust found it first. You take what the years missed.",
+      flavor: "Dust covers the outer surface. The wrapped edge beneath it remains dry and usable.",
       loot: room.item,
       action: { type: "dungeonItem" }
     });
@@ -4937,7 +5071,7 @@ body.viewport-tight .journal-page { min-height: 190px; padding: 14px 16px; }
     goblinScout: { name: "a goblin scout", symbol: "g", hp: 18, attackDamage: 3, enemyTickGain: 3, loot: { scrapIronPieces: 1, gold: 1 }, descriptions: { idle: "a goblin scout crawls over the rubble.", low: "the goblin watches your hands and grins.", mid: "the goblin raises a knife.", high: "the knife comes in.", attack: "the goblin stabs.", parried: "steel knocks the knife wide.", dodged: "the stab misses.", hit: "the knife bites." } },
     orcRaider: { name: "an orc raider", symbol: "O", hp: 30, attackDamage: 5, enemyTickGain: 2, loot: { scrapIronPieces: 2, gold: 3 }, descriptions: { idle: "an orc raider blocks the way.", low: "the orc adjusts its grip.", mid: "the axe rises.", high: "the axe is coming down.", attack: "the orc swings.", parried: "the old sword catches the haft.", dodged: "the axe splits stone.", hit: "the axe lands." } },
     demonHound: { name: "a demon hound", symbol: "H", hp: 34, attackDamage: 6, enemyTickGain: 4, loot: { medicine: 1, gold: 4 }, descriptions: { idle: "a demon hound crawls out of the dark.", low: "the hound sniffs the air.", mid: "its shoulders bunch.", high: "it is about to pounce.", attack: "the hound pounces.", parried: "the old sword holds it back.", dodged: "the hound tears through empty air.", hit: "claws rake across you." } },
-    academyEcho: { name: "an academy echo", symbol: "E", hp: 40, attackDamage: 6, enemyTickGain: 3, loot: { moonCharms: 1, gold: 5 }, descriptions: { idle: "an academy echo stands where a student should be.", low: "it takes a training stance.", mid: "it repeats a lesson nobody finished.", high: "the lesson becomes a strike.", attack: "the echo attacks.", parried: "you remember this one.", dodged: "the lesson misses.", hit: "old training still hurts." } },
+    academyEcho: { name: "an academy echo", symbol: "E", hp: 40, attackDamage: 6, enemyTickGain: 3, loot: { moonCharms: 1, gold: 5 }, descriptions: { idle: "an academy echo stands where a student should be.", low: "it takes the Academy's third training stance.", mid: "its shoulder turns through the opening you were taught to watch.", high: "the familiar lesson becomes a strike.", attack: "the echo attacks.", parried: "your hands complete the answer before the memory does.", dodged: "the practiced line passes beside you.", hit: "the old training pattern lands where it was taught to land." } },
     frostStag: { name: "the frostbitten stag", symbol: "S", hp: 55, attackDamage: 7, enemyTickGain: 3, loot: { whiteAntler: 1, gold: 7 }, descriptions: { idle: "the frostbitten stag lowers its antlers.", low: "ice hangs from its ribs.", mid: "it scrapes the ground.", high: "it charges.", attack: "the stag gores.", parried: "the old sword catches the antlers.", dodged: "the charge passes.", hit: "the antlers hit hard." } },
     frostBear: { name: "the hollow white bear", symbol: "B", hp: 70, attackDamage: 8, enemyTickGain: 2, loot: { frostBearClaw: 1, gold: 10 }, descriptions: { idle: "the hollow white bear rises.", low: "it breathes cold.", mid: "it stands taller than it should.", high: "it is about to crush you.", attack: "the bear crushes down.", parried: "the old sword barely holds.", dodged: "the floor cracks instead.", hit: "the weight lands." } },
     goblinArcher: { name: "a goblin archer", symbol: "a", hp: 20, attackDamage: 3, enemyTickGain: 3, loot: { scrapIronPieces: 1, gold: 2 }, descriptions: { idle: "a goblin archer steps between the tents.", low: "the archer reaches for an arrow.", mid: "the bow bends.", high: "the string is about to loose.", attack: "the archer fires.", parried: "the old sword knocks the arrow aside.", dodged: "the arrow finds dirt.", hit: "the arrow finds you." } },
@@ -4950,7 +5084,7 @@ body.viewport-tight .journal-page { min-height: 190px; padding: 14px 16px; }
     wanderingDemon: { name: "a wandering demon", symbol: "D", hp: 38, attackDamage: 6, enemyTickGain: 3, loot: { medicine: 1, gold: 5 }, descriptions: { idle: "a demon walks out of the snow as if it has somewhere to be.", low: "the demon watches your hands.", mid: "black fire gathers around one arm.", high: "the fire leans toward you.", attack: "the demon strikes.", parried: "the old sword breaks the fire apart.", dodged: "the fire burns a hole in the snow.", hit: "the fire finds you." } },
     corruptedWolf: { name: "a corrupted wolf", symbol: "c", hp: 28, attackDamage: 5, enemyTickGain: 4, loot: { winterRoot: 1, gold: 3 }, descriptions: { idle: "a wolf limps into view. Purple light moves beneath its skin.", low: "the wolf circles on shaking legs.", mid: "its jaw opens too far.", high: "it throws itself forward.", attack: "the wolf lunges.", parried: "the old sword catches bone and teeth.", dodged: "the wolf tears through empty snow.", hit: "corrupted teeth sink in." } },
     banditRaider: { name: "a northern bandit", symbol: "b", hp: 24, attackDamage: 4, enemyTickGain: 3, loot: { gold: 2 }, descriptions: { idle: "a bandit raises a weapon that has changed owners more than once.", low: "the bandit measures the distance.", mid: "their blade comes up.", high: "they commit to the swing.", attack: "the bandit attacks.", parried: "the old sword sends the blade aside.", dodged: "the swing finds cold air.", hit: "the blade lands." } },
-    banditCaptain: { name: "the bandit captain", symbol: "B", hp: 44, attackDamage: 7, enemyTickGain: 3, loot: { sealedFoodTin: 1, scrapIronPieces: 2, gold: 8 }, descriptions: { idle: "the captain steps over the campfire. Nobody else volunteers.", low: "the captain settles into a practiced stance.", mid: "the sword draws back.", high: "the captain moves.", attack: "the captain cuts forward.", parried: "the old sword holds.", dodged: "the cut passes close enough.", hit: "the captain's blade finds you." } },
+    banditCaptain: { name: "the bandit captain", symbol: "B", hp: 44, attackDamage: 7, enemyTickGain: 3, loot: { sealedFoodTin: 1, scrapIronPieces: 2, gold: 8 }, descriptions: { idle: "the captain steps over the campfire while the others hold back.", low: "the captain settles into a practiced stance.", mid: "the sword draws back.", high: "the captain moves.", attack: "the captain cuts forward.", parried: "the old sword holds.", dodged: "the cut passes close enough to move your coat.", hit: "the captain's blade finds you." } },
     demonHerald: { name: "a demon herald", symbol: "R", hp: 62, attackDamage: 8, enemyTickGain: 3, loot: { moonCharms: 2, medicine: 1, gold: 12 }, descriptions: { idle: "the herald unfolds from the dark. The rooms behind you suddenly feel very far away.", low: "the herald lifts one hand.", mid: "the air turns purple around it.", high: "the room bends toward the strike.", attack: "the herald tears at the air.", parried: "the old sword remembers what it was made for.", dodged: "stone turns black where you stood.", hit: "the world goes bright and painful." } },
     corruptedGuardian: { name: "a corrupted guardian", symbol: "C", hp: 52, attackDamage: 7, enemyTickGain: 3, loot: { northernFieldWrap: 1, scrapIronPieces: 2, gold: 9 }, descriptions: { idle: "something large stands between you and the way out.", low: "purple veins brighten beneath ruined armor.", mid: "the guardian leans forward.", high: "metal and corruption come at you together.", attack: "the guardian charges.", parried: "the old sword stops the worst of it.", dodged: "the charge breaks stone.", hit: "the guardian drives through you." } }
   });
@@ -4981,24 +5115,24 @@ body.viewport-tight .journal-page { min-height: 190px; padding: 14px 16px; }
   });
 
   var enemyProgression = {
-    wraith: [12, "The wraith stops reaching for a life that ended years ago."],
-    starvingWolf: [8, "The wolf goes still. Hunger had already done most of the work."],
-    goblinScout: [10, "The scout dies with one hand still pointing back the way it came."],
-    orcRaider: [16, "The road is open again. The raider will not be using it."],
-    demonHound: [20, "The dark takes the hound back. You do not wait to see if it stays there."],
-    academyEcho: [28, "One more old friend put to rest."],
-    frostStag: [34, "The stag folds into the snow. The forest keeps whatever thanks it might have offered."],
-    frostBear: [45, "The bear settles into the snow, all that anger leaving nothing but an empty shape."],
-    goblinArcher: [11, "The bowstring goes quiet. An arrow remains nocked for a shot that will not come."],
-    goblinFighter: [13, "The club lands beside the fighter. Neither moves again."],
-    goblinSwordsman: [15, "The chipped sword reaches the ground first. Its owner follows soon after."],
-    goblinChief: [36, "The chief falls beside the stolen doors he used for a table. The camp has no one left to follow."],
-    wanderingDemon: [24, "The demon burns down to a stain the snow refuses to hide."],
-    corruptedWolf: [18, "The light beneath the wolf's skin goes out. Whatever was inside it leaves first."],
-    banditRaider: [14, "The bandit dies for whatever could be taken from your pockets. You keep walking with it."],
-    banditCaptain: [30, "The captain's people are gone. The title does not mean much without them."],
-    demonHerald: [48, "The herald comes apart without delivering its message. You can live with not knowing."],
-    corruptedGuardian: [38, "The guardian falls, and the corruption loses another place to stand."]
+    wraith: [12, "The wraith's reaching hand becomes still. Its outline thins until the room can be seen through it."],
+    starvingWolf: [8, "The wolf goes still. Its ribs rise once beneath the winter coat and do not rise again."],
+    goblinScout: [10, "The scout falls with one hand pointing toward the route behind it. You look that way before searching the ground."],
+    orcRaider: [16, "The raider falls clear of the road. You listen for another set of steps before moving past."],
+    demonHound: [20, "Darkness closes over the hound's shape. You keep the old sword raised until the stone beneath it is visible again."],
+    academyEcho: [28, "The echo completes the opening stance once more, then fades from the two patches of floor its feet kept finding."],
+    frostStag: [34, "The stag folds into the snow. Ice breaks from its ribs and lies among the white branches."],
+    frostBear: [45, "The bear settles into the snow. Its weight leaves a deep hollow where the ground had seemed level."],
+    goblinArcher: [11, "The bowstring goes quiet. An arrow remains nocked while the bow lowers into the snow."],
+    goblinFighter: [13, "The club lands beside the fighter. You wait for movement, then step around both."],
+    goblinSwordsman: [15, "The chipped sword reaches the ground first. Its owner falls across the mark it leaves."],
+    goblinChief: [36, "The chief falls beside the table made from stolen doors. Nobody in the camp advances to take the spear."],
+    wanderingDemon: [24, "The demon burns down to a black stain. Heat remains above it after the flame has gone."],
+    corruptedWolf: [18, "The light beneath the wolf's skin goes out in sections. Its shaking legs become still when the last trace fades."],
+    banditRaider: [14, "The bandit falls. You search the road and camp edge before returning to what was dropped."],
+    banditCaptain: [30, "The captain falls beside the fire. The remaining tracks lead away from the camp rather than toward you."],
+    demonHerald: [48, "The herald separates into strips of dark air. No voice follows when the last piece disperses."],
+    corruptedGuardian: [38, "The guardian falls. Purple veins beneath the armor dim from the limbs toward the chest."]
   };
   Object.keys(enemyProgression).forEach(function (key) {
     if (!setup.enemies[key]) return;
@@ -5306,7 +5440,7 @@ body.viewport-tight .journal-page { min-height: 190px; padding: 14px 16px; }
 
     var result = {
       enemyName: combat.enemy.name,
-      victoryText: combat.enemy.victoryText || "It is over. You are still here.",
+      victoryText: combat.enemy.victoryText || "The movement stops. You wait until your breathing slows before lowering the old sword.",
       playerProgress: playerProgress,
       performance: {
         attacks: combat.attacksMade,
@@ -5953,7 +6087,7 @@ body.viewport-tight .journal-page { min-height: 190px; padding: 14px 16px; }
     panel.appendChild(title);
 
     var text = document.createElement("p");
-    text.textContent = place.name + " is still marked on the map. You have learned not to mistake that for good news.";
+    text.textContent = "The map still marks " + place.name + ". At the road, you look for smoke, tracks, and changes the old ink could not record.";
     panel.appendChild(text);
 
     var actions = document.createElement("div");
@@ -5964,7 +6098,7 @@ body.viewport-tight .journal-page { min-height: 190px; padding: 14px 16px; }
 
     if (State.variables.clearedDungeons[place.dungeon]) {
       var cleared = document.createElement("p");
-      cleared.textContent = "The danger here is gone. Going back in would only disturb the dust.";
+      cleared.textContent = "No fresh tracks enter the cleared rooms. Dust has begun settling across the path you used.";
       panel.appendChild(cleared);
     } else {
       actions.appendChild(makeButton("Enter dungeon", function () {
@@ -6330,6 +6464,15 @@ body.viewport-tight .journal-page { min-height: 190px; padding: 14px 16px; }
     }, Math.max(0, Number(delay) || 0));
   };
 
+  setup.resetPassageAnchor = function () {
+    var story = document.querySelector("#story");
+    var passages = document.querySelector("#passages");
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+    if (story) story.scrollTop = 0;
+    if (passages) passages.scrollTop = 0;
+  };
+
   setup.installViewportLayout = function () {
     if (setup.__viewportLayoutInstalled) return;
     setup.__viewportLayoutInstalled = true;
@@ -6544,6 +6687,7 @@ body.viewport-tight .journal-page { min-height: 190px; padding: 14px 16px; }
 
   $(document).on(":storyready", function () {
     ensureState();
+    setup.resetPassageAnchor();
     createInterface();
     setup.installViewportLayout();
     setup.updateInventory();
@@ -6553,6 +6697,7 @@ body.viewport-tight .journal-page { min-height: 190px; padding: 14px 16px; }
 
   $(document).on(":passagedisplay", function () {
     ensureState();
+    setup.resetPassageAnchor();
     createInterface();
     setup.updateInventory();
     setup.updateInterfaceAvailability();
@@ -7310,24 +7455,24 @@ var worldRegionMeta = {
   });
 
   var worldAcademyNodes = [
-    { id: "gate", name: "Broken Gate", route: "center", text: "Cart ruts pass beneath the broken arch. Initials have been cut into the stone from a child's knee height to well above your head.", next: ["founder", "service"] },
-    { id: "founder", name: "Founder's Walk", route: "west", text: "A relief shows a child holding his sister's wrist. His other hand grips a weapon longer than he is tall. A round silver disk hangs above them.", next: ["classroom", "hall"] },
-    { id: "classroom", name: "First Classroom", route: "west", text: "Desks form a circle. One surviving line on the wall reads: POWER IS WHAT ARRIVES. COURAGE IS WHAT YOU CHOOSE BEFORE AND AFTER IT LEAVES.", evidence: "roll1", next: ["kitchen", "yard"] },
-    { id: "kitchen", name: "Communal Kitchen", route: "west", text: "Training schedules share the wall with complaints about porridge. A scratched note awards someone named Pell the right to add salt.", item: "Academy Salt Cup", next: ["archive"] },
-    { id: "hall", name: "Hall of Unfinished Heroes", route: "west", text: "Labels beneath the portraits read EXPELLED, RETIRED, AFRAID, CHANGED VOCATION, and STILL TRYING.", evidence: "roll2", next: ["archive"] },
-    { id: "service", name: "Service Court", route: "east", text: "Laundry hooks line one wall. A cistern, delivery marks, and repair benches fill the yard below them.", next: ["infirmary", "dormitory"] },
-    { id: "infirmary", name: "Evacuation Infirmary", route: "east", text: "Every bed faces the eastern exit. Carrying straps remain buckled beneath the mattresses.", item: "Academy Field Wrap", next: ["stair"] },
-    { id: "dormitory", name: "Lower Dormitory", route: "east", text: "Thirty-three hooks bear student names. Two larger hooks bear staff names. Several pegs remain unlettered.", evidence: "roll3", next: ["stair"] },
-    { id: "stair", name: "Collapsed Evacuation Stair", route: "east", text: "Old repair dates cover the supports. The lowest beam split beneath a newer iron brace, and the whole stair fell toward the exit.", next: ["yard"] },
-    { id: "yard", name: "Training Yard", route: "center", text: "A human shape crosses the yard and repeats the same measured strike. Its feet return to the same two patches of dust.", enemy: "academyDrillEcho", next: ["bell", "armory"] },
-    { id: "bell", name: "Signal Bell", route: "center", text: "The rope ends in a nest of torn fibers. They lean toward the building, away from the bell.", item: "Academy Bell Fiber", next: ["armory"] },
-    { id: "armory", name: "Open Armory", route: "center", text: "The racks stand open. Empty brackets are marked with names and hurried fingerprints.", evidence: "roll4", next: ["breach"] },
-    { id: "archive", name: "Founder's Archive", route: "west", text: "A founding charter bears the same child-and-silver-disk seal as the relief outside. The first line names the Northern Academy of Heroes.", next: ["maproom"] },
-    { id: "maproom", name: "Rescue Map Room", route: "west", text: "Pins and faded thread lead toward the Forest of Screams. Three routes are marked ATTEMPTED. None is marked RETURNED.", next: ["breach"] },
-    { id: "breach", name: "Demon Breach", route: "center", text: "The wall fell inward. Claw marks stop at circles of blackened stone, each circle the same width.", enemy: "academyBreachEcho", next: ["laststand"] },
-    { id: "laststand", name: "Last Practice Hall", route: "center", text: "Chalk lines form a narrow lane to the east door. Nineteen tally marks have been cut into the doorframe.", next: ["rollcall"] },
-    { id: "rollcall", name: "Roll Call Chamber", route: "center", text: "Four torn roll-call pages fit beneath a brass weight. Their edges match.", requiresEvidence: 4, next: ["overlook"] },
-    { id: "overlook", name: "Northern Overlook", route: "center", text: "Stalwart's roofs are visible below. Smoke rises through patched boards. Footprints cross the Academy's old service road.", final: true, next: [] }
+    { id: "gate", name: "Broken Gate", route: "center", text: "Cart ruts pass beneath the broken arch. You remember wagons slowing here while the gate watch checked their axles and waved students around them. Initials cover the stone from a child's knee height to well above your head.", next: ["founder", "service"] },
+    { id: "founder", name: "Founder's Walk", route: "west", text: "A relief shows a child holding his sister's wrist. His other hand grips a weapon longer than he is tall, with a round silver disk above them. Northern children learn this shape before they learn the founder's later titles.", next: ["classroom", "hall"] },
+    { id: "classroom", name: "First Classroom", route: "west", text: "The desks form the Academy circle: nobody at the head, nobody hidden in the back. You learned the surviving line before you were trusted with a live blade: POWER IS WHAT ARRIVES. COURAGE IS WHAT YOU CHOOSE BEFORE AND AFTER IT LEAVES.", evidence: "roll1", next: ["kitchen", "yard"] },
+    { id: "kitchen", name: "Communal Kitchen", route: "west", text: "Training schedules still share the wall with complaints about porridge. You remember meals eaten too quickly on these benches and the long arguments over who could be trusted with the salt. A scratched note awards that right to someone named Pell.", item: "Academy Salt Cup", next: ["archive"] },
+    { id: "hall", name: "Hall of Unfinished Heroes", route: "west", text: "The Academy kept the portraits that other schools would have removed. Their labels read EXPELLED, RETIRED, AFRAID, CHANGED VOCATION, and STILL TRYING. You used to read them while waiting for the west classrooms to open.", evidence: "roll2", next: ["archive"] },
+    { id: "service", name: "Service Court", route: "east", text: "Laundry hooks line one wall. A cistern, delivery marks, and repair benches fill the yard beneath them. The court smells of wet stone and old soap, close enough to memory that you look toward the missing wash lines.", next: ["infirmary", "dormitory"] },
+    { id: "infirmary", name: "Evacuation Infirmary", route: "east", text: "Every bed faces the eastern exit. Academy drills taught you to buckle the carrying straps beneath each mattress after use; these remain fastened and ready.", item: "Academy Field Wrap", next: ["stair"] },
+    { id: "dormitory", name: "Lower Dormitory", route: "east", text: "Thirty-three hooks bear student names. Two larger hooks bear staff names. The spacing is familiar: one peg for a coat, one beneath it for wet boots. Several pegs were never lettered.", evidence: "roll3", next: ["stair"] },
+    { id: "stair", name: "Collapsed Evacuation Stair", route: "east", text: "Old repair dates cover the supports. The lowest beam split beneath a newer iron brace, and the whole stair fell toward the exit. Every Academy evacuation drill in the east wing was meant to end beyond that beam.", next: ["yard"] },
+    { id: "yard", name: "Training Yard", route: "center", text: "A human shape crosses the yard and repeats the opening strike of a familiar Academy drill. Its feet return to the same two patches of dust, but it never advances to the movement that should follow.", enemy: "academyDrillEcho", next: ["bell", "armory"] },
+    { id: "bell", name: "Signal Bell", route: "center", text: "The rope ends in a nest of torn fibers. Northern bell ropes are cut cleanly when a post is abandoned. These fibers were pulled apart from inside the building, away from the bell.", item: "Academy Bell Fiber", next: ["armory"] },
+    { id: "armory", name: "Open Armory", route: "center", text: "The racks stand open. Academy weapons were returned to brackets marked with the bearer's name; these are empty, with hurried fingerprints darkening the wood beneath them.", evidence: "roll4", next: ["breach"] },
+    { id: "archive", name: "Founder's Archive", route: "west", text: "A founding charter bears the same child-and-silver-disk seal as the relief outside. You have seen that seal above classroom doors and stamped into old training manuals. Here, its first line names the Northern Academy of Heroes.", next: ["maproom"] },
+    { id: "maproom", name: "Rescue Map Room", route: "west", text: "Pins and faded thread lead toward the Forest of Screams. The knots are Northern rescue notation: party, litter, return route. Three lines are marked ATTEMPTED. None carries the return knot.", next: ["breach"] },
+    { id: "breach", name: "Demon Breach", route: "center", text: "The wall fell inward. Claw marks stop at circles of blackened stone, each circle the same width. You saw marks like these along the war roads, wherever a formation had been forced to break at once.", enemy: "academyBreachEcho", next: ["laststand"] },
+    { id: "laststand", name: "Last Practice Hall", route: "center", text: "Chalk lines make the narrow lane used to practice moving the injured toward the east door. Nineteen tally marks have been cut into the frame at shoulder height.", next: ["rollcall"] },
+    { id: "rollcall", name: "Roll Call Chamber", route: "center", text: "Four torn roll-call pages lie beneath a brass weight. Their edges match. You set them together in the order the Academy taught: west wing, center, east wing, final correction.", requiresEvidence: 4, next: ["overlook"] },
+    { id: "overlook", name: "Northern Overlook", route: "center", text: "Stalwart's roofs are visible below. Smoke rises through patched boards, and fresh footprints cross the old service road. You remember looking down from here when every chimney was lit and the road never stayed empty for long.", final: true, next: [] }
   ];
 
   var worldAcademyEvidence = {
@@ -7536,14 +7681,45 @@ var WORLD_VERSION = 1;
     return button;
   }
 
+  function recordWorldActionBudget(shell) {
+    if (!shell) return 0;
+    if (shell.classList.contains("world-stalwart-shell")) {
+      Array.from(shell.querySelectorAll(".world-actions")).forEach(function (group) {
+        var groupCount = group.querySelectorAll(":scope > button").length;
+        [1, 2, 3, 4].forEach(function (amount) {
+          group.classList.remove("world-choice-count-" + amount);
+        });
+        if (groupCount > 0) group.classList.add("world-choice-count-" + Math.min(groupCount, 4));
+      });
+      Array.from(shell.querySelectorAll(".world-card > button")).forEach(function (button) {
+        if (!button.closest(".world-actions")) button.classList.add("world-standalone-action");
+      });
+    }
+    var count = shell.querySelectorAll("button").length;
+    shell.setAttribute("data-room-actions", String(count));
+    shell.setAttribute("data-action-budget", count <= 4 ? "within-budget" : "over-budget");
+    if (typeof setup.scheduleViewportLayout === "function") setup.scheduleViewportLayout(0);
+    return count;
+  }
+
   function worldShell(root, site, kicker) {
     root.innerHTML = "";
     var shell = document.createElement("div");
     shell.className = "world-shell";
+    if (site.code === "A") shell.classList.add("world-stalwart-shell");
+    if (site.code) shell.setAttribute("data-world-site", site.code);
     shell.innerHTML = '<div class="world-kicker">' + escapeHtml(kicker || worldRegionMeta[site.region].name) +
       '</div><h1 class="world-title">' + escapeHtml(site.name) + '</h1>';
     root.appendChild(shell);
     return shell;
+  }
+
+  function worldProseHtml(text) {
+    return String(text || "").split(/\n\s*\n/).filter(function (paragraph) {
+      return paragraph.trim().length > 0;
+    }).map(function (paragraph) {
+      return "<p>" + escapeHtml(paragraph.trim()) + "</p>";
+    }).join("");
   }
 
   function addWorldItem(site) {
@@ -7553,7 +7729,7 @@ var WORLD_VERSION = 1;
       code: site.code,
       name: site.item,
       place: site.name,
-      description: "Taken from " + site.name + ". Wear, soot, repairs, and handling marks remain where an explanation does not."
+      description: "Taken from " + site.name + ". Wear follows the grip points, with soot and later repairs gathered in the seams."
     });
     siteState(site.code).item = true;
     notify("Taken: " + site.item);
@@ -7717,6 +7893,34 @@ var WORLD_VERSION = 1;
     setup.enemies[key] = enemy;
   });
 
+  var worldArrivalThoughtByRegion = {
+    north: "The road signs use Northern cuts you know, though frost has widened some marks and hidden others.",
+    central: "The straight approach and rank stones match the campaign maps, while the damage between them does not.",
+    holy: "Old pilgrimage marks begin before the threshold. You recognize the gestures they ask for, if not every symbol.",
+    desert: "The nearest shade and water marks remain visible from the road, as Desert guides intended.",
+    demon: "The entrance repeats a pattern you cannot yet read. You watch which parts the wind and passing feet have worn.",
+    outer: "Fieldworks gather around the entrance in layers from different years of the offensive.",
+    inner: "The final campaign maps named this place more cleanly than the ground allows.",
+    final: "Ash crosses the last road without wind and settles again around your boots."
+  };
+
+  var worldDepartureThoughtByRegion = {
+    north: "You keep the nearest shelter cut behind your left shoulder until the road turns.",
+    central: "The old mile stones remain aligned behind you long after the roofs fall from view.",
+    holy: "You pass the worn threshold in the direction returning pilgrims once used.",
+    desert: "You leave with the nearest water mark fixed in memory before the glare closes over it.",
+    demon: "You count the repeating arches until the sequence disappears behind the ground.",
+    outer: "The trench lines continue beside the road after the standing walls end.",
+    inner: "You follow the few returning boot marks until ash covers them.",
+    final: "The scar remains behind you, felt through the old sword after it can no longer be seen."
+  };
+
+  setup.worldArrivalThought = function (code) {
+    var site = worldSitesByCode[code];
+    if (!site) return "The road ends at a visible entrance.";
+    return "You reach " + site.name + ". " + worldArrivalThoughtByRegion[site.region];
+  };
+
   setup.enemies.academyDrillEcho = clone(setup.enemies.academyEcho);
   setup.enemies.academyDrillEcho.name = "a training-yard echo";
   setup.enemies.academyDrillEcho.hp = 20;
@@ -7736,11 +7940,12 @@ var WORLD_VERSION = 1;
     setup.places[site.code] = {
       code: site.code,
       name: site.name,
+      region: site.region,
       coord: site.coord.slice(),
       passage: "World Place",
       respawnPassage: town ? "World Place" : null,
       modifiers: town ? ["Town"] : (site.kind === "town" ? ["Settlement"] : []),
-      exitLine: "The road leaves " + site.name + " behind without making it disappear."
+      exitLine: "You leave " + site.name + ". " + worldDepartureThoughtByRegion[site.region]
     };
   });
   setup.northernPlaces = setup.places;
@@ -7775,11 +7980,11 @@ var WORLD_VERSION = 1;
     if (e.cat.adopted && map.moves > 0 && map.moves % 7 === 0 && e.lastCatMove !== map.moves && !State.variables.activeMapEvent) {
       e.lastCatMove = map.moves;
       var lines = [
-        "The cat steps into your footprint, inspects the road you chose, and follows anyway.",
-        "The cat finds shelter from the wind in the exact place your cloak fails to cover.",
-        "Something moves beyond the visible road. The cat notices it first and decides it is beneath concern.",
-        "You stop to count supplies. The cat counts on being included.",
-        "The world is quiet enough to hear four paws and one stubborn pair of boots."
+        "The cat steps into your footprints where the snow is deepest. When the road firms beneath you, it walks beside them instead.",
+        "When you stop out of the wind, the cat presses against the part of your cloak that has come loose. You retie it without moving the animal.",
+        "Something moves beyond the visible road. The cat's ears follow it until the sound passes, and you keep one hand near the old sword.",
+        "You stop to count supplies. The cat waits beside the food bundle and watches each item return to its place.",
+        "The road is quiet enough for you to hear four paws beside your boots. Their pace has settled into yours."
       ];
       setThought(lines[Math.floor(map.moves / 7) % lines.length]);
       setup.renderMap();
@@ -7842,7 +8047,7 @@ var WORLD_VERSION = 1;
         }
       }
       backdrop.remove();
-      setThought("The statue disappears behind the next rise.");
+      setThought("The shrine remains visible until the next rise closes over it. You keep its position beside the road in mind.");
       setup.updateInventory();
       setup.renderMap();
     }
@@ -7872,61 +8077,85 @@ var WORLD_VERSION = 1;
     {
       id: "arrival",
       name: "The outer gate",
-      text: "The outer gate hangs from one hinge. Fresh boot prints pass through it in both directions.",
-      next: ["ordinary", "academyRoad"]
+      text: "The outer gate hangs from one hinge. You remember it dragging even before the siege; two watchmen used to lift it together when supply carts came through.\n\nFresh boot prints cross beneath it in both directions.\n\nA patched gatehouse stands just inside. One road enters the square. Another climbs behind the old wall toward the Academy.",
+      next: ["ordinary", "academyRoad", "gatehouse"]
+    },
+    {
+      id: "gatehouse",
+      name: "The repaired gatehouse",
+      text: "Doors laid flat across the beams keep most of the snow out. Northern repairs are easy to recognize: whatever survived becomes part of whatever must survive next.\n\nA narrow bed sits beside a cold stove.\n\nBundles of food and filled waterskins are stacked behind a rough counter, close enough for the gate watch to reach without leaving the road unwatched.",
+      next: ["arrival"]
     },
     {
       id: "academyRoad",
       name: "The Academy road",
-      text: "The road climbs behind the old wall. Cart ruts and boot prints continue toward an arch whose carved name has lost several letters.",
+      text: "The Academy road climbs behind the old wall. Your legs remember the slope and the loose stone near the turn.\n\nCart ruts and fresh boot prints continue toward an arch whose carved name has lost several letters.",
       next: ["arrival"]
     },
     {
       id: "ordinary",
       name: "The main square",
-      text: "The square is still shaped around a crater. Smoke leaks from patched roofs. Two neighbors argue over an oven door while someone measures the dry corner with a length of string. A faceless Moon statue keeps one stone hand above them.",
-      next: ["arrival", "evidence", "slum", "richHousing", "danger"]
+      text: "The main square is still shaped around the crater. In market years, awnings covered its edge and left the broken center open.\n\nA notice wall leans beside the eastern lane. Something dark lies at its base.\n\nThe lower street drops beneath the old wall.\n\nIn the center, the faceless Moon statue keeps one stone hand raised over the square.",
+      next: ["arrival", "evidence", "slum", "statue"]
+    },
+    {
+      id: "statue",
+      name: "The Moon statue",
+      text: "Chisel marks cross the statue's face, with snow settled in the cuts.\n\nDuring your first winter in the shelter, you often brushed snow from its raised fingers while crossing the square. You learned the cracks in the stone by touch.\n\nStone dust and broken roof tile gather around its feet. The notice wall is visible beyond its hand.",
+      next: ["ordinary", "evidence"]
     },
     {
       id: "evidence",
       name: "The notice wall",
-      text: "A body lies beside the notice wall. Mud has dried to the courier's boots and coat. A cord beneath the coat holds a small route book closed.",
-      next: ["ordinary", "broken"]
+      text: "A body lies beside the notice wall.\n\nRoad mud has dried in layers across the courier's boots and coat. Northern couriers tie their working books beneath the outer layer when rain turns to sleet; a cord still holds this one closed.\n\nBeyond the wall, a lane divides between the stone houses and the ruined gardens.",
+      next: ["ordinary", "richHousing", "broken"]
     },
     {
       id: "slum",
       name: "The lower streets",
-      text: "Small houses lean beneath the old wall. Wall-menders, cooks, and leather stitchers lived close enough to share heat. Most roofs lost that argument years ago.",
-      next: ["ordinary", "river"]
+      text: "Small houses lean beneath the old wall. The lower streets always caught meltwater from the square, and the foundations show the old dark line.\n\nThe road continues toward the river.\n\nOne cellar door shivers against its latch. Across from it, fallen plaster has sealed half a tenement doorway.",
+      next: ["ordinary", "river", "danger", "tenement"]
+    },
+    {
+      id: "tenement",
+      name: "The half-buried tenement",
+      text: "The room behind the doorway is low and close. Northern homes beneath the wall were built to keep heat, with ceilings low enough to reach when winter cloth had to be fastened across them.\n\nA cupboard remains upright beneath the plaster, though the floor around it has begun to sag.\n\nA warped rear door opens toward the river.",
+      next: ["slum", "river"]
     },
     {
       id: "river",
       name: "The river",
-      text: "Black water moves beneath white ice. Stalwart was built around the river because walls need water. So do people. The river has outlasted both kinds of planning.",
-      next: ["slum", "broken"]
+      text: "Black water moves beneath white ice. You know where the current runs strongest by the gray seams, and keep your weight off them.\n\nA glass jar is caught between stones near the bank.\n\nBeyond it, a narrow animal trail climbs toward a ruined trellis.",
+      next: ["slum", "trellis"]
     },
     {
       id: "richHousing",
       name: "The stone houses",
-      text: "The larger houses kept their walls longer. Some families opened these doors during the retreat. Some did not. Empty rooms preserve both decisions without labeling either one.",
-      next: ["ordinary", "broken"]
+      text: "The larger houses kept their walls longer. White shelter marks remain beside several doors; rusted chains cross others from the inside.\n\nYou remember people arguing about both kinds during the retreat, when every spare room became a question asked in public.\n\nThe notice wall remains visible at one end of the lane. The ruined gardens lie at the other.",
+      next: ["evidence", "broken"]
     },
     {
       id: "danger",
       name: "The cellar steps",
-      text: "A cellar door shivers against its latch. The scratching beneath it stops when your hand touches the wood.",
-      next: ["ordinary", "broken"]
+      text: "A cellar door shivers against its latch. The wood bears the double crosscut Stalwart families used to mark a shared winter store.\n\nThe scratching beneath it stops when your hand touches the latch.\n\nA second stair rises beyond it toward the gardens.",
+      next: ["slum", "broken"]
     },
     {
       id: "broken",
       name: "The ruined gardens",
-      text: "Dead vines cover a ruined trellis behind the old command house. A narrow animal trail passes beneath it. Frozen roots press through the abandoned beds.",
-      next: ["evidence", "danger", "river", "richHousing", "overlook"]
+      text: "Abandoned planting beds divide the ground behind the old command house. You remember cabbage, feverfew, and soldiers being told not to take either without asking the gardeners.\n\nOne path returns to the notice wall. Another passes the stone houses.\n\nDead vines mark a trellis nearer the river. A narrow stair climbs toward the north wall.",
+      next: ["evidence", "richHousing", "trellis", "overlook"]
+    },
+    {
+      id: "trellis",
+      name: "The ruined trellis",
+      text: "Dead vines hang from the trellis. In warmer years, the garden crews trained beans along these cords and left the low fruit for children to reach.\n\nA starving cat crouches beneath them, watching your hands.\n\nFrozen roots have pushed through the nearest bed. The animal trail continues down toward the river.",
+      next: ["river", "broken"]
     },
     {
       id: "overlook",
       name: "The north wall",
-      text: "From the north wall, the road disappears beneath snow and broken roofs. Several old route markers still face outward.",
+      text: "From the north wall, the road disappears beneath snow and broken roofs.\n\nSeveral route markers still face outward. You know the old sequence: one cut for water, two for shelter, a crescent for a road safe enough to travel after dark.",
       next: ["broken"]
     }
   ];
@@ -7966,15 +8195,87 @@ var WORLD_VERSION = 1;
     return genericNodeAvailability(state);
   }
 
+  /*
+    Protagonist narration stays in close second person. He is a Northern veteran,
+    former Academy student, scavenger, and traveler from this world: familiar
+    customs and structures should call up practical knowledge or memory. Unknown
+    places remain uncertain. Emotion belongs inside the observation instead of
+    arriving as a detached joke or a final punch line.
+  */
+  var worldNarratorByRegion = {
+    north: {
+      townArrival: "Boot prints cross older wheel ruts, and smoke moves through roofs repaired with mismatched wood. The gate watch has left the narrow lane clear in the Northern way, so a stretcher can pass even when the market is crowded.",
+      arrival: "Snow has filled the road's shallow places and left the raised stones visible. You follow the old Northern rule and test each threshold from the side, where a fallen roof has less distance to travel.",
+      evidence: "One corner stayed dry beneath layers of fallen timber. A coat has been wrapped around something written, the way Northern travelers protect paper when their own clothes are already wet.",
+      danger: "Dust slips from the ceiling in a narrow line. The sound below stops when you stop, and you wait through three breaths before putting weight on the next step.",
+      broken: "The floor has split across several rooms. Old winter braces hold one edge while burned beams point toward a stair on the far side.",
+      overlook: "Cold air moves freely across the exposed height. From here, snow shows the surviving paths as gray lines between white roofs and darker stone."
+    },
+    central: {
+      townArrival: "People have rebuilt inside the old barracks lines. Cooking smoke rises where signal flags once hung, and the central lane remains clear by habit even though no formation is expected.",
+      arrival: "The road enters on the straight line favored by Central planners. Even in ruin, drainage channels, rank marks, and the worn lane for civilian traffic remain where campaign maps taught you to expect them.",
+      evidence: "A numbered cabinet has fallen beneath the boards, but its seal faces upward. Central clerks repeated a number on every wrapper; the same mark appears on the paper wedged inside.",
+      danger: "The passage descends beside an old command stripe. Something moves below without answering the challenge carved above the stair.",
+      broken: "The collapse cuts through rooms built on an exact grid. You can read the missing half from the standing pillars, as soldiers once read a formation after its line broke.",
+      overlook: "From the open wall, roads divide the ruins into measured districts. The signal towers are dark, but their sight lines still meet."
+    },
+    holy: {
+      arrival: "The entrance stones have been worn smooth by pilgrims who once touched the threshold before entering. You know the gesture from Northern shrines, though the three paths carved here belong to an older practice.",
+      evidence: "Cloth has been wound around a packet of writing in the old pilgrim fashion: three turns for what was witnessed, one loose turn for what remained uncertain.",
+      danger: "Roots press through the lower stair. The sound beneath them follows the cadence of a procession, but no living pilgrim would keep walking after you stopped.",
+      broken: "A ritual path continues across the collapsed rooms, its painted line surviving where the floor does not. You look for the side marks that once guided the injured and the tired.",
+      overlook: "Open air moves through branches and broken masonry. The three old pilgrimage roads can still be traced by the offerings weathering beside them."
+    },
+    desert: {
+      townArrival: "Shade cloth joins old workshops to newer walls. Water marks are painted where every traveler can see them, and fresh repair symbols have been cut beside the masters' older signs.",
+      arrival: "The first shaded threshold faces away from the old noon sun. Desert builders taught travelers to look for water marks before doorways; the lowest mark here sits well above the dry cistern.",
+      evidence: "A waxed travel cloth has kept a page dry beneath the boards. The fold leaves one corner open, so a finder can read the maker's mark without unwrapping it in bad weather.",
+      danger: "Sand shifts down the stair in small, regular falls. You listen for the scrape between them before moving closer.",
+      broken: "The floor has opened beneath a row of shade arches. Their surviving angles point toward a narrow crossing and the stair beyond it.",
+      overlook: "Heat and distance flatten the roads from this height. Old caravan markers break the glare at intervals a prepared traveler could once walk between."
+    },
+    demon: {
+      townArrival: "Heat reaches the road in equal intervals from vents along the wall. Entry terms have been marked at eye height in human script; nobody waits beneath them to make the welcome warmer or the warning harsher.",
+      arrival: "The opening repeats at exact intervals along the outer wall. You cannot read the sequence, but the unworn center of each threshold suggests people entered along its edges instead.",
+      evidence: "A fitted compartment remains closed beneath the fallen material. Its marks repeat on the thin record inside, too regular to be decoration.",
+      danger: "The lower passage answers each of your steps with one measured sound. When you stop, one final answer arrives after the same delay.",
+      broken: "The rupture crosses several identical rooms. Supports on either side have adjusted toward the gap and stopped at precisely the same angle.",
+      overlook: "The exposed structure repeats beyond easy counting. Repairs copy older repairs, and small differences gather from one arch to the next."
+    },
+    outer: {
+      arrival: "The approach is cut with trenches, cart lanes, and the shallow heel marks of people ordered to wait under load. You recognize the organization from the first years of the offensive.",
+      evidence: "A field packet has been tied beneath a broken brace. The knot is military, pulled for opening with numb hands rather than for keeping a curious person out.",
+      danger: "Loose grit moves along the lower passage. The old warning cuts mark a route used by stretcher teams, and the sound below lies across it.",
+      broken: "The rooms were opened deliberately to make one narrow approach. You have seen the same fieldwork built in earth; here, soldiers used walls and furniture.",
+      overlook: "From the exposed height, unit roads and burial lines cross the ash. Some are the same routes you once copied onto campaign maps for your brother."
+    },
+    inner: {
+      arrival: "The road narrows beyond the last broad formation marks. You knew this ground from reports and your brother's maps; standing on it gives every measured distance a different weight.",
+      evidence: "A personal field packet has been pushed beneath the boards, away from the command racks. There is no archive number on its outer fold.",
+      danger: "The sound below does not match any drill call you know. It pauses with you, then begins again before you move.",
+      broken: "Pressure has folded the rooms toward one point, as if stone had joined a charge. Handholds cut afterward show where people still crossed against it.",
+      overlook: "The final roads are visible through the ash. Their old arrows all point inward; boot marks returning the other way are fewer and less orderly."
+    },
+    final: {
+      arrival: "Ash settles across the last road and lifts again without wind. You know the position from every account of your brother's final advance, but no account described the silence.",
+      evidence: "Something written rests beneath a stone placed carefully enough to resist the ash. No seal or uniform mark survives on the fold.",
+      danger: "The ground tightens beneath your boots. A movement below arrives first as memory and then as sound.",
+      broken: "The scar divides stone, armor, and road without following the shape of any weapon. The old sword's silver line brightens while you stand near it.",
+      overlook: "Nothing rises high enough to give a clean view. The scar bends every path back toward its center."
+    }
+  };
+
   function genericNodeText(site, node) {
     if (site.code === "A") {
+      if (node === "danger" && siteState("A").danger) {
+        return "Broken crates cover the cellar floor. The lower-street door remains open behind you, and a second stair rises toward the ruined gardens.";
+      }
       return worldStalwartById[node] ? worldStalwartById[node].text : "The paths through Stalwart meet beneath broken stone.";
     }
-    if (node === "arrival") {
-      return site.kind === "town"
-        ? "Boot prints cross older wheel ruts. Smoke finds its way through roofs repaired with three different kinds of wood."
-        : "The road gives way to broken stone and a gap wide enough to enter. Wind moves through rooms that once kept it out.";
-    }
+    var regionalVoice = worldNarratorByRegion[site.region] || worldNarratorByRegion.north;
+    if (node === "arrival") return site.kind === "town" && regionalVoice.townArrival
+      ? regionalVoice.townArrival
+      : regionalVoice.arrival;
     if (node === "ordinary") {
       if (site.code === "AW") {
         return ensureWorldState().cat.adopted
@@ -7988,10 +8289,10 @@ var WORLD_VERSION = 1;
       }
       return site.ordinary;
     }
-    if (node === "evidence") return "One corner stayed dry. Something written has been wedged beneath fallen boards and wrapped in what remains of a coat.";
-    if (node === "danger") return "Dust trembles from the ceiling. The sound below stops when you stop.";
-    if (node === "broken") return "The floor ends at a split running through several rooms. Burned beams point toward a stair on the far side.";
-    return "Cold air moves freely here. Below, the paths through the ruin meet and separate without explaining why.";
+    if (node === "evidence") return regionalVoice.evidence;
+    if (node === "danger") return regionalVoice.danger;
+    if (node === "broken") return regionalVoice.broken;
+    return regionalVoice.overlook;
   }
 
   function genericRoomName(node, site) {
@@ -8033,12 +8334,16 @@ var WORLD_VERSION = 1;
       return {
         arrival: "Go back to the outer gate",
         ordinary: "Walk into the main square",
+        gatehouse: "Open the repaired gatehouse door",
         evidence: "Go to the body by the notice wall",
         slum: "Take the lane beneath the old wall",
+        tenement: "Enter the half-buried tenement",
         river: "Follow the lower street to the river",
         richHousing: "Climb toward the larger stone houses",
         danger: "Open the cellar door",
         broken: "Follow the path to the ruined gardens",
+        trellis: "Follow the animal trail to the trellis",
+        statue: "Walk to the Moon statue",
         overlook: "Climb the north wall",
         academyRoad: "Take the road behind the old wall"
       }[node] || "Continue";
@@ -8076,7 +8381,8 @@ var WORLD_VERSION = 1;
 
     var card = document.createElement("div");
     card.className = "world-card";
-    card.innerHTML = '<p>' + escapeHtml(genericNodeText(site, "arrival")) + '</p>';
+    card.innerHTML = (site.code === "A" ? '<h2>' + escapeHtml(genericRoomName("arrival", site)) + '</h2>' : "") +
+      worldProseHtml(genericNodeText(site, "arrival"));
     shell.appendChild(card);
 
     var actions = document.createElement("div");
@@ -8100,6 +8406,7 @@ var WORLD_VERSION = 1;
       actions.appendChild(worldButton("Return to the world map", function () { setup.enterMap(site.code); }));
     }
     shell.appendChild(actions);
+    recordWorldActionBudget(shell);
   };
 
   setup.openWorldNode = function (node) {
@@ -8166,7 +8473,7 @@ var WORLD_VERSION = 1;
     var shell = worldShell(root, site, worldRegionMeta[site.region].name);
     var room = document.createElement("div");
     room.className = "world-card world-room";
-    room.innerHTML = '<h2>' + escapeHtml(genericRoomName(node, site)) + '</h2><p>' + escapeHtml(genericNodeText(site, node)) + '</p>';
+    room.innerHTML = '<h2>' + escapeHtml(genericRoomName(node, site)) + '</h2>' + worldProseHtml(genericNodeText(site, node));
     shell.appendChild(room);
 
     if (node === "evidence" && state.evidence) {
@@ -8204,10 +8511,13 @@ var WORLD_VERSION = 1;
     genericRoomPaths(state, node, site).forEach(function (next) {
       actions.appendChild(worldButton(genericPathLabel(state, next, site), function () { setup.openWorldNode(next); }));
     });
-    if (node === "arrival" || node === "overlook") {
+    if ((node === "arrival" || node === "overlook") && site.code === "A") {
+      if (e.routeBook) actions.appendChild(worldButton("Leave Stalwart", function () { setup.enterMap(site.code); }));
+    } else if (node === "arrival" || node === "overlook") {
       actions.appendChild(worldButton("Step outside", function () { play("World Place"); }));
     }
     shell.appendChild(actions);
+    recordWorldActionBudget(shell);
   };
 
   function academyNodeAvailable(node) {
@@ -8251,7 +8561,7 @@ var WORLD_VERSION = 1;
     e.academy.nodes[id] = true;
     if (node.evidence) addAcademyEvidence(node.evidence);
     if (node.item && !e.items.some(function (item) { return item.name === node.item; })) {
-      e.items.push({ code: "ACADEMY_" + id, name: node.item, place: "Northern Academy of Heroes", description: "Dust has settled around the places hands repeatedly missed while using it." });
+      e.items.push({ code: "ACADEMY_" + id, name: node.item, place: "Northern Academy of Heroes", description: "Wear marks the places where Academy hands held it most often; dust remains in the hollows between them." });
       notify("Taken: " + node.item);
     }
     if (node.enemy && !e.academy.nodes[id + "_cleared"]) {
@@ -8274,7 +8584,7 @@ var WORLD_VERSION = 1;
     });
     earnMemory("Limitation", "you cannot make a late arrival successful by discovering a secret rescue");
     addConnection("academy", "Stalwart begins discussing a small school inside the Academy's surviving service court.");
-    notify("Thirty-three students. Two staff. Others still unknown. Unknown is not zero.");
+    notify("Thirty-three student names and two staff names are confirmed. The remaining names have no recorded status.");
     play("World Room");
   }
 
@@ -8305,7 +8615,7 @@ var WORLD_VERSION = 1;
       resolution.className = "world-card";
       resolution.innerHTML = '<h3>' + (e.academy.resolved ? "The last line" : "The loose pages") + '</h3><p>' +
         (e.academy.resolved
-          ? "Thirty-three students. Two staff. Others still unknown. Unknown is not zero."
+          ? "Thirty-three student names and two staff names are confirmed. The pages do not record what happened to the remaining names."
           : "Four pieces of the same roll lie across your knees. Several names end without a mark beside them.") + '</p>';
       if (!e.academy.resolved) resolution.appendChild(worldButton("Write only what the pages support", resolveAcademy));
       shell.appendChild(resolution);
@@ -8336,6 +8646,7 @@ var WORLD_VERSION = 1;
       play("World Room");
     }));
     shell.appendChild(actions);
+    recordWorldActionBudget(shell);
   };
 
   setup.renderCommonGround = function () {
@@ -8347,10 +8658,10 @@ var WORLD_VERSION = 1;
     e.commonGround.visited = true;
     var card = document.createElement("div");
     card.className = "world-card";
-    card.innerHTML = '<p>Three paths meet around a cold hearth. Small bowls remain where the roots have not lifted them. None bear a crest.</p><h3>' +
+    card.innerHTML = '<p>Three paths meet around a cold hearth. At the old shared shrines, each god\'s bowl carried a different crest. These bowls are plain, and their worn rims show that the same hands used all three.</p><h3>' +
       (e.tulip.found ? "The empty patch" : "A flower") + '</h3><p>' + (e.tulip.found
-      ? "Dark soil clings to the shape left by the roots. It is warmer than your hand."
-      : "A red tulip grows beside the hearth. Everything around it is grey, dry, or dead.") + '</p>';
+      ? "Dark soil clings to the shape left by the roots. It remains warmer than your hand."
+      : "A red flower grows beside the hearth. You know its shape from old first-thaw carvings: a tulip. You have never seen a living one. Everything around it is grey, dry, or dead.") + '</p>';
     if (!e.tulip.found) {
       var tulipActions = document.createElement("div");
       tulipActions.className = "world-actions";
@@ -8374,6 +8685,7 @@ var WORLD_VERSION = 1;
     actions.className = "world-actions";
     actions.appendChild(worldButton("Return to " + worldSitesByCode[e.activeSite].name, function () { e.activeMode = "site"; play("World Place"); }));
     shell.appendChild(actions);
+    recordWorldActionBudget(shell);
   };
 
   function readMeraRouteBook(afterRead) {
@@ -8443,7 +8755,7 @@ var WORLD_VERSION = 1;
 
   function appendSpecialRoomCard(shell, site, node) {
     var e = ensureWorldState();
-    if (site.code === "A" && node === "ordinary" && !State.variables.taken.stalwartSquareCharm) {
+    if (site.code === "A" && node === "statue" && !State.variables.taken.stalwartSquareCharm) {
       var moonCharm = document.createElement("div");
       moonCharm.className = "world-card";
       moonCharm.innerHTML = '<h3>Beneath the statue</h3><p>A cracked Moon charm lies in the stone dust below the statue\'s raised hand.</p>';
@@ -8459,17 +8771,17 @@ var WORLD_VERSION = 1;
       routeBook.appendChild(worldButton("Read the route book", setup.readStalwartRouteBook));
       shell.appendChild(routeBook);
     }
-    if (site.code === "A" && node === "slum") {
-      appendStalwartSearchCard(shell, node, "stalwartSlumSearched", "A cupboard under fallen plaster", "Search the lower houses", "The floor gives way before the cupboard does. You find something useful in both.", { staleBread: 1, scrapIronPieces: 1 });
+    if (site.code === "A" && node === "tenement") {
+      appendStalwartSearchCard(shell, node, "stalwartSlumSearched", "The cupboard", "Open the cupboard", "The cupboard holds a wrapped loaf heel. A loose floor brace beneath it can still be cut into a usable length of iron.", { staleBread: 1, scrapIronPieces: 1 });
     }
     if (site.code === "A" && node === "richHousing") {
-      appendStalwartSearchCard(shell, node, "stalwartRichSearched", "A panel that does not sit flush", "Search the stone houses", "Someone hid these behind the good wall paneling. Money had its uses after all.", { sealedFoodTin: 1, northernFieldWrap: 1 });
+      appendStalwartSearchCard(shell, node, "stalwartRichSearched", "A panel that does not sit flush", "Search the stone houses", "The wall panel opens onto a narrow household cache. A sealed tin and folded field wrap remain inside.", { sealedFoodTin: 1, northernFieldWrap: 1 });
     }
     if (site.code === "A" && node === "river") {
-      appendStalwartSearchCard(shell, node, "stalwartRiverWater", "A jar caught between stones", "Reach for the jar", "Slightly wet. Could still be useful.", { riverJar: 1 });
+      appendStalwartSearchCard(shell, node, "stalwartRiverWater", "A jar caught between stones", "Reach for the jar", "The jar is chipped above the waterline. Its stopper and lower half remain sound.", { riverJar: 1 });
     }
-    if (site.code === "A" && node === "broken") {
-      appendStalwartSearchCard(shell, node, "stalwartGardenSearched", "Roots beneath the ruined beds", "Search the gardens", "The roots have outlived the beds. Something else in the garden watches what you do with the food.", { winterRoot: 1 });
+    if (site.code === "A" && node === "trellis") {
+      appendStalwartSearchCard(shell, node, "stalwartGardenSearched", "Roots beneath the nearest bed", "Inspect the exposed roots", "Winter root has spread beneath the old bed. You separate one tuber while the cat watches your hands from under the trellis.", { winterRoot: 1 });
     }
     if (site.code === "A" && node === "academyRoad") {
       var academyRoad = document.createElement("div");
@@ -8481,7 +8793,7 @@ var WORLD_VERSION = 1;
       }));
       shell.appendChild(academyRoad);
     }
-    if (site.code === "A" && node === "broken") {
+    if (site.code === "A" && node === "trellis") {
       var gardenCat = document.createElement("div");
       gardenCat.className = "world-card world-cat";
       e.cat.met = true;
@@ -8495,7 +8807,7 @@ var WORLD_VERSION = 1;
           e.cat.adopted = true;
           addConnection("cat", "A starving cat follows after being fed once.");
           setup.updateInventory();
-          notify("The cat follows you. It has not supplied a name.");
+          notify("The cat eats, then follows you toward the gate.");
           play("World Room");
         }, State.variables.inventory.food <= 0));
       }
@@ -8527,10 +8839,10 @@ var WORLD_VERSION = 1;
       lamp.innerHTML = '<h3>Sella\'s lamp</h3><p>The failed lamp holds pale light for a full breath. Sella records the duration twice, then laughs hard enough to ruin the third measurement.</p>';
       shell.appendChild(lamp);
     }
-    if (WORLD_TOWNS.indexOf(site.code) !== -1 && node === "ordinary") {
+    if ((site.code === "A" && node === "gatehouse") || (site.code !== "A" && WORLD_TOWNS.indexOf(site.code) !== -1 && node === "arrival")) {
       var services = document.createElement("div");
       services.className = "world-card";
-      services.innerHTML = '<div class="world-kicker">Smoke from repaired roofs</div><h3>Rest and prepare</h3><p>A bed has been cleared near the wall. Food and water are stacked behind a rough counter.</p>';
+      services.innerHTML = site.code === "A" ? "" : '<p>A cleared bed and a supply counter sit just inside.</p>';
       var serviceActions = document.createElement("div");
       serviceActions.className = "world-actions";
       serviceActions.appendChild(worldButton("Rest to full health", function () {
@@ -8619,12 +8931,12 @@ var WORLD_VERSION = 1;
       if (e.commonGround.visited) {
         var commonRooms = [{
           title: "The cold hearth",
-          text: "Three paths meet around a cold hearth. Small bowls remain where the roots have not lifted them. None bear a crest."
+          text: "Three paths meet around a cold hearth. At the old shared shrines, each god's bowl carried a different crest. These bowls are plain, and their worn rims show that the same hands used all three."
         }, {
           title: e.tulip.found ? "The empty patch" : "A flower",
           text: e.tulip.found
-            ? "Dark soil clings to the shape left by the roots. It is warmer than your hand."
-            : "A red tulip grows beside the hearth. Everything around it is grey, dry, or dead."
+            ? "Dark soil clings to the shape left by the roots. It remains warmer than your hand."
+            : "A red flower grows beside the hearth. You know its shape from old first-thaw carvings: a tulip. You have never seen a living one. Everything around it is grey, dry, or dead."
         }];
         var lastHolyIndex = -1;
         places.forEach(function (entry, index) { if (entry.region === "holy") lastHolyIndex = index; });
@@ -8849,7 +9161,7 @@ var WORLD_VERSION = 1;
       if (e.cat.adopted) {
         var cat = document.createElement("div");
         cat.className = "world-card world-cat";
-        cat.innerHTML = '<h3>At the Gate</h3><p>The cat is still waiting. It sniffs your boots, circles the old sword once, and starts down the road without looking back.</p>';
+        cat.innerHTML = '<h3>At the Gate</h3><p>The cat is still waiting. It sniffs your boots and circles the old sword. When you kneel, it presses its head beneath your hand; when you stand, it takes the road beside you.</p>';
         shell.appendChild(cat);
       }
       var completeActions = document.createElement("div");
@@ -8862,12 +9174,12 @@ var WORLD_VERSION = 1;
     if (e.endingPhase === "tulip") {
       var passing = document.createElement("div");
       passing.className = "world-card";
-      passing.innerHTML = '<h3>Your brother lowers his sword</h3><p>He remembers cleaning armor beside you, sending soldiers back from the Gate, and making you promise to stay alive. "I thought if I stopped," he says, "every death behind me would become wasted." You tell him what you saw on the road. He laughs once, quietly. Then his hand slips from yours. The old sword rings. Silver light moves from the guard to the point and remains there.</p>';
+      passing.innerHTML = '<h3>Your brother lowers his sword</h3><p>He remembers cleaning armor beside you, sending soldiers back from the Gate, and making you promise to stay alive. "I thought if I stopped," he says, "every death behind me would become wasted." You tell him where you slept, who shared food, which doors you could not open, and which roads carry signals again. When you reach the Academy, you give him the numbers written on the joined roll pages. He closes his hand around yours. After a while, his grip loosens. The old sword rings, and silver light moves from the guard to the point.</p>';
       shell.appendChild(passing);
       if (e.tulip.found && e.tulip.carried) {
         var flower = document.createElement("div");
         flower.className = "world-card world-ending-choice";
-        flower.innerHTML = '<h3>The single tulip</h3><p>Its soil is warm through the cloth. The air around the petals trembles when you uncover them.</p>';
+        flower.innerHTML = '<h3>The single tulip</h3><p>Its soil is warm through the cloth. When you uncover the petals, the air around them trembles like the space above a road at first thaw.</p>';
         var flowerActions = document.createElement("div");
         flowerActions.className = "world-actions";
         flowerActions.appendChild(worldButton("Plant it in the Fear's scar", function () { resolveTulipDestination("fear"); }));
@@ -8881,7 +9193,7 @@ var WORLD_VERSION = 1;
         noFlower.className = "world-card";
         noFlower.innerHTML = '<h3>Morning</h3><p>Dawn reaches the Gate. Far behind you, five columns of smoke rise from five living settlements. A courier bell answers another beyond the ridge.</p>';
         noFlower.appendChild(worldButton("Walk back toward the road", function () {
-          finishWorldEnding("moonless_dawn", "Moonless Dawn", "Your brother's hand is empty when morning reaches the Gate. Five settlements exchange food, law, craft, and warning. The wells remain low. The road between them does not.");
+          finishWorldEnding("moonless_dawn", "Moonless Dawn", "Your brother's hand is empty when morning reaches the Gate. Five settlements exchange food, law, craft, and warning. Their wells remain low, and carts continue moving between them with what each place can spare.");
         }));
         shell.appendChild(noFlower);
       }
@@ -8907,7 +9219,7 @@ var WORLD_VERSION = 1;
       partial.className = "world-card world-ending-choice";
       partial.innerHTML = '<h3>He listens</h3><p>You tell him about the people you met. His sword lowers, but his eyes keep returning to the shape moving in the ash.</p>';
       partial.appendChild(worldButton("Take up the watch and let him rest", function () {
-        finishWorldEnding("burdened_release", "A Brother, Still Carried", "Your brother closes his eyes. You remain at the scar with the old sword across your knees. Courier bells sometimes call you back to the road. Each time, you return a little later.");
+        finishWorldEnding("burdened_release", "A Brother, Still Carried", "Your brother closes his eyes. You remain at the scar with the old sword across your knees. When courier bells call from the outer road, you carry messages as far as the Gate and return to the watch before dark.");
       }));
       shell.appendChild(partial);
     } else {
@@ -8959,6 +9271,23 @@ var WORLD_VERSION = 1;
       return node.next.some(function (next) { return !worldAcademyNodes.some(function (candidate) { return candidate.id === next; }); }) ||
         (node.enemy && !setup.enemies[node.enemy]);
     }).map(function (node) { return node.id; });
+    var invalidStalwart = worldStalwartNodes.filter(function (node) {
+      return node.next.some(function (next) { return !worldStalwartById[next]; });
+    }).map(function (node) { return node.id; });
+    var stalwartActionExtras = { arrival: 1, gatehouse: 2, academyRoad: 1, statue: 1, evidence: 1, tenement: 1, river: 1, richHousing: 1, trellis: 2, overlook: 3 };
+    var stalwartActionFailures = worldStalwartNodes.filter(function (node) {
+      return node.next.length + (stalwartActionExtras[node.id] || 0) > 4;
+    }).map(function (node) { return node.id; });
+    var stalwartPersistentExtras = { arrival: 1, gatehouse: 2, academyRoad: 1, overlook: 1 };
+    var stalwartDeadEnds = worldStalwartNodes.filter(function (node) {
+      return node.next.length + (stalwartPersistentExtras[node.id] || 0) < 2;
+    }).map(function (node) { return node.id; });
+    var academyActionFailures = worldAcademyNodes.filter(function (node) {
+      var neighbors = node.next.concat(worldAcademyNodes.filter(function (candidate) {
+        return candidate.next.indexOf(node.id) !== -1;
+      }).map(function (candidate) { return candidate.id; }));
+      return new Set(neighbors).size + (node.id === "gate" || node.id === "overlook" ? 1 : 0) > 4;
+    }).map(function (node) { return node.id; });
     var townFailures = WORLD_TOWNS.filter(function (code) {
       var place = setup.places[code];
       return !place || !place.respawnPassage || place.modifiers.indexOf("Town") === -1;
@@ -8966,16 +9295,22 @@ var WORLD_VERSION = 1;
     var combat = setup.verifyFastCombat();
     return {
       ok: missing.length === 0 && codes.length === 69 && new Set(codes).size === 69 && new Set(coords).size === 69 &&
-        invalidSites.length === 0 && worldAcademyNodes.length === 18 && invalidAcademy.length === 0 &&
+        invalidSites.length === 0 && worldStalwartNodes.length === 14 && invalidStalwart.length === 0 && stalwartActionFailures.length === 0 && stalwartDeadEnds.length === 0 &&
+        worldAcademyNodes.length === 18 && invalidAcademy.length === 0 && academyActionFailures.length === 0 &&
         worldShrines.length === 10 && townFailures.length === 0 && combat.ok,
       build: setup.__afterFinalBattleBuild,
       missingFunctions: missing,
       placeCount: codes.length,
       uniqueCoordinates: new Set(coords).size,
       invalidSites: invalidSites,
+      stalwartNodes: worldStalwartNodes.length,
+      invalidStalwart: invalidStalwart,
+      stalwartActionFailures: stalwartActionFailures,
+      stalwartDeadEnds: stalwartDeadEnds,
       academyNodes: worldAcademyNodes.length,
       academyEvidence: Object.keys(worldAcademyEvidence).length,
       invalidAcademy: invalidAcademy,
+      academyActionFailures: academyActionFailures,
       shrineCount: worldShrines.length,
       minorGodFragments: Object.keys(worldMinorGodFragments).length,
       unbrokenClues: Object.keys(worldUnbrokenClues).length,
@@ -9078,15 +9413,15 @@ var WORLD_VERSION = 1;
   <<set $shelterBeat += 1>>
 <</if>>
 
-There is only one.
+One crack reaches from the roof beam to the floor.
 
 A long, jagged line tears down the wall, opening the room to the street outside.
 
 It is too clean to be age. Too straight to be weather.
 
-A sword did this.
+You know the cut. A sword entered at shoulder height and passed through stone.
 
-Through the crack, Stalwart leans into itself. Its houses are split open. Its roofs are gone. Some doors still hang, which feels more stubborn than useful.
+Through the opening, Stalwart settles beneath the snow. Split houses expose rooms you still remember by their old colors. Several doors remain on their hinges, opening and closing when the wind reaches the square.
 
 [[Shelter]]
 
@@ -9096,11 +9431,11 @@ Through the crack, Stalwart leans into itself. Its houses are split open. Its ro
   <<set $shelterBeat += 1>>
 <</if>>
 
-A dull sword hangs on the door. It still glows faintly, silver beneath the rust. Not enough to warm the room. Not enough to keep anything away.
+A dull sword hangs where you left it on the door. Rust covers most of the blade, but a narrow silver light remains beneath it.
 
-A memory of brighter days.
+Your hand remembers its balance before you touch it. You remember the same light moving beside your brother on marches that began before dawn.
 
-It still might be useful.
+The edge will need work, but the tang is sound and the balance has not shifted.
 
 <<if !$hasSword>>
 <<link "Take" "Shelter">>
@@ -9119,9 +9454,9 @@ It still might be useful.
   <<set $shelterBeat += 1>>
 <</if>>
 
-The last two loaves of an old batch. An old waterskin sits near them, half empty.
+The last two loaves from the previous scavenging run sit beside a half-filled waterskin.
 
-A sign to start scavenging again.
+The harder heel will need to soften in water. Together, they are enough to reach the near roads and come back.
 
 <<if !$tookStaleBread>>
 <<link "Take" "Shelter">>
@@ -9137,13 +9472,13 @@ Only crumbs remain.
 <</if>>
 
 :: Door
-The door opens into Stalwart.
+The door opens onto the part of Stalwart you have been watching through the crack.
 
-Not the Stalwart from maps. Not the shield city. Not the place people used to point to when they wanted to feel safe.
+Old maps drew the city as a shield around the Academy. You remember crowded winter kitchens, bells carrying over the roofs, and strangers asking directions as if every road here would remain.
 
-Just Stalwart now.
+The same streets lie beyond the threshold, narrowed by fallen stone and snow. Smoke rises from repaired roofs near the square.
 
-Snow, stone, and the kind of quiet that checks your pockets.
+You tighten the waterskin, settle the old sword at your side, and listen for movement before stepping out.
 
 <<link "Step into Stalwart">>
   <<run setup.enterPlace("A")>>
