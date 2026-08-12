@@ -1,10 +1,10 @@
 {
   "summary": {
-    "passed": 114,
+    "passed": 138,
     "failed": 0,
-    "total": 114,
-    "sourceSha256": "dc95bde895e096b1093fedac0200c8c9fbedc7afae77fac06a98cca8d364d6c0",
-    "htmlSha256": "7d5024b8273b7541edcca923080a4cbfbef61d65765201b806aeb49cf744046a",
+    "total": 138,
+    "sourceSha256": "c74f72a1c54c85410e9fc9dd836f50419e46d9b9b638eba508db07591dcd9f21",
+    "htmlSha256": "0588bd2d4a9468a77bfa05dfae8af1e87b6c18f1664eae985fd98f214885101f",
     "failures": []
   },
   "checks": [
@@ -289,6 +289,16 @@
       "detail": ""
     },
     {
+      "label": "passages use one explicit top anchor instead of SugarCube's inherited story margin",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "every passage change clears preserved hidden page offsets",
+      "passed": true,
+      "detail": ""
+    },
+    {
       "label": "viewport fitting preserves a 13px minimum readable text size",
       "passed": true,
       "detail": ""
@@ -379,17 +389,117 @@
       "detail": ""
     },
     {
+      "label": "connected-world text uses the Shelter's inherited monospace type",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "generic connected-world passages keep the plain inherited layout",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "Shelter-style room actions retain visible keyboard focus",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "world surfaces record their visible action count and refit after dynamic rendering",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "Stalwart hides the redundant city title and uses Shelter-like boxed choice grids",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "Stalwart rooms receive their scoped choice layout at runtime",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "generated room prose preserves authored paragraph breaks",
+      "passed": true,
+      "detail": ""
+    },
+    {
       "label": "integrated Stalwart room data evaluates",
       "passed": true,
       "detail": ""
     },
     {
-      "label": "Stalwart is one reachable ten-room graph",
+      "label": "Stalwart is one reachable fourteen-room graph",
       "passed": true,
       "detail": ""
     },
     {
-      "label": "Stalwart retains all integrated exploration rooms",
+      "label": "Stalwart retains all separated exploration rooms",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "every Stalwart room uses deliberate Shelter-like prose beats",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "every Stalwart room carries local knowledge, memory, or lived practice",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "every Stalwart path points to a real room",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "every Stalwart room has at most four visible actions",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "every cleared Stalwart room retains at least two visible actions",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "the main square exposes only its four immediate choices",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "every Academy room has at most four visible actions",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "every Academy room is narrated through familiarity or Academy practice",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "all eight regions have a protagonist knowledge boundary and vocabulary",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "protagonist voice standard is preserved beside the active narration",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "opening narration treats the protagonist as a person from Stalwart with a history",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "retired punch-line narration does not return",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "label": "the brother and tulip scenes use accumulated experience and world familiarity",
       "passed": true,
       "detail": ""
     },
@@ -414,6 +524,11 @@
       "detail": ""
     },
     {
+      "label": "square, tenement, garden search, and cat interactions are split into their own rooms",
+      "passed": true,
+      "detail": ""
+    },
+    {
       "label": "the Academy is entered from Stalwart's connected road",
       "passed": true,
       "detail": ""
@@ -429,12 +544,17 @@
       "detail": ""
     },
     {
+      "label": "Stalwart opens directly at the outer gate and later leaves directly for the map",
+      "passed": true,
+      "detail": ""
+    },
+    {
       "label": "the journal follows the bespoke Stalwart room order",
       "passed": true,
       "detail": ""
     },
     {
-      "label": "town services appear inside the ordinary town room",
+      "label": "town services move away from crowded town-center rooms",
       "passed": true,
       "detail": ""
     },

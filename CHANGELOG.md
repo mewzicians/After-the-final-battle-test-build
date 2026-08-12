@@ -1,5 +1,14 @@
 # Changelog
 
+## Protagonist Voice and Exploration Presentation — 2026-08-11
+
+- Expanded Stalwart into one connected fourteen-room exploration graph with no more than four visible actions per room.
+- Matched connected-world narration and boxed choices to the Shelter's visual style and deliberate reading rhythm.
+- Removed the redundant Stalwart heading from its room passages and stabilized the story text position between rooms.
+- Rewrote the protagonist's active narration across the opening, Academy, regions, settlements, dungeons, combat aftermath, discoveries, companion scenes, and endings.
+- Grounded his observations in lived experience, regional vocabulary, personal attachments, and what he can directly know without adding punch-line narration or exposing hidden lore.
+- Expanded maintained verification from 114 to 138 passing checks.
+
 ## Integrated World Routing — 2026-08-11
 
 - Replaced the split legacy/new Stalwart opening with one connected ten-room exploration graph.
